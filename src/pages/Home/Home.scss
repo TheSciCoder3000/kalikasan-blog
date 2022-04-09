@@ -1,0 +1,82 @@
+.home-page {
+    .hero-section {
+        position: relative;
+        height: 132vh;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-text {
+            position: absolute;
+            top: 12rem;
+            left: 0;
+            right: 0;
+            text-align: center;
+
+            .hero-header {
+                font-size: 7em;
+                color: white;
+                font-weight: 1;
+                font-family: 'vegan_style_personal_useRg';
+                margin-bottom: 0;
+            }
+            .hero-subtext {
+                font-size: 1.5em;
+                font-weight: 300;
+                color: white;
+                padding: 0 30rem;
+                margin-top: -3rem;
+                font-family: 'Roboto', sans-serif;
+            }
+        }
+
+        .quote-section {
+            position: absolute;
+            display: flex;
+            background-color: white;
+            left: 20rem;
+            right: 20rem;
+            bottom: -160px;
+            height: 287px;
+            border: 1px solid #C5C5C5;
+            border-radius: 10px;
+    
+            img {
+                object-fit: cover;
+                height: 100%;
+                width: 280px;
+            }
+            .quote-info {
+                padding: 3rem 3rem;
+                text-align: center;
+
+                .quote-text {
+                    font-size: 1.75em;
+                    font-family: 'parisienneregular';
+                    font-weight: 900;
+                }
+                .quote-person {
+                    font-family: 'parisienneregular';
+                    margin-top: 2rem;
+                    font-size: 1.5em;
+                }
+            }
+        }
+    }
+
+
+    .blogs-section {
+        margin-top: 11rem;
+        padding: 5rem 10rem;
+        text-align: center;
+
+        .blog-header {
+            font-size: 4em;
+            font-family: 'beauty_mountains_personal_uRg';
+            font-weight: 10;
+        }
+    }
+}
