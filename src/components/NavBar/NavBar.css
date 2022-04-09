@@ -9,13 +9,22 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  height: 70px;
+  padding: 0 6rem;
+  z-index: 999;
+}
+
+.navbar.home-nav {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  height: 80px;
-  padding: 0 4rem;
-  z-index: 999;
+}
+
+.navbar.about-nav {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
 }
 
 .navbar .site-logo {
@@ -24,8 +33,18 @@
 }
 
 .navbar .nav-links .nav-link {
-  color: white;
+  color: lightgray;
   text-decoration: none;
   padding: 0 2rem;
+  font-family: 'Roboto', sans-serif;
+}
+
+.navbar .nav-links .nav-link.active-nav {
+  color: #9a9a9a;
+  cursor: default;
+}
+
+.navbar .nav-links .nav-link:not(.active-nav):hover {
+  color: white;
 }
 /*# sourceMappingURL=NavBar.css.map */

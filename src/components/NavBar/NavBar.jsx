@@ -1,24 +1,15 @@
 import './NavBar.css'
 import { NavLink as Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { AnimationVariants } from './variants'
 
-const NavBar = ({ animation }) => {
-  const navbarVariant = {
-    visible: {
-      backgroundColor: '#231D1A',
-      transition: { duration: 0.25 }
-    },
-    hidden: {
-      backgroundColor: 'rgba(0,0,0,0)',
-      transition: { duration: 0.3 }
-    }
-  }
+const NavBar = ({ animation, className, customVariant }) => {
   return (
     <>
-    <motion.div className='navbar'
+    <motion.div className={`navbar ${className}`}
                 animate={animation}
                 initial='hidden'
-                variants={navbarVariant}
+                variants={customVariant ? customVariant : AnimationVariants.Navbar}
                 >
       {/* Logo Container */}
       <div className="site-logo">
@@ -27,9 +18,9 @@ const NavBar = ({ animation }) => {
 
       {/* nav container */}
       <div className="nav-links">
-        <Link to='/' className='nav-link' activeClassName='active-nav'>Home</Link>
+        <Link exact to='/' className='nav-link' activeClassName='active-nav'>Home</Link>
         <Link to='/about' className='nav-link' activeClassName='active-nav'>About</Link>
-        <Link to='/blogs' className='nav-link' activeClassName='active-nav'>Blogs</Link>
+        <Link exact to='/blogs' className='nav-link' activeClassName='active-nav'>Blogs</Link>
       </div>
     </motion.div>
     </>
