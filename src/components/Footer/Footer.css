@@ -1,0 +1,46 @@
+.footer {
+  padding: 5rem 10rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #231D1A;
+  color: white;
+}
+
+.footer .site-info {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.footer .site-info .site-logo {
+  margin-bottom: 1rem;
+}
+
+.footer .site-info .site-links {
+  padding-left: 4rem;
+}
+
+.footer .site-info .site-links .site-link {
+  display: block;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  color: white;
+}
+
+.footer .members-info {
+  width: 200px;
+}
+
+.footer .members-info .members-header {
+  margin-bottom: 1rem;
+}
+
+.footer .members-info .members-list {
+  padding-left: 2rem;
+}
+
+.footer .members-info .members-list p {
+  margin-bottom: 0.5rem;
+}
+/*# sourceMappingURL=Footer.css.map */
