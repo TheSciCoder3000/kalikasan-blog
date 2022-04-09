@@ -1,14 +1,36 @@
 import './BlogItem.css'
+import { motion } from 'framer-motion'
+import { useAnimation } from 'framer-motion'
+import { BlogVariants } from './BlogVariants'
 
-const BlogItem = ({ imgSrc, title, description }) => {
+const BlogItem = ({ imgSrc, title, desc }) => {
+
+  const InfoAnimation = useAnimation()
   return (
-    <div className='blog-item'>
-        <img src={imgSrc} alt={`${title}-blog-img`} className="blog-item-img" />
-        <div className="blog-info">
-            <h2 className="blog-title">{title}</h2>
-            <p className="blog-desc">{description}</p>
-        </div>
-    </div>
+    <>
+    <motion.div className='blog-item'
+                variants={BlogVariants.Container}
+                onHoverStart={() => InfoAnimation.start('visible')}
+                onHoverEnd={() => InfoAnimation.start('hidden')}>
+          <motion.img src={imgSrc} 
+              variants={BlogVariants.Img}
+              animate={InfoAnimation}
+              initial="hidden"
+              alt={`${title}-blog-img`} 
+              className={`blog-item-img ${(imgSrc === '' || !imgSrc) && 'no-link'}`} />
+          <motion.div className="img-filter"
+                      initial="hidden"
+                      animate={InfoAnimation}
+                      variants={BlogVariants.ImgFilter} />
+          <motion.div className="blog-info"
+                      initial="hidden"
+                      animate={InfoAnimation}
+                      variants={BlogVariants.Info}>
+              <h2 className="blog-title">{title}</h2>
+              <p className="blog-desc">{desc}</p>
+          </motion.div>
+    </motion.div>
+    </>
   )
 }
 

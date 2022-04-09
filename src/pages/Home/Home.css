@@ -83,5 +83,23 @@
   font-size: 4em;
   font-family: 'beauty_mountains_personal_uRg';
   font-weight: 10;
+  margin-bottom: 2rem;
+}
+
+.home-page .blogs-section .blog-lists {
+  min-height: 250px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  gap: 10px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 /*# sourceMappingURL=Home.css.map */
