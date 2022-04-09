@@ -5,11 +5,13 @@ import Home from './pages/Home/Home'
 import About from './pages/About/About'
 import Blogs from './pages/Blog/Blogs'
 import Footer from './components/Footer/Footer'
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
     <div className="App">
       <Router>
+        <ScrollToTop />
         <Switch>
           {/* Website Routes */}
           <Route exact path='/'>
