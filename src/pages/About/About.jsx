@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { AboutVariants } from './AboutVariants'
+import Hero from '../../components/Hero/Hero'
 
 const About = () => {
   const NavbarAnimation = useAnimation()
@@ -23,14 +24,10 @@ const About = () => {
   return (
     <div className="about-page">
       {/* Hero Section */}
-      <div className="about__hero-section">
-        <img ref={navbarRef} src={SunsetTree} alt="tree-sunset" className="hero-img" />
-        <div className="navbar-container">
-          <NavBar className="about-nav" 
-                  customVariant={AboutVariants.Navbar}
-                  animation={NavbarAnimation} />
-        </div>
-      </div>
+      <Hero imgSrc={SunsetTree} 
+            customVariant={AboutVariants.Navbar} 
+            header="About"
+            customY="-250px" />
 
       {/* About Content */}
       <div className="about-content">

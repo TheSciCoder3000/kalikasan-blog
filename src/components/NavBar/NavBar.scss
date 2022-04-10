@@ -6,6 +6,7 @@
     height: 70px;
     padding: 0 6rem;
     z-index: 999;
+    pointer-events: all;
 
     &.home-nav {
         position: fixed;
