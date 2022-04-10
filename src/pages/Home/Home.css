@@ -3,11 +3,13 @@
   height: 132vh;
 }
 
-.home-page .hero-section img {
+.home-page .hero-section .hero-img {
   width: 100%;
-  height: 100%;
+  height: 132vh;
   -o-object-fit: cover;
      object-fit: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 .home-page .hero-section .hero-text {

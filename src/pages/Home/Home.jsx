@@ -7,6 +7,7 @@ import { useInView } from 'react-intersection-observer'
 import { useEffect } from 'react'
 import { AnimationVariants } from './variants'
 import BlogItem from '../../components/BlogItem/BlogItem'
+import { blogPosts } from '../blogPosts'
 
 const Home = () => {
   const CardAnimation = useAnimation()
@@ -16,8 +17,7 @@ const Home = () => {
   const [ navbarRef, navbarInView ] = useInView({ threshold: 0.1 })
 
   const BlogAnimation = useAnimation()
-  const [ blogRef, blogInView ] = useInView({ threshold: 1, rootMargin: '1000px' })
-  
+  const [ blogRef, blogInView ] = useInView({ threshold: 1, rootMargin: '1000px' })  
 
   useEffect(() => {
     if (cardInView) CardAnimation.start('visible')
@@ -35,40 +35,6 @@ const Home = () => {
   }, [blogInView])
 
 
-  const blogPosts = [
-    {
-      title: 'A day in the wild',
-      desc: 'A story of a man living in the forest of 5 years. This article shares his story and adventures as he survives in the wild from scratch only relying in mother nature for nourishment. Join him as he tells his story and his experiences.',
-      src: Forest
-    },
-    {
-      title: 'A day in the wild',
-      desc: 'A story of a man living in the forest of 5 years. This article shares his story and adventures as he survives in the wild from scratch only relying in mother nature for nourishment. Join him as he tells his story and his experiences.',
-      src: Forest
-    },
-    {
-      title: 'A day in the wild',
-      desc: 'A story of a man living in the forest of 5 years. This article shares his story and adventures as he survives in the wild from scratch only relying in mother nature for nourishment. Join him as he tells his story and his experiences.',
-      src: Forest
-    },
-    {
-      title: 'A day in the wild',
-      desc: 'A story of a man living in the forest of 5 years. This article shares his story and adventures as he survives in the wild from scratch only relying in mother nature for nourishment. Join him as he tells his story and his experiences.',
-      src: Forest
-    },
-    {
-      title: 'A day in the wild',
-      desc: 'A story of a man living in the forest of 5 years. This article shares his story and adventures as he survives in the wild from scratch only relying in mother nature for nourishment. Join him as he tells his story and his experiences.',
-      src: Forest
-    },
-    {
-      title: 'A day in the wild',
-      desc: 'A story of a man living in the forest of 5 years. This article shares his story and adventures as he survives in the wild from scratch only relying in mother nature for nourishment. Join him as he tells his story and his experiences.',
-      src: Forest
-    },
-  ]
-
-
   return (
     <div className='home-page'>
       {/* Sticky Navbar */}
@@ -77,7 +43,7 @@ const Home = () => {
       {/* Hero Section */}
       <div className="hero-section">
         {/* Hero Img */}
-        <img src={Forest} alt="hero-img" />
+        <div className='hero-img' style={{ backgroundImage: `url("${Forest}")` }} alt="hero-img" />
 
         {/* Hero Texts */}
         <div className="hero-text">
