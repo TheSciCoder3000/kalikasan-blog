@@ -56,6 +56,8 @@
      object-fit: cover;
   height: 100%;
   width: 280px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 
 .home-page .hero-section .quote-section .quote-info {
