@@ -3,12 +3,12 @@ import { NavLink as Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { AnimationVariants } from './variants'
 
-const NavBar = ({ animation, className, customVariant }) => {
+const NavBar = ({ animation, className, customVariant, initial }) => {
   return (
     <>
     <motion.div className={`navbar ${className}`}
                 animate={animation}
-                initial='hidden'
+                initial={initial ? initial : 'hidden'}
                 variants={customVariant ? customVariant : AnimationVariants.Navbar}
                 >
       {/* Logo Container */}
