@@ -6,8 +6,6 @@ import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { useEffect } from 'react'
 import { AnimationVariants } from './variants'
-import BlogItem from '../../components/BlogItem/BlogItem'
-import { blogPosts } from '../blogPosts'
 
 const Home = () => {
   const CardAnimation = useAnimation()
@@ -15,9 +13,6 @@ const Home = () => {
   
   const NavbarAnimation = useAnimation()
   const [ navbarRef, navbarInView ] = useInView({ threshold: 0.1 })
-
-  const BlogAnimation = useAnimation()
-  const [ blogRef, blogInView ] = useInView({ threshold: 1, rootMargin: '1000px' })  
 
   useEffect(() => {
     if (cardInView) CardAnimation.start('visible')
@@ -28,11 +23,6 @@ const Home = () => {
     if (!navbarInView) NavbarAnimation.start('visible')
     else NavbarAnimation.start('hidden')
   }, [navbarInView])
-
-  useEffect(() => {
-    if (blogInView) BlogAnimation.start('visible')
-    else BlogAnimation.start('hidden')
-  }, [blogInView])
 
 
   return (
@@ -49,46 +39,44 @@ const Home = () => {
         <div className="hero-text">
           <h1 ref={navbarRef} className="hero-header">The Time is Now</h1>
           <p className="hero-subtext">Together we can save this world for future generations to come</p>
+          <motion.button variants={AnimationVariants.HeroBtn}
+                         whileHover='hover'
+                         whileTap='tap'
+                         className="join-us">
+            Join Us
+          </motion.button>
         </div>
 
-        {/* Quote by Pope Francis */}
-        <motion.div className="quote-section"
-                    animate={CardAnimation}
-                    initial="hidden"
-                    variants={AnimationVariants.Card}>
-
-          <img src={Pope} alt="pope-francis" />
-          <div className="quote-info">
-            <h1 className="quote-text">“Many things have to change course but it is we human beings above all who need to change”</h1>
-            <p className="quote-person">- Pope Francis (Laodato Si)</p>
-          </div>
-
-        </motion.div>
       </div>
 
-      {/* Blogs Section */}
-      <div className="blogs-section">
-        <h1 ref={cardRef} className="blog-header">Blog Posts</h1>
-        <motion.div ref={blogRef} className="blog-lists"
-                    animate={BlogAnimation}
-                    initial="hidden"
-                    variants={{
-                      visible: {
-                        opacity: 1,
-                        transition: { duration: 0.2, when: 'beforeChildren', staggerChildren: 0.3 }
-                      },
-                      hidden: {
-                        opacity: 0,
-                        transition: { duration: 0.2, when: 'afterChildren'}
-                      }
-                    }}>
-          {blogPosts.length > 0
-            ? blogPosts.map(blogItem => 
-                <BlogItem imgSrc={blogItem.src} title={blogItem.title} desc={blogItem.desc} />
-              )
-            : <p>There are no blogs posted</p>
-          }
-        </motion.div>
+      {/* Advocacy Information */}
+      <div className="advoc-info">
+        <div className="pollution">
+
+        </div>
+        <div className="about-us">
+
+        </div>
+      </div>
+
+      {/* Quote by Pope Francis */}
+      <motion.div className="quote-card"
+                  ref={cardRef}
+                  animate={CardAnimation}
+                  initial="hidden"
+                  variants={AnimationVariants.Card}>
+
+        <motion.img variants={AnimationVariants.CardChildren} src={Pope} alt="pope-francis" />
+        <div className="quote-info">
+          <motion.h1 variants={AnimationVariants.CardChildren} className="quote-text">“Many things have to change course but it is we human beings above all who need to change”</motion.h1>
+          <motion.p variants={AnimationVariants.CardChildren} className="quote-person">- Pope Francis (Laodato Si)</motion.p>
+        </div>
+
+      </motion.div>
+
+      {/* Membership Sign Up */}
+      <div className="call-to-action">
+
       </div>
     </div>
   )

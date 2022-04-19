@@ -1,3 +1,6 @@
+$main-dark-color: #231D1A;
+$main-light-color: #FAF5EA;
+
 .home-page {
     .hero-section {
         position: relative;
@@ -13,10 +16,11 @@
 
         .hero-text {
             position: absolute;
-            top: 12rem;
+            top: 9rem;
             left: 0;
             right: 0;
             text-align: center;
+            user-select: none;
 
             .hero-header {
                 font-size: 7em;
@@ -33,63 +37,55 @@
                 margin-top: -3rem;
                 font-family: 'Roboto', sans-serif;
             }
-        }
+            .join-us {
+                margin-top: 2rem;
+                background-color: transparent;
+                color: white;
+                border: 1px solid white;
+                border-radius: 25px;
+                font-size: 1.15em;
+                padding: 0.75rem 2rem;
+                font-family: 'Roboto' sans-serif;
 
-        .quote-section {
-            position: absolute;
-            display: flex;
-            background-color: white;
-            left: 20rem;
-            right: 20rem;
-            bottom: -160px;
-            height: 287px;
-            border: 1px solid #C5C5C5;
-            border-radius: 10px;
-    
-            img {
-                object-fit: cover;
-                height: 100%;
-                width: 280px;
-                border-top-left-radius: 10px;
-                border-bottom-left-radius: 10px;
-            }
-            .quote-info {
-                padding: 3rem 3rem;
-                text-align: center;
-
-                .quote-text {
-                    font-size: 1.75em;
-                    font-family: 'parisienneregular';
-                    font-weight: 900;
-                }
-                .quote-person {
-                    font-family: 'parisienneregular';
-                    margin-top: 2rem;
-                    font-size: 1.5em;
+                &:hover {
+                    cursor: pointer;
                 }
             }
         }
+
     }
+    .quote-card {
+        background-color: $main-light-color;
+        position: relative;
+        height: 30rem;
 
-
-    .blogs-section {
-        margin-top: 11rem;
-        padding: 5rem 10rem;
-        text-align: center;
-
-        .blog-header {
-            font-size: 4em;
-            font-family: 'beauty_mountains_personal_uRg';
-            font-weight: 10;
-            margin-bottom: 2rem;
+        img {
+            object-fit: cover;
+            width: 40%;
+            height: 100%;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
         }
-        .blog-lists {
-            min-height: 250px;
-            display: flex;
-            flex-wrap: wrap;
-            flex-direction: row;
-            gap: 10px;
-            justify-content: center;
+        .quote-info {
+            background: linear-gradient(270deg, #FFFBF2 61.49%, rgba(255, 251, 242, 0) 100%);
+            padding: 9rem 10rem 3rem 40rem;
+            text-align: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            .quote-text {
+                font-size: 1.75em;
+                font-family: 'parisienneregular';
+                font-weight: 900;
+            }
+            .quote-person {
+                font-family: 'parisienneregular';
+                margin-top: 2rem;
+                font-size: 1.5em;
+            }
         }
     }
 }

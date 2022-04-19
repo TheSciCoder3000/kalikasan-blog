@@ -14,10 +14,14 @@
 
 .home-page .hero-section .hero-text {
   position: absolute;
-  top: 12rem;
+  top: 9rem;
   left: 0;
   right: 0;
   text-align: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .home-page .hero-section .hero-text .hero-header {
@@ -37,73 +41,57 @@
   font-family: 'Roboto', sans-serif;
 }
 
-.home-page .hero-section .quote-section {
-  position: absolute;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  background-color: white;
-  left: 20rem;
-  right: 20rem;
-  bottom: -160px;
-  height: 287px;
-  border: 1px solid #C5C5C5;
-  border-radius: 10px;
+.home-page .hero-section .hero-text .join-us {
+  margin-top: 2rem;
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+  border-radius: 25px;
+  font-size: 1.15em;
+  padding: 0.75rem 2rem;
+  font-family: 'Roboto' sans-serif;
 }
 
-.home-page .hero-section .quote-section img {
+.home-page .hero-section .hero-text .join-us:hover {
+  cursor: pointer;
+}
+
+.home-page .quote-card {
+  background-color: #FAF5EA;
+  position: relative;
+  height: 30rem;
+}
+
+.home-page .quote-card img {
   -o-object-fit: cover;
      object-fit: cover;
+  width: 40%;
   height: 100%;
-  width: 280px;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 }
 
-.home-page .hero-section .quote-section .quote-info {
-  padding: 3rem 3rem;
+.home-page .quote-card .quote-info {
+  background: -webkit-gradient(linear, right top, left top, color-stop(61.49%, #FFFBF2), to(rgba(255, 251, 242, 0)));
+  background: linear-gradient(270deg, #FFFBF2 61.49%, rgba(255, 251, 242, 0) 100%);
+  padding: 9rem 10rem 3rem 40rem;
   text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
-.home-page .hero-section .quote-section .quote-info .quote-text {
+.home-page .quote-card .quote-info .quote-text {
   font-size: 1.75em;
   font-family: 'parisienneregular';
   font-weight: 900;
 }
 
-.home-page .hero-section .quote-section .quote-info .quote-person {
+.home-page .quote-card .quote-info .quote-person {
   font-family: 'parisienneregular';
   margin-top: 2rem;
   font-size: 1.5em;
-}
-
-.home-page .blogs-section {
-  margin-top: 11rem;
-  padding: 5rem 10rem;
-  text-align: center;
-}
-
-.home-page .blogs-section .blog-header {
-  font-size: 4em;
-  font-family: 'beauty_mountains_personal_uRg';
-  font-weight: 10;
-  margin-bottom: 2rem;
-}
-
-.home-page .blogs-section .blog-lists {
-  min-height: 250px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  gap: 10px;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
 }
 /*# sourceMappingURL=Home.css.map */
