@@ -28,7 +28,7 @@ export const AnimationVariants = {
     },
     hover: {
       y: 0,
-      transition: { delay: 0.2, duration: 0.5 }
+      transition: { delay: 0.05, duration: 0.5 }
     }
   }
 }
