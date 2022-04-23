@@ -20,7 +20,8 @@ const NavBar = ({ animation, className, customVariant, initial }) => {
       <div className="nav-links">
         <Link exact to='/' className='nav-link' activeClassName='active-nav'>Home</Link>
         <Link to='/about' className='nav-link' activeClassName='active-nav'>About</Link>
-        <Link exact to='/blogs' className='nav-link' activeClassName='active-nav'>Blogs</Link>
+        <Link exact to='/signup' className='nav-link' activeClassName='active-nav'>Sign Up</Link>
+        <Link exact to='/login' className='nav-link' activeClassName='active-nav'>Login</Link>
       </div>
     </motion.div>
     </>
