@@ -1,0 +1,81 @@
+$Roboto-font: 'Roboto', sans-serif;
+
+.log-in {
+    height: 100vh;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .log-in-modal {
+        width: 20rem;
+        background: rgba(34, 20, 12, 0.78);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 2rem 5rem;
+        padding-bottom: 5rem;
+        
+        .modal-header {
+            font-weight: 100;
+            font-family: $Roboto-font;
+            color: white;
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 3em;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 2rem;
+
+            .field-group {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 2rem;
+                .field-label {
+                    color: rgb(190, 190, 190);
+                    font-family: $Roboto-font;
+                    margin-bottom: 1.2rem;
+                    font-size: 0.78em;
+                }
+                input {
+                    color: white;
+                    background-color: transparent;
+                    border: none;
+                    border-bottom: 1px solid rgb(150, 150, 150);
+                    font-size: 1.15em;
+                    outline: none;
+
+                    &:focus {
+                        border-bottom: 1px solid white;
+                    }
+                }
+            }
+            .submit-btn {
+                border: none;
+                background-color: #CC8A00;
+                color: white;
+                padding: 0.75rem 0;
+                font-size: 1.2em;
+                text-align: center;
+                font-weight: 100;
+                font-family: $Roboto-font;
+
+                &:hover {
+                    cursor: pointer;
+                    background-color: #e7a618;
+                }
+            }
+        }
+
+        .error-msg {
+            color: rgb(255, 43, 43);
+            font-family: $Roboto-font;
+        }
+    }
+}
