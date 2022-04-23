@@ -1,8 +1,7 @@
 /* Vegan Style */
 @font-face {
     font-family: 'vegan_style_personal_useRg';
-    src: url('./fonts/veganstylepersonaluse-5y58-webfont.woff2') format('woff2'),
-         url('./fonts/veganstylepersonaluse-5y58-webfont.woff') format('woff');
+    src: url('./fonts/VeganStylePersonalUse-5Y58.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }

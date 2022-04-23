@@ -11,24 +11,24 @@ export const AnimationVariants = {
       transition: { duration: 0.1 }
     }
   },
-  Card: {
-    visible: {
-      opacity: 1,
-      transition: { duration: 0.1, staggerChildren: 0.2, when: 'beforeChildren' }
-    },
+  LessonPanel: {
     hidden: {
-      opacity: 0,
-      transition: { duration: 0.3 }
+      height: 0,
+      transition: { duration: 0.8 }
+    },
+    visible: {
+      height: '60vh',
+      transition: { duration: 1 }
     }
   },
-  CardChildren: {
-    visible: {
-      opacity: 1,
-      transition: { duration: 0.4 }
-    },
+  LessonModule: {
     hidden: {
-      opacity: 0,
-      transition: { duration: 0.5 }
+      y: '100%',
+      transition: { duration: 0.3 }
+    },
+    hover: {
+      y: 0,
+      transition: { delay: 0.2, duration: 0.5 }
     }
   }
 }

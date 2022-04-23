@@ -1,41 +1,40 @@
 import './assets/fonts/fonts.css'
 import './App.css';
-import { Switch, Route, useParams } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import Home from './pages/Home/Home'
 import About from './pages/About/About'
-import Blogs from './pages/Blog/Blogs'
 import Footer from './components/Footer/Footer'
 import ScrollToTop from './components/ScrollToTop';
-import BlogArticle from './pages/BlogArticle/BlogArticle';
-import BlogEditor from './pages/BlogEditor/BlogEditor';
+import SignUp from './pages/SignUp/SignUp';
+import LogIn from './pages/LogIn/LogIn';
+import { useRef, useEffect } from 'react'
 
 function App() {
+  const appRef = useRef(null)
   return (
     <div className="App">
       <ScrollToTop />
       <Switch>
         {/* Website Routes */}
         <Route exact path='/'>
-          <Home />
+          <div className="home-scroll-container" ref={appRef} data-scroll-container>
+            <Home appRef={appRef} />
+            <Footer />
+          </div>
         </Route>
         <Route exact path='/about'>
           <About />
+          <Footer />
         </Route>
-        <Route path='/blogs'>
-          <Route exact path='/blogs'>
-            <Blogs />
-          </Route>
-          <Route exact path='/blogs/:blogId'>
-            <BlogArticle />
-          </Route>
-          <Route exact path='/blogs/editor/:blogId'>
-            <BlogEditor />
-          </Route>
+        <Route exact path='/signup'>
+          <SignUp />
+        </Route>
+        <Route exact path='/login'>
+          <LogIn />
         </Route>
 
       </Switch>
 
-      <Footer />
     </div>
   );
 }

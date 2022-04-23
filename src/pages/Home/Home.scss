@@ -1,11 +1,30 @@
 $main-dark-color: #231D1A;
 $main-light-color: #FAF5EA;
+$Roboto-font: 'Roboto', sans-serif;
 
 .home-page {
+    .loading-cont {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 999;
+        background: white;
+    }
+
     .hero-section {
         position: relative;
+        overflow-y: hidden;
         height: 132vh;
 
+        .hero-img-target {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: -200vh;
+        }
         .hero-img {
             width: 100%;
             height: 132vh;
@@ -27,7 +46,7 @@ $main-light-color: #FAF5EA;
                 color: white;
                 font-weight: 1;
                 font-family: 'vegan_style_personal_useRg';
-                margin-bottom: 0;
+                margin-bottom: 2rem;
             }
             .hero-subtext {
                 font-size: 1.5em;
@@ -54,27 +73,36 @@ $main-light-color: #FAF5EA;
         }
 
     }
-    .quote-card {
-        background-color: $main-light-color;
-        position: relative;
-        height: 30rem;
 
-        img {
-            object-fit: cover;
-            width: 40%;
-            height: 100%;
-            border-top-left-radius: 10px;
-            border-bottom-left-radius: 10px;
+    .quote-card {
+        background-color: #FFFBF2;;
+        position: relative;
+        height: 100%;
+        margin: 5rem;
+        padding-bottom: 4rem;
+        padding-top: 10rem;
+
+        .img-container {
+            margin-right: 3rem;
+            margin-left: 20rem;
+            
+            img {
+                width: 100%;
+                height: 30rem;
+                object-fit: cover;
+            }
         }
+
         .quote-info {
-            background: linear-gradient(270deg, #FFFBF2 61.49%, rgba(255, 251, 242, 0) 100%);
-            padding: 9rem 10rem 3rem 40rem;
+            background-color: white;
+            padding: 5rem;
             text-align: center;
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
             bottom: 0;
+            left: 2rem;
+            width: 30rem;
+            z-index: 2;
+            box-shadow: 2px 3px 24px -6px rgba(0, 0, 0, 0.25);
 
             .quote-text {
                 font-size: 1.75em;
@@ -85,6 +113,266 @@ $main-light-color: #FAF5EA;
                 font-family: 'parisienneregular';
                 margin-top: 2rem;
                 font-size: 1.5em;
+            }
+        }
+
+    }
+
+    .org-content {
+        padding-top: 20rem;
+        overflow: hidden;
+        background-color: #FFFBF2;;
+
+        // General Styles
+        .section-container {
+            font-family: $Roboto-font;
+
+            .section-header {
+                font-size: 3em;
+                margin-bottom: 2rem;
+            }
+            .section-desc {
+                font-weight: 300;
+                line-height: 1.5em;
+            }
+        }
+
+        // Section specific styles
+        .pollution-container {
+            display: flex;
+            gap: 4rem;
+            margin-bottom: 15rem;
+
+            img {
+                width: 45rem;
+                object-fit: cover;
+                height: 80vh;
+            }
+            .pollution-section {
+                padding-right: 4rem;
+                padding-top: 8rem;
+            }
+        }
+        .poor-container {
+            display: flex;
+            background: #FFF4DC;
+            height: 110vh;
+
+            .poor-section {
+                flex: .4;
+                padding-left: 6.5rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+            .img-collage {
+                position: relative;
+                flex: 0.6;
+
+                .img-cont {
+                    position: absolute;
+                }
+
+                .img-card {
+                    object-fit: cover;
+                    width: 100%;
+                    height: 100%;
+                }
+
+                #flood {
+                    right: 0;
+                    width: 100%;
+                    top: 50%;
+                    z-index: 4;
+                    
+                    img {
+                        transform: translate(30%, -50%) rotate(9.38deg);
+                        box-shadow: -4px -10px 16px -3px rgba(0, 0, 0, 0.25);
+                    }
+                }
+                #farmer {
+                    top: -2rem;
+                    left: 0;
+                    width: 45%;
+                    height: 14rem;
+                    z-index: 6;
+                    
+                    img {
+                        transform: rotate(-5.35deg);
+                        box-shadow: 6px 8px 18px -4px rgba(0, 0, 0, 0.25);
+                    }
+                }
+                #house {
+                    top: 1rem;
+                    right: -7rem;
+                    width: 38%;
+                    height: 12rem;
+                    z-index: 2;
+                    
+                    img {
+                        transform: rotate(29.93deg);
+                    }
+                }
+                #children {
+                    bottom: 1rem;
+                    width: 40%;
+                    right: -4rem;
+                    z-index: 5;
+                    
+                    img {
+                        transform: rotate(-11.07deg);
+                        filter: drop-shadow(1px -5px 12px rgba(0, 0, 0, 0.25));
+                    }
+                }
+                #land {
+                    bottom: -3rem;
+                    left: 50%;
+                    width: 38%;
+                    z-index: 1;
+                    
+                    img {
+                        transform: translateX(-50%) rotate(6.98deg);
+                        filter: drop-shadow(1px 5px 23px rgba(0, 0, 0, 0.25));
+                    }
+                }
+                #water {
+                    left: -1rem;
+                    bottom: 10rem;
+                    width: 36%;
+                    height: 10rem;
+                    z-index: 3;
+                    
+                    img {
+                        transform: rotate(-24.42deg);
+                        filter: drop-shadow(6px 4px 15px rgba(0, 0, 0, 0.25));
+                    }
+                }
+            }
+        }
+
+        .unity-container {
+            margin-top: 20rem;
+            height: 120vh;
+            display: flex;
+            gap: 3rem;
+
+            .fixed-wrapper {
+                flex: 0.55;
+                position: relative;
+                overflow: hidden;
+                height: 818px;
+
+                .fixed_target {
+                    bottom: -100vh;
+                }
+                .fixed,
+                .fixed_target {
+                    position: absolute;
+                    top: -100vh;
+                    right: 0;
+                    left: 0;
+                }
+                .fixed {
+                    height: 100%;
+                    background-size: cover;
+                    background-position: center;
+                }
+            }
+            .img-container {
+                background-repeat: no-repeat;
+                background-position-x: center;
+                background-size: cover;
+            }
+
+            .unity-section {
+                flex: .45;
+                padding-right: 4rem;
+                padding-top: 5rem;
+                height: 80%;
+                box-sizing: border-box;
+                // overflow: hidden;
+
+                .unity-desc {
+                    margin-bottom: 4rem;
+                }
+                .join-link {
+                    color: rgb(43, 43, 43);
+                    text-decoration: none;
+                    font-size: 1.2em;
+                }
+            }
+        }
+
+    }
+
+    .advocacy-content {
+        min-height: 100vh;
+        background-color: #FCF6EB;
+        padding-top: 7rem;
+        
+        .content-text {
+            padding: 0 18rem;
+            margin-bottom: 10rem;
+            .content-header {
+                font-family: 'vegan_style_personal_useRg';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 4em;
+                line-height: 90px;
+                text-align: center;
+                margin-bottom: 3rem;
+            }
+        }
+
+        .advocacy-modules {
+            background-color: #792d06;
+            height: 60vh;
+            display: flex;
+
+            .module-container {
+                flex: 1;
+                position: relative;
+                overflow: hidden;
+
+                .lesson-pic,
+                .lesson-content {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                }
+
+                .lesson-pic {
+                    object-fit: cover;
+                    z-index: 1;
+                    height: 100%;
+                }
+                .lesson-content {
+                    z-index: 2;
+                    padding: 5rem 4rem;
+                    font-family: $Roboto-font;
+                    background-color: rgba(35, 29, 26, 0.572);
+                    color: white;
+
+                    .lesson-header {
+                        font-size: 2em;
+                        margin-bottom: 2rem;
+                    }
+                }
+
+            }
+
+            // Specific styles
+            .module-2 {
+                img {
+                    left: -4rem !important; 
+                }
+            }
+            .module-3 {
+                img {
+                    left: -3rem !important; 
+                }
             }
         }
     }
