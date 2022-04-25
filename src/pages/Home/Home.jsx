@@ -26,7 +26,7 @@ import { useInView } from 'react-intersection-observer'
 import { useState, useEffect, useRef } from 'react'
 import { AnimationVariants } from './variants'
 import locomotiveScroll from 'locomotive-scroll'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 
 const lessons = [
@@ -47,49 +47,50 @@ const lessons = [
   }, 
 ]
 
-const Home = ({ appRef }) => {
-  const initalizeScroll = useRef(false)
-  useEffect(() => {
-    if (appRef.current && !initalizeScroll.current) {
-      console.log(appRef.current)
-      new locomotiveScroll({
-        el: appRef.current,
-        smooth: true,
-        multiplier: 0.75
-      })
-    }
-  }, [appRef])
-
-
+const Home = ({ appRef, currentUser }) => {
+  const history = useHistory()
+  
   // Pre-render screen when images are loading
   const heroImgRef = useRef(null)
   const cleanImgRef = useRef(null)
   const [loading, setLoading] = useState(true)
   useEffect(() => {
-    // Load div img function
-    const loadDivImg = (divRef, src) => new Promise((resolve) => {
-      let heroImg = new Image()
-      heroImg.addEventListener('load', () => {
-        divRef.current.style.backgroundImage = `url("${src}")`
-        resolve()
+    if (appRef.current) {
+      let scroll = new locomotiveScroll({
+        el: appRef.current,
+        smooth: true,
+        multiplier: 0.75
       })
-      heroImg.addEventListener('error', resolve)
-      heroImg.src = src
-    })
+      scroll.stop()
 
-    // Promise all images are loaded
-    let loadPromises = [
-      loadDivImg(heroImgRef, Forest),
-      loadDivImg(cleanImgRef, Clean),
-      ...Array.prototype.slice.call(document.images).map(imageEl => new Promise((resolve) => {
-        imageEl.onload = resolve
-      }))
-    ]
+      // Load div img function
+      const loadDivImg = (divRef, src) => new Promise((resolve) => {
+        let heroImg = new Image()
+        heroImg.addEventListener('load', () => {
+          divRef.current.style.backgroundImage = `url("${src}")`
+          resolve()
+        })
+        heroImg.addEventListener('error', resolve)
+        heroImg.src = src
+      })
 
-    // When all promises are resolved, remove loading screen
-    Promise.all(loadPromises)
-      .then(() => setLoading(false))
-  }, [])
+      // Promise all images are loaded
+      let loadPromises = [
+        loadDivImg(heroImgRef, Forest),
+        loadDivImg(cleanImgRef, Clean),
+        ...Array.prototype.slice.call(document.images).map(imageEl => new Promise((resolve) => {
+          imageEl.onload = resolve
+        }))
+      ]
+
+      // When all promises are resolved, remove loading screen
+      Promise.all(loadPromises)
+        .then(() => {
+          setLoading(false)
+          scroll.start()
+        })
+    }
+  }, [appRef])
 
   return (
     <div className='home-page'>
@@ -99,7 +100,7 @@ const Home = ({ appRef }) => {
         </div>
       )}
       {/* Sticky Navbar */}
-      <NavBar className='home-nav' />
+      <NavBar className='home-nav' currentUser={currentUser} />
       
       {/* Hero Section */}
       <div className="hero-section">
@@ -116,8 +117,9 @@ const Home = ({ appRef }) => {
           <motion.button variants={AnimationVariants.HeroBtn}
                          whileHover='hover'
                          whileTap='tap'
+                         onClick={() => history.push(currentUser ? '/app' : '/signup')}
                          className="join-us">
-            Join Us
+            {currentUser ? 'Start Now' : 'Join Us'}
           </motion.button>
         </div>
 

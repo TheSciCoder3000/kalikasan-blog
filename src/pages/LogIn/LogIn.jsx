@@ -1,13 +1,16 @@
 import { useRef, useState } from 'react'
 import Bkg from './park.jpg'
 import './LogIn.css'
+import { logUser } from '../../firebase'
+import { useHistory } from 'react-router-dom'
 
 const LogIn = () => {
+    const history = useHistory()
     const [fieldError, setfieldError] = useState({ type: null, msg: null })
     const emailField = useRef(null)
     const passField = useRef(null)
 
-    const onLogIn = () => {
+    const onLogIn = async () => {
         let email = emailField.current.value
         let pass = passField.current.value
         
@@ -16,7 +19,13 @@ const LogIn = () => {
         else if (pass === '' || !pass) setfieldError({ type: 'pass', msg: 'please enter your password' })
         else {
             setfieldError({ type: null, msg: null })
-            console.log('login successful')
+            try {
+                console.log('logging')
+                let user = await logUser(email, pass)
+                history.push('/')
+            } catch (error) {
+                console.log(error)
+            }
         }
     }
 

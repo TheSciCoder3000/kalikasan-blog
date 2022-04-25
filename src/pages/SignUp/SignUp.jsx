@@ -1,15 +1,18 @@
 import { useRef, useState } from 'react'
+import { createUser } from '../../firebase'
 import Bkg from './waterfall.jpg'
 import './SignUp.css'
+import { useHistory } from 'react-router-dom'
 
 const SignUp = () => {
+    const history = useHistory()
     const [fieldError, setfieldError] = useState({ type: null, msg: null })
     const userField = useRef(null)
     const emailField = useRef(null)
     const passField = useRef(null)
     const confirmField = useRef(null)
 
-    const onSignUp = () => {
+    const onSignUp = async () => {
         let username = userField.current.value
         let email = emailField.current.value
         let pass = passField.current.value
@@ -22,7 +25,13 @@ const SignUp = () => {
         else if (pass !== confirm) setfieldError({ type: 'confirm', msg: 'Your confirm password does not match with your password' })
         else {
             setfieldError({ type: null, msg: null })
-            console.log('login successful')
+            try {
+                const user = await createUser(email, pass)
+                console.log(user)
+                history.push('/')
+            } catch (error) {
+                console.log(error)
+            }
         }
     }
 

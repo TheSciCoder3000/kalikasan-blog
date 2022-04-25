@@ -48,4 +48,8 @@
 .navbar .nav-links .nav-link:not(.active-nav):hover {
   color: white;
 }
+
+.navbar .nav-links .nav-link:hover {
+  cursor: pointer;
+}
 /*# sourceMappingURL=NavBar.css.map */
