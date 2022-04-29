@@ -2,5 +2,24 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  height: 100vh;
+  overflow: none;
+}
+
+.web-app .side-panel {
+  width: 250px;
+  background-color: #182338;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.web-app .app-viewer {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.web-app .app-viewer .dashboard {
+  padding: 5rem 6rem;
 }
 /*# sourceMappingURL=WebApp.css.map */

@@ -1,5 +1,7 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
+import Dashboard from './Dashboard/Dashboard'
+import './WebApp.css'
 
 const WebApp = () => {
   return (
@@ -7,17 +9,19 @@ const WebApp = () => {
         <div className="side-panel">
 
         </div>
-        <Switch>
-            <Route exact path='/app'>
-                Dashboard
-            </Route>
-            <Route exact path='/app/lessons'>
-                Lessons
-            </Route>
-            <Route exact path='/app/settings'>
-                Settings
-            </Route>
-        </Switch>
+        <div className="app-viewer">
+            <Switch>
+                <Route exact path='/app'>
+                    <Dashboard />
+                </Route>
+                <Route exact path='/app/lessons'>
+                    Lessons
+                </Route>
+                <Route exact path='/app/settings'>
+                    Settings
+                </Route>
+            </Switch>
+        </div>
     </div>
   )
 }

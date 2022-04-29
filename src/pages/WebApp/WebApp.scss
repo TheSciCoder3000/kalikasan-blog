@@ -1,3 +1,21 @@
+$panel-border-radius: 8px;
+
 .web-app {
     display: flex;
+    height: 100vh;
+    overflow: none;
+
+    .side-panel {
+        width: 250px;
+        background-color: #182338;
+        border-top-right-radius: $panel-border-radius;
+        border-bottom-right-radius: $panel-border-radius;
+    }
+    .app-viewer {
+        flex: 1;
+
+        .dashboard {
+            padding: 5rem 6rem;
+        }
+    }
 }
