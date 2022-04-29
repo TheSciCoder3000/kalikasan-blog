@@ -2,7 +2,11 @@ $main-dark-color: #231D1A;
 $main-light-color: #FAF5EA;
 $Roboto-font: 'Roboto', sans-serif;
 
+@import '../../assets/scss/breakpoints';
+
 .home-page {
+    width: 100vw;
+    overflow-x: hidden;
     .loading-cont {
         position: absolute;
         top: 0;
@@ -40,6 +44,7 @@ $Roboto-font: 'Roboto', sans-serif;
             object-fit: cover;
             background-position: center;
             background-attachment: fixed;
+            background-repeat: no-repeat;
         }
 
         .hero-text {
@@ -61,7 +66,6 @@ $Roboto-font: 'Roboto', sans-serif;
                 font-size: 1.5em;
                 font-weight: 300;
                 color: white;
-                padding: 0 30rem;
                 margin-top: -3rem;
                 font-family: 'Roboto', sans-serif;
             }
@@ -90,15 +94,34 @@ $Roboto-font: 'Roboto', sans-serif;
         margin: 5rem;
         padding-bottom: 4rem;
         padding-top: 10rem;
+        @include custom-breakpoint(950px) {
+            margin: 0;
+            padding: 0;
+            height: 35rem;
+            overflow: hidden;
+        }
 
         .img-container {
             margin-right: 3rem;
             margin-left: 20rem;
+
+            @include custom-breakpoint(1210px) {
+                margin: 0 5rem;
+            }
+            @include custom-breakpoint(950px) {
+                margin: 0;
+                height: 100%;
+            }
             
             img {
                 width: 100%;
                 height: 30rem;
                 object-fit: cover;
+                @include custom-breakpoint(950px) {
+                    width: auto;
+                    height: 100%;
+                    background-position: center;
+                }
             }
         }
 
@@ -112,6 +135,21 @@ $Roboto-font: 'Roboto', sans-serif;
             width: 30rem;
             z-index: 2;
             box-shadow: 2px 3px 24px -6px rgba(0, 0, 0, 0.25);
+
+            @include custom-breakpoint(1210px) {
+                background-color: hsla(0, 0%, 100%, 0.8);
+                backdrop-filter: blur(5px);
+                -webkit-backdrop-filter: blur(100px);
+            }
+            @include custom-breakpoint(950px) {
+                top: 0;
+                left: 0;
+                right: 0;
+                width: auto;
+                background-color: rgba(33, 20, 12, 0.8);
+                color: white;
+                padding-top: 10rem;
+            }
 
             .quote-text {
                 font-size: 1.75em;
@@ -130,7 +168,10 @@ $Roboto-font: 'Roboto', sans-serif;
     .org-content {
         padding-top: 20rem;
         overflow: hidden;
-        background-color: #FFFBF2;;
+        background-color: #FFFBF2;
+        @include custom-breakpoint(800px) {
+            padding-top: 10rem;
+        }
 
         // General Styles
         .section-container {
@@ -151,15 +192,34 @@ $Roboto-font: 'Roboto', sans-serif;
             display: flex;
             gap: 4rem;
             margin-bottom: 15rem;
-
+            
             img {
-                width: 45rem;
+                flex: 1.5;
                 object-fit: cover;
-                height: 80vh;
+                height: 34rem;
+                width: 100%;
             }
             .pollution-section {
+                flex: 1;
                 padding-right: 4rem;
                 padding-top: 8rem;
+            }
+
+            @include custom-breakpoint(800px) {
+                flex-direction: column;
+                padding: 0 1.5rem;
+                gap: 1.5rem;
+                img {
+                    order: 2;
+                    height: 20rem;
+                }
+                .pollution-section {
+                    padding: 0;
+                    order: 1;
+                }
+            }
+            @include custom-breakpoint(480px) {
+                padding: 0 0.5rem;
             }
         }
         .poor-container {
@@ -192,8 +252,8 @@ $Roboto-font: 'Roboto', sans-serif;
 
                 #flood {
                     right: 0;
-                    width: 100%;
-                    top: 50%;
+                    width: 50.1rem;
+                    top: 48%;
                     z-index: 4;
                     
                     img {
@@ -204,7 +264,7 @@ $Roboto-font: 'Roboto', sans-serif;
                 #farmer {
                     top: -2rem;
                     left: 0;
-                    width: 45%;
+                    width: 24rem;
                     height: 14rem;
                     z-index: 6;
                     
@@ -216,7 +276,7 @@ $Roboto-font: 'Roboto', sans-serif;
                 #house {
                     top: 1rem;
                     right: -7rem;
-                    width: 38%;
+                    width: 19rem;
                     height: 12rem;
                     z-index: 2;
                     
@@ -226,7 +286,7 @@ $Roboto-font: 'Roboto', sans-serif;
                 }
                 #children {
                     bottom: 1rem;
-                    width: 40%;
+                    width: 20rem;
                     right: -4rem;
                     z-index: 5;
                     
@@ -238,7 +298,7 @@ $Roboto-font: 'Roboto', sans-serif;
                 #land {
                     bottom: -3rem;
                     left: 50%;
-                    width: 38%;
+                    width: 19rem;
                     z-index: 1;
                     
                     img {
@@ -249,13 +309,105 @@ $Roboto-font: 'Roboto', sans-serif;
                 #water {
                     left: -1rem;
                     bottom: 10rem;
-                    width: 36%;
+                    width: 20rem;
                     height: 10rem;
                     z-index: 3;
                     
                     img {
                         transform: rotate(-24.42deg);
                         filter: drop-shadow(6px 4px 15px rgba(0, 0, 0, 0.25));
+                    }
+                }
+            }
+
+            @include custom-breakpoint(1100px) {
+                display: block;
+                position: relative;
+                height: 45rem;
+
+                .poor-section {
+                    display: block;
+                    position: absolute;
+                    top: 10rem;
+                    left: 0;
+
+                    .poor-desc {
+                        margin-left: 10rem;
+                        padding-right: 5vw;
+                    }
+                }
+                .img-collage {
+                    display: block;
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    $img-offset: 5vw;
+
+                    .img-cont:not(#flood):not(#land) {
+                        display: none;
+                    }
+                    
+                    .img-cont {
+                        img {
+                            transform: rotate(0deg) !important;
+                        }
+                    }
+                    #flood {
+                        top: calc(#{$img-offset} + -17rem);
+                        right: 5rem;
+                        width: 33rem;
+                        height: 20rem;
+                    }
+                    #land {
+                        z-index: 7;
+                        bottom: calc(-6rem - #{$img-offset});
+                        left: auto;
+                        width: 20rem;
+                        height: 14rem;
+                        right: 30rem;
+                    }
+                }
+            }
+
+            @include custom-breakpoint(800px) {
+                .poor-section {
+                    padding: 0 1.5rem;
+
+                    .poor-desc {
+                        margin: 0;
+                    }
+                }
+            }
+
+            @include custom-breakpoint(480px) {
+                .poor-section {
+                    position: static;
+                    padding-top: 7rem;
+                }
+                .img-collage {
+                    position: relative;
+
+                    #flood {
+                        margin-top: 10rem;
+                        position: static;
+                        padding-right: 1rem;
+                        padding-left: 3.5rem;
+                        width: 100vw;
+                        height: 60vw;
+                        box-sizing: border-box;
+                    }
+                    #land {
+                        position: absolute;
+                        top: -7rem;
+                        left: 1.8rem;
+                        width: 56vw;
+                        height: 36vw;
+                        // transform: translate(50%, -50%);
+
+                        img {
+                            filter: drop-shadow(8px 12px 10px rgba(0, 0, 0, 0.55));
+                        }
                     }
                 }
             }
@@ -282,6 +434,10 @@ $Roboto-font: 'Roboto', sans-serif;
                     top: -100vh;
                     right: 0;
                     left: 0;
+
+                    @include custom-breakpoint(1024px) {
+                        top: 0;
+                    }
                 }
                 .fixed {
                     height: 100%;
@@ -312,6 +468,27 @@ $Roboto-font: 'Roboto', sans-serif;
                     font-size: 1.2em;
                 }
             }
+
+            @include custom-breakpoint(800px) {
+                flex-direction: column;
+                gap: 2.5rem;
+                height: auto;
+                padding: 1.5rem;
+
+                .fixed-wrapper {
+                    order: 2;
+                    flex: auto;
+                    height: 30rem;
+                }
+                .unity-section {
+                    order: 1;
+                    flex: auto;
+
+                    .unity-desc {
+                        margin-bottom: 1rem;
+                    }
+                }
+            }
         }
 
     }
@@ -320,10 +497,14 @@ $Roboto-font: 'Roboto', sans-serif;
         min-height: 100vh;
         background-color: #FCF6EB;
         padding-top: 7rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         
         .content-text {
-            padding: 0 18rem;
+            max-width: 40rem;
             margin-bottom: 10rem;
+            padding: 0 1.5rem;
             .content-header {
                 font-family: 'vegan_style_personal_useRg';
                 font-style: normal;
@@ -336,6 +517,7 @@ $Roboto-font: 'Roboto', sans-serif;
         }
 
         .advocacy-modules {
+            width: 100vw;
             background-color: #792d06;
             height: 60vh;
             display: flex;

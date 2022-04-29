@@ -27,6 +27,7 @@ import { useState, useEffect, useRef } from 'react'
 import { AnimationVariants } from './variants'
 import locomotiveScroll from 'locomotive-scroll'
 import { Link, useHistory } from 'react-router-dom'
+import useWindowDim from '../../components/useWindowDim'
 
 
 const lessons = [
@@ -49,6 +50,7 @@ const lessons = [
 
 const Home = ({ appRef, currentUser }) => {
   const history = useHistory()
+  const winWidth = useWindowDim()
   
   // Pre-render screen when images are loading
   const heroImgRef = useRef(null)
@@ -100,7 +102,13 @@ const Home = ({ appRef, currentUser }) => {
         </div>
       )}
       {/* Sticky Navbar */}
-      <NavBar className='home-nav' currentUser={currentUser} />
+      {(winWidth > 780) ? 
+        <NavBar className='home-nav' currentUser={currentUser} />
+        :
+        <>
+          
+        </>
+      }
       
       {/* Hero Section */}
       <div className="hero-section">
@@ -113,7 +121,7 @@ const Home = ({ appRef, currentUser }) => {
         {/* Hero Texts */}
         <div className="hero-text">
           <h1 className="hero-header">The Time is Now</h1>
-          <p className="hero-subtext">Together we can save this world for future generations to come</p>
+          <p className="hero-subtext">Together we can save this world for future <br /> generations to come</p>
           <motion.button variants={AnimationVariants.HeroBtn}
                          whileHover='hover'
                          whileTap='tap'
@@ -152,7 +160,7 @@ const Home = ({ appRef, currentUser }) => {
 
         <div className="poor-container">
           <div className="section-container poor-section">
-            <h2 className="section-header poor-header">And it is the Poor that Suffer the Most</h2>
+            <h2 className="section-header poor-header">And it is the Poor that {(winWidth <= 1100) && <br />}Suffer the Most</h2>
             <p className="section-desc poor-desc">
               Poor countries are the ones that suffer the most in this incident 
               as they rely on the Earth’s climate for survival and resources. 
