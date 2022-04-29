@@ -22,6 +22,7 @@
     .site-logo {
         font-family: 'arkipelagoregular';
         font-size: 1.5em;
+        user-select: none;
     }
 
     .nav-links {
@@ -30,7 +31,10 @@
             text-decoration: none;
             padding: 0 2rem;
             font-family: 'Roboto', sans-serif;
-
+            
+            &:hover {
+                cursor: pointer;
+            }
             &.active-nav {
                 color: rgb(154, 154, 154);
                 cursor: default;
@@ -38,9 +42,6 @@
 
             &:not(.active-nav):hover {
                 color: white;
-            }
-            &:hover {
-                cursor: pointer;
             }
         }
 
