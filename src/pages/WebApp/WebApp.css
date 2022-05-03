@@ -3,23 +3,131 @@
   display: -ms-flexbox;
   display: flex;
   height: 100vh;
-  overflow: none;
+  overflow: hidden;
 }
 
 .web-app .side-panel {
-  width: 250px;
-  background-color: #182338;
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
+  width: 220px;
+  background-color: #251308;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.9em;
+}
+
+.web-app .side-panel .site-logo {
+  font-family: 'vegan_style_personal_useRg';
+  font-weight: 100;
+  font-size: 0.8em;
+  margin-bottom: 2.25rem;
+}
+
+.web-app .side-panel .user-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 40px;
+  gap: 10px;
+  margin-bottom: 2.25rem;
+}
+
+.web-app .side-panel .user-info .profile-img-cont {
+  width: 40px;
+  background: #ededed;
+  border-radius: 8px;
+}
+
+.web-app .side-panel .user-info .profile-content-cont .user-email {
+  font-size: 0.9em;
+  color: #c8c8c8;
+}
+
+.web-app .side-panel .app-nav-cont .nav-header {
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 400;
+  font-size: 0.8em;
+  margin-bottom: 0.75rem;
+}
+
+.web-app .side-panel .app-nav-cont .nav-item {
+  margin-bottom: 0.5rem;
+}
+
+.web-app .side-panel .app-nav-cont .nav-item .nav-content {
+  padding: 0.7rem 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+.web-app .side-panel .app-nav-cont .nav-item .nav-content .nav-icon-cont {
+  fill: #c8c8c8;
+  font-size: 1.4em;
+}
+
+.web-app .side-panel .app-nav-cont .nav-item .nav-content .nav-text {
+  text-decoration: none;
+  color: #c8c8c8;
+  font-size: 0.9em;
+}
+
+.web-app .side-panel .app-nav-cont .nav-item .nav-content div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.web-app .side-panel .app-nav-cont .nav-item .nav-content:hover {
+  background: rgba(255, 255, 255, 0.046);
+}
+
+.web-app .side-panel .app-nav-cont .nav-item .nav-content.active-nav {
+  background: rgba(190, 173, 140, 0.12);
+}
+
+.web-app .side-panel .app-nav-cont .nav-item .nav-content.active-nav .nav-icon-cont {
+  fill: #FFDE99;
+}
+
+.web-app .side-panel .app-nav-cont .nav-item .nav-content.active-nav .nav-text {
+  color: #FFDE99;
+}
+
+.web-app .side-panel .app-nav-cont .nav-item ul {
+  margin-left: 1.8rem;
+  overflow-y: hidden;
+  padding-left: 1.2rem;
+}
+
+.web-app .side-panel .app-nav-cont .nav-item ul li {
+  margin-bottom: 0.7rem;
+}
+
+.web-app .side-panel .app-nav-cont .nav-item ul li:nth-child(1) {
+  margin-top: 0.5rem;
+}
+
+.web-app .side-panel .app-nav-cont .nav-item ul li:last-child {
+  margin-bottom: 1rem;
 }
 
 .web-app .app-viewer {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-}
-
-.web-app .app-viewer .dashboard {
-  padding: 5rem 6rem;
+  overflow-y: auto;
 }
 /*# sourceMappingURL=WebApp.css.map */

@@ -1,21 +1,110 @@
-$panel-border-radius: 8px;
+$panel-bkg: #251308;
 
 .web-app {
     display: flex;
     height: 100vh;
-    overflow: none;
+    overflow: hidden;
 
     .side-panel {
-        width: 250px;
-        background-color: #182338;
-        border-top-right-radius: $panel-border-radius;
-        border-bottom-right-radius: $panel-border-radius;
+        width: 220px;
+        background-color: $panel-bkg;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        padding-top: 1rem;
+        padding-bottom: 2rem;
+        color: white;
+        font-family: 'Roboto', sans-serif;
+        font-size: 0.9em;
+
+        .site-logo {
+            font-family: 'vegan_style_personal_useRg';
+            font-weight: 100;
+            font-size: 0.8em;
+            margin-bottom: 2.25rem;
+        }
+        .user-info {
+            display: flex;
+            height: 40px;
+            gap: 10px;
+            margin-bottom: 2.25rem;
+
+            .profile-img-cont {
+                width: 40px;
+                background: rgb(237, 237, 237);
+                border-radius: 8px;
+            }
+            .profile-content-cont {
+                .user-email {
+                    font-size: 0.9em;
+                    color: rgb(200, 200, 200);
+                }
+            }
+
+        }
+        .app-nav-cont {
+            .nav-header {
+                color: rgba(255, 255, 255, 0.5);
+                font-weight: 400;
+                font-size: 0.8em;
+                margin-bottom: 0.75rem;
+            }
+            .nav-item {
+                margin-bottom: 0.5rem;
+                .nav-content {
+                    padding: 0.7rem 1rem;
+                    display: flex;
+                    gap: 10px;
+                    border-radius: 10px;
+                    text-decoration: none;
+                    
+                    .nav-icon-cont {
+                        fill: rgb(200, 200, 200);
+                        font-size: 1.4em;
+                    }
+                    .nav-text {
+                        text-decoration: none;
+                        color: rgb(200, 200, 200);
+                        font-size: 0.9em;
+                    }
+                    div {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                    }
+                    &:hover {
+                        background: rgba(255, 255, 255, 0.046);
+                    }
+                    &.active-nav {
+                        background: rgba(190, 173, 140, 0.12);
+
+                        .nav-icon-cont {
+                            fill: #FFDE99;
+                        }
+                        .nav-text {
+                            color: #FFDE99;
+                        }
+                    }
+                }
+                ul {
+                    margin-left: 1.8rem;
+                    overflow-y: hidden;
+                    padding-left: 1.2rem;
+                    
+                    li {
+                        margin-bottom: 0.7rem;
+                        &:nth-child(1) {
+                            margin-top: 0.5rem;
+                        }
+                        &:last-child {
+                            margin-bottom: 1rem;
+                        }
+                    }
+                }
+            }
+        }
     }
     .app-viewer {
         flex: 1;
-
-        .dashboard {
-            padding: 5rem 6rem;
-        }
+        overflow-y: auto;
     }
 }
