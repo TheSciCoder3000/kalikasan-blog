@@ -28,7 +28,10 @@ const NavBar = ({ animation, className, customVariant, initial, currentUser }) =
               <Link exact to='/login' className='nav-link' activeClassName='active-nav'>Login</Link>
             </>
             :
-            <a onClick={onSignOut} className="nav-link">Sign Out</a>
+            <>
+              <Link exact to='/app' className='nav-link' activeClassName='active-nav'>App</Link>
+              <a onClick={onSignOut} className="nav-link">Sign Out</a>
+            </>
           }
           </div>
       </motion.div>
