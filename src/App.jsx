@@ -10,6 +10,8 @@ import LogIn from './pages/LogIn/LogIn';
 import { useRef } from 'react';
 import { useAuth } from './components/Auth';
 import WebApp from './pages/WebApp/WebApp';
+import store from './redux/store';
+import { Provider } from 'react-redux'
 
 function App() {
   const appRef = useRef(null)
@@ -38,7 +40,9 @@ function App() {
           <LogIn />
         </Route>
         <Route path='/app'>
-          {currentUser ? <WebApp /> : <Redirect to='/' /> }
+          <Provider store={store}>
+            {currentUser ? <WebApp /> : <Redirect to='/' /> }
+          </Provider>
         </Route>
 
       </Switch>

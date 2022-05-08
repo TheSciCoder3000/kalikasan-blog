@@ -6,10 +6,16 @@ import { NavLink as Link, useLocation } from 'react-router-dom'
 
 import { DashboardSvg, SchoolSvg, CalendarSvg } from './iconComp'
 import { motion, useAnimation, AnimatePresence } from 'framer-motion'
+import { useAuth } from '../../components/Auth'
+import { useDispatch } from 'react-redux'
+import { fetchUser } from '../../redux/userSlice'
 
 const WebApp = () => {
     const lessonListAnimation = useAnimation()
     const { pathname } = useLocation()
+    const auth = useAuth()
+    const dispatch = useDispatch()
+
     console.log(pathname)
     const lessonVariant = {
         hidden: {
@@ -33,6 +39,10 @@ const WebApp = () => {
             lessonListAnimation.start('hidden')
         }
     }, [pathname])
+
+    useEffect(() => {
+        dispatch(fetchUser(auth.uid))
+    }, [])
 
     return (
         <div className='web-app'>
