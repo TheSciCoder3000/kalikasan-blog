@@ -4,16 +4,17 @@ import { getDb } from "../firebase";
 export const fetchUser = createAsyncThunk('User/fetchUser', 
     async (userId) => {
         try {
+            console.log('user request', userId)
             let snapshot = await getDb('Users', userId)
             return snapshot.data()
         } catch (e) {
-            return e
+            throw e
         }
     }
 )
 
 const initialState = {
-    loading: false,
+    loading: true,
     data: null,
     error: ''
 }
@@ -25,14 +26,15 @@ const userSlice = createSlice({
             state.loading = true
         },
         [fetchUser.fulfilled]: (state, { payload }) => {
+            console.log('fetch user payload', payload)
             state.loading = false
             state.data = payload
             state.error = ''
         },
-        [fetchUser.rejected]: (state, { payload }) => {
+        [fetchUser.rejected]: (state, { error }) => {
             state.loading = false
             state.data = null
-            state.error = payload
+            state.error = error
         }
     }
 });
