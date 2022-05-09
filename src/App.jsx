@@ -16,7 +16,7 @@ import { Provider } from 'react-redux'
 function App() {
   const appRef = useRef(null)
   
-  const currentUser = useAuth()
+  const { currentUser, pending } = useAuth()
   
   return (
     <div className="App">
@@ -41,7 +41,7 @@ function App() {
         </Route>
         <Route path='/app'>
           <Provider store={store}>
-            {currentUser ? <WebApp /> : <Redirect to='/' /> }
+            {currentUser || pending  ? <WebApp /> : <Redirect to='/' /> }
           </Provider>
         </Route>
 

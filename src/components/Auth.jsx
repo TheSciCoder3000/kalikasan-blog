@@ -15,12 +15,11 @@ const AuthProvider = ({ children }) => {
         })
     },[])
 
-    return pending ?
-            <>Loading...</>
-            :
-            <AuthContext.Provider value={currentUser}>
+    return (
+            <AuthContext.Provider value={{ currentUser, pending }}>
                 {children}
             </AuthContext.Provider>
+        )
 }
 
 export default AuthProvider
