@@ -38,7 +38,7 @@
 }
 
 .navbar .nav-links .nav-link {
-  color: lightgray;
+  color: #828282;
   text-decoration: none;
   padding: 0 2rem;
   font-family: 'Roboto', sans-serif;
@@ -49,7 +49,7 @@
 }
 
 .navbar .nav-links .nav-link.active-nav {
-  color: #9a9a9a;
+  color: #bebebe;
   cursor: default;
 }
 
