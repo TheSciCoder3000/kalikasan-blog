@@ -112,6 +112,10 @@
   margin-bottom: 0.7rem;
 }
 
+.side-panel .app-nav-cont .nav-item ul li.active-lesson-link {
+  color: #f7c047;
+}
+
 .side-panel .app-nav-cont .nav-item ul li:nth-child(1) {
   margin-top: 0.5rem;
 }

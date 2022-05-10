@@ -89,6 +89,10 @@ $panel-bkg: #251308;
                 
                 li {
                     margin-bottom: 0.7rem;
+
+                    &.active-lesson-link {
+                        color: #f7c047;
+                    }
                     &:nth-child(1) {
                         margin-top: 0.5rem;
                     }

@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { NavLink as Link, useLocation } from 'react-router-dom'
+import { motion, useAnimation, AnimatePresence } from 'framer-motion'
 
 import {
     Dashboard as DashboardSvg,
@@ -7,7 +8,6 @@ import {
     Admin as AdminSvg,
     Participant as ParticipantSvg
 } from '../iconComp'
-import { motion, useAnimation, AnimatePresence } from 'framer-motion'
 
 import './Sidebar.css'
 
@@ -29,25 +29,19 @@ const Sidebar = ({ userData, activityData, currentUser }) => {
 
     // Run Sub Lesson animation
     useEffect(() => {
-        console.log('effect running')
-        if (pathname === '/app/lessons') {
-            console.log('lesson route')
+        if (pathname.includes('/app/lessons')) {
             lessonListAnimation.start('visible')
         }
         else {
-            console.log('diff route')
             lessonListAnimation.start('hidden')
         }
     }, [pathname])
 
     useEffect(() => {
-        console.log('effect running')
         if (pathname === '/app/admin/lessons') {
-            console.log('lesson route')
             lessonListAdminAnimation.start('visible')
         }
         else {
-            console.log('diff route')
             lessonListAdminAnimation.start('hidden')
         }
     }, [pathname])
@@ -83,26 +77,19 @@ const Sidebar = ({ userData, activityData, currentUser }) => {
                             
                         </Link>
                         <AnimatePresence>
-                            {(pathname === '/app/lessons') && (
+                            {pathname.includes('/app/lessons') && (
                                 <motion.ul  className="lesson-list"
                                             animate={lessonListAnimation}
                                             exit='hidden'
                                             variants={lessonVariant}
                                             initial='hidden'>
                                     {activityData.map(activity => (
-                                        <li className="lesson-item">{activity.title}</li>
+                                        <LessonNavLink pathname={pathname} activity={activity} />
                                     ))}
                                 </motion.ul>
                             )}
                         </AnimatePresence>
                     </div>
-                    {/* <div className="nav-item">
-                        <Link activeClassName="active-nav" to="/app/calendar" className="nav-content">
-                            <div className="nav-icon-cont"><CalendarSvg /></div>
-                            <div className="nav-text">Calendar</div>
-                            
-                        </Link>
-                    </div> */}
                 </div>
                 {userData.admin && (
                     <div className="app-nav-cont">
@@ -126,7 +113,7 @@ const Sidebar = ({ userData, activityData, currentUser }) => {
                                 
                             </Link>
                             <AnimatePresence>
-                                {(pathname === '/app/admin/lessons') && (
+                                {(pathname.includes('/app/admin/lessons')) && (
                                     <motion.ul  className="lesson-list"
                                                 animate={lessonListAdminAnimation}
                                                 exit='hidden'
@@ -142,6 +129,16 @@ const Sidebar = ({ userData, activityData, currentUser }) => {
                     </div>
                 )}
             </div>
+    )
+}
+
+
+const LessonNavLink = ({ activity, pathname }) => {
+    const pathArray = pathname.split('/')
+    const lessonId = pathArray[pathArray.length-1]
+
+    return (
+        <li className={`lesson-item${lessonId === activity.id ? ' active-lesson-link' : ''}`}>{activity.title}</li>
     )
 }
 
