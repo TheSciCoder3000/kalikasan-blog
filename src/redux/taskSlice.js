@@ -1,10 +1,10 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { getDb } from '../firebase'
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { getDb } from "../firebase";
 
-export const fetchActivities = createAsyncThunk('Activity/fetchActivities',
+export const fetchTasks = createAsyncThunk('Task/fetchTasks',
     async () => {
         try {
-            let snapshot = await getDb('Activities')
+            let snapshot = await getDb('Tasks')
             return snapshot.docs.map(doc => { return { id: doc.id, ...doc.data() } })
         } catch (e) {
             throw e
@@ -17,19 +17,19 @@ const initialState = {
     data: [],
     error: ''
 }
-const activitySlice = createSlice({
-    name: 'Activity',
+const taskSlice = createSlice({
+    name: 'Tasks',
     initialState,
     extraReducers: {
-        [fetchActivities.pending]: (state) => {
+        [fetchTasks.pending]: (state) => {
             state.loading = true
         },
-        [fetchActivities.fulfilled]: (state, { payload }) => {
+        [fetchTasks.fulfilled]: (state, { payload }) => {
             state.loading = false
             state.data = payload
             state.error = ''
         },
-        [fetchActivities.rejected]: (state, { error }) => {
+        [fetchTasks.rejected]: (state, { error }) => {
             state.loading = false
             state.data = []
             state.error = error
@@ -37,4 +37,4 @@ const activitySlice = createSlice({
     }
 })
 
-export default activitySlice.reducer
+export default taskSlice.reducer

@@ -4,7 +4,6 @@ import { getDb } from "../firebase";
 export const fetchUser = createAsyncThunk('User/fetchUser', 
     async (userId) => {
         try {
-            console.log('user request', userId)
             let snapshot = await getDb('Users', userId)
             return snapshot.data()
         } catch (e) {
@@ -26,7 +25,6 @@ const userSlice = createSlice({
             state.loading = true
         },
         [fetchUser.fulfilled]: (state, { payload }) => {
-            console.log('fetch user payload', payload)
             state.loading = false
             state.data = payload
             state.error = ''
