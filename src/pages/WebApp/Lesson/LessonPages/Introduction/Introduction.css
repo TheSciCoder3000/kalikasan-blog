@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Palanquin:wght@700&display=swap");
+.intro-cont {
+  padding: 3rem 5rem;
+}
+
+.intro-cont h1 {
+  font-family: 'Palanquin', sans-serif;
+  font-size: 3em;
+  margin-bottom: 1.5rem;
+}
+
+.intro-cont p {
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: 1.5rem;
+  text-indent: 50px;
+  line-height: 1.5rem;
+  text-align: justify;
+}
+
+.intro-cont .text-cont {
+  margin-bottom: 5rem;
+}
+
+.intro-cont .text-cont .task-ans-cont > p {
+  text-indent: 0;
+}
+/*# sourceMappingURL=Introduction.css.map */
