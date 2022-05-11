@@ -19,8 +19,11 @@
     .text-cont {
         margin-bottom: 5rem;
 
-        .task-ans-cont > p {
-            text-indent: 0;
-        }
+        .task-ans-cont {
+            p {
+                text-indent: 0;
+            }
+
+        } 
     }
 }

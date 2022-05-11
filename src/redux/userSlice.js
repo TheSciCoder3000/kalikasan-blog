@@ -36,6 +36,7 @@ const updateTask = createAsyncThunk('User/updateTask',
 
 const initialState = {
     loading: true,
+    taskLoading: false,
     data: null,
     error: ''
 }
@@ -49,20 +50,30 @@ const userSlice = createSlice({
         },
         [fetchUser.fulfilled]: (state, { payload }) => {
             state.loading = false
+            state.taskLoading = false
             state.data = payload
             state.error = ''
         },
         [fetchUser.rejected]: (state, { error }) => {
             state.loading = false
+            state.taskLoading = false
             state.data = null
             state.error = error
         },
 
+        [updateTask.pending]: (state) => {
+            state.taskLoading = true
+        },
         [updateTask.fulfilled]: (state, { payload }) => {
+            state.taskLoading = false
             let i = state.data.tasks.findIndex(task => task.lessonId === payload.lessonId)
             console.log('payload', payload)
             if (i > -1) state.data.tasks[i] = payload
             else state.data.tasks.push(payload)
+        },
+        [updateTask.rejected]: (state, { error }) => {
+            state.taskLoading = false
+            state.error = error
         }
     }
 });
