@@ -33,4 +33,8 @@ const db = getFirestore(app)
 export const getDb = async (colName, docName=null) => {
     if (docName) return getDoc(doc(db, colName, docName))
     else return getDocs(collection(db, colName))
-} 
+}
+
+export const setDb = async (colName, docName, newData) => {
+    return setDoc(doc(db, colName, docName), newData)
+}
