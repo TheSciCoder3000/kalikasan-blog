@@ -3,7 +3,7 @@ import { Editor } from 'react-draft-wysiwyg';
 import draftToMarkdown from 'draftjs-to-markdown';
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
-const EditorConvertToMarkdown = ({ onEditorChange }) => {
+const EditorConvertToMarkdown = ({ onEditorChange, initialState, turnOffEditorMode }) => {
     const onEditorStateChange = (editorState) => onEditorChange(
         draftToMarkdown(convertToRaw(editorState.getCurrentContent()))
     )
@@ -11,6 +11,7 @@ const EditorConvertToMarkdown = ({ onEditorChange }) => {
     return (
         <div>
             <Editor
+                defaultEditorState={initialState || ''}
                 wrapperClassName="demo-wrapper"
                 editorClassName="demo-editor"
                 onEditorStateChange={onEditorStateChange}
