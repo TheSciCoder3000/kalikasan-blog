@@ -1,8 +1,11 @@
 import React from 'react'
+import './Participant.css'
 
 const Participant = () => {
   return (
-    <div>Participant</div>
+    <div className='participant-cont'>
+      Participant
+    </div>
   )
 }
 
