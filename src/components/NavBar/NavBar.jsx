@@ -3,8 +3,10 @@ import { NavLink as Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { AnimationVariants } from './variants'
 import { onSignOut } from '../../firebase'
+import { useAuth } from '../Auth'
 
-const NavBar = ({ animation, className, customVariant, initial, currentUser }) => {
+const NavBar = ({ animation, className, customVariant, initial }) => {
+  const { currentUser } = useAuth()
   // console.log('navbar', auth)
   return (
     <>
