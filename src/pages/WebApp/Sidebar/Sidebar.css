@@ -108,19 +108,28 @@
   padding-left: 1.2rem;
 }
 
-.side-panel .app-nav-cont .nav-item ul li {
+.side-panel .app-nav-cont .nav-item ul .lesson-item {
+  display: list-item;
   margin-bottom: 0.7rem;
+  text-decoration: none;
+  color: #d8d8d8;
+  font-size: 0.9em;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
-.side-panel .app-nav-cont .nav-item ul li.active-lesson-link {
+.side-panel .app-nav-cont .nav-item ul .lesson-item.active-lesson-link {
   color: #f7c047;
+  pointer-events: none;
 }
 
-.side-panel .app-nav-cont .nav-item ul li:nth-child(1) {
+.side-panel .app-nav-cont .nav-item ul .lesson-item:nth-child(1) {
   margin-top: 0.5rem;
 }
 
-.side-panel .app-nav-cont .nav-item ul li:last-child {
+.side-panel .app-nav-cont .nav-item ul .lesson-item:last-child {
   margin-bottom: 1rem;
 }
 /*# sourceMappingURL=Sidebar.css.map */

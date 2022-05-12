@@ -136,9 +136,10 @@ const Sidebar = ({ userData, activityData, currentUser }) => {
 const LessonNavLink = ({ activity, pathname }) => {
     const pathArray = pathname.split('/')
     const lessonId = pathArray[pathArray.length-1]
+    console.log('activity data', activity)
 
     return (
-        <li className={`lesson-item${lessonId === activity.id ? ' active-lesson-link' : ''}`}>{activity.title}</li>
+        <Link to={`/app/lessons/${activity.id}`} className={`lesson-item`} activeClassName='active-lesson-link' >{activity.title}</Link>
     )
 }
 

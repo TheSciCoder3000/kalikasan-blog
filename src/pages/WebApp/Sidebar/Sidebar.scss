@@ -87,11 +87,17 @@ $panel-bkg: #251308;
                 overflow-y: hidden;
                 padding-left: 1.2rem;
                 
-                li {
+                .lesson-item {
+                    display: list-item;
                     margin-bottom: 0.7rem;
+                    text-decoration: none;
+                    color: rgb(216, 216, 216);
+                    font-size: 0.9em;
+                    user-select: none;
 
                     &.active-lesson-link {
                         color: #f7c047;
+                        pointer-events: none;
                     }
                     &:nth-child(1) {
                         margin-top: 0.5rem;
