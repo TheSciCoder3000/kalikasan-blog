@@ -22,14 +22,14 @@ const TaskContainer = ({ lessonId }) => {
     const taskData = useSelector(state => state.user.data?.tasks?.find(task => task.lessonId === lessonId)?.value.replace('\\n', '\n'))
 
     const onSubmitText = () => {
+
         let newTask = {
             lessonId,
             value: taskMarkdown || ''
         }
 
-        let i = userData.tasks.findIndex(task => task.lessonId === lessonId)
         setTask(dispatch, currentUser.uid, newTask)
-        setEditMode(false)
+        if (/^\s*$/.test(taskMarkdown)) setEditMode(false)
     }
 
     const onEditText = () => {
