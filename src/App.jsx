@@ -25,7 +25,7 @@ function App() {
         {/* Website Routes */}
         <Route exact path='/'>
           <div className="home-scroll-container" ref={appRef} data-scroll-container>
-            <Home appRef={appRef} currentUser={currentUser} />
+            <Home appRef={appRef} currentUser={currentUser} authPending={pending} />
             <Footer />
           </div>
         </Route>

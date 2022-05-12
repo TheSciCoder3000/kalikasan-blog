@@ -48,7 +48,7 @@ const lessons = [
   }, 
 ]
 
-const Home = ({ appRef, currentUser }) => {
+const Home = ({ appRef, currentUser, authPending }) => {
   const history = useHistory()
   const winWidth = useWindowDim()
   
@@ -91,12 +91,16 @@ const Home = ({ appRef, currentUser }) => {
           setLoading(false)
           scroll.start()
         })
+
+      return () => {
+        scroll.destroy()
+      }
     }
   }, [appRef])
 
   return (
     <div className='home-page'>
-      {loading && (
+      {(loading || authPending) && (
         <div className="loading-cont">
           <h1>Loading...</h1>
         </div>
