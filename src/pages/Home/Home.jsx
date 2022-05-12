@@ -57,6 +57,7 @@ const Home = ({ appRef, currentUser, authPending }) => {
   const cleanImgRef = useRef(null)
   const [loading, setLoading] = useState(true)
   useEffect(() => {
+    document.title = 'Kalikasan'
     if (appRef.current) {
       let scroll = new locomotiveScroll({
         el: appRef.current,
@@ -107,7 +108,7 @@ const Home = ({ appRef, currentUser, authPending }) => {
       )}
       {/* Sticky Navbar */}
       {(winWidth > 780) ? 
-        <NavBar className='home-nav' currentUser={currentUser} />
+        <NavBar className='home-nav' />
         :
         <>
           

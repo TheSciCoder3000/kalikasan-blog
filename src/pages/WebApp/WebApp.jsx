@@ -19,6 +19,8 @@ const WebApp = () => {
     const { data: activityData, loading: activityLoading } = useSelector(state => state.activities)
     const { loading: taskLoading } = useSelector(state => state.task)
 
+    useEffect(() => { document.title = 'Kalikasan - App' }, [])
+
     // Fetch Request
     useEffect(() => {
         if (!pending) dispatch(fetchUser(currentUser.uid))
