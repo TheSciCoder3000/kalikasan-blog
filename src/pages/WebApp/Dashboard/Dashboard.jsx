@@ -1,7 +1,10 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import './Dashboard.css'
 import Env from '../icons/env.svg'
+import { useSelector } from 'react-redux'
+import Todo from '../../../components/Todo'
 
 const Dashboard = () => {
   return (
@@ -16,20 +19,25 @@ const Dashboard = () => {
           <div className="toggler greeting-toggle-3"></div>
         </div>
       </div>
-      <div className="overall-progress-cont progress-cont banner-cont">
+      <div className="calendar-grid-cont">
+        <h2 className="calendar-header banner-header">Calendar</h2>
+        <div className="calendar-cont banner-cont">
 
+        </div>
       </div>
-      <div className="latest-task-progress-cont progress-cont banner-cont">
-
+      <div className="task-grid-cont">
+        <h2 className="task-header banner-header">Tasks</h2>
+        <Todo />
       </div>
-      <div className="task-list-cont banner-cont">
-        
+      <div className="progress-grid-cont banner-cont">
+        Progress
       </div>
     </div>
   )
 }
 
 const FirstGreeting = () => {
+  const history = useHistory()
   const variants = {
     hover: {
       backgroundColor: '#251308',
@@ -42,7 +50,8 @@ const FirstGreeting = () => {
       <h1 className="banner-text">Welcome to <br /> <span className='logo-text'>Kalikasan</span></h1>
       <motion.button className="start-journey"
                      variants={variants}
-                     whileHover='hover'>
+                     whileHover='hover'
+                     onClick={() => history.push('/app/lessons')}>
         Start the Journey
       </motion.button>
       <img src={Env} alt="" className="banner-img" />
