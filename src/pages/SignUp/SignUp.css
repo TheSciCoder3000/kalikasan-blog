@@ -101,6 +101,10 @@
   background-color: #e7a618;
 }
 
+.sign-up .sign-up-modal .form-group .submit-btn:disabled {
+  cursor: not-allowed;
+}
+
 .sign-up .sign-up-modal .error-msg {
   color: #ff2b2b;
   font-family: "Roboto", sans-serif;

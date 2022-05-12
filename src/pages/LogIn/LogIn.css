@@ -99,6 +99,10 @@
   background-color: #e7a618;
 }
 
+.log-in .log-in-modal .form-group .submit-btn:disabled {
+  cursor: not-allowed;
+}
+
 .log-in .log-in-modal .error-msg {
   color: #ff2b2b;
   font-family: "Roboto", sans-serif;

@@ -70,6 +70,9 @@ $Roboto-font: 'Roboto', sans-serif;
                     cursor: pointer;
                     background-color: #e7a618;
                 }
+                &:disabled {
+                    cursor: not-allowed;
+                }
             }
         }
 

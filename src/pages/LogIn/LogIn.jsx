@@ -47,7 +47,7 @@ const LogIn = () => {
                         <label className="field-label">Password:</label>
                         <input ref={passField} type="password" />
                     </div>
-                    <button type='submit' className="submit-btn">Login</button>
+                    <button disabled={logging} type='submit' className="submit-btn">Login</button>
                 </form>
                 {fieldError.type && (
                     <p className="error-msg">{fieldError.msg}</p>
