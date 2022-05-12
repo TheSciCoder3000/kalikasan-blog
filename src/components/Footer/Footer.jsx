@@ -26,6 +26,7 @@ const Footer = () => {
           <p>Ariane Louise Magbanua</p>
           <p>Drew Valerio</p>
           <p>Robin Gabriel Santos</p>
+          <p>Emil Hernandez</p>
         </div>
       </div>
     </div>
