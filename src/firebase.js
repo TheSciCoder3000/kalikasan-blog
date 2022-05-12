@@ -16,12 +16,14 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
 export const auth = getAuth(app)
+
 export const onSignOut = async () => await signOut(auth)
 export const createUser = async (email, pass, firstName, lastName, admin = false) => {
     return createUserWithEmailAndPassword(auth, email, pass).then((cred) => {
         return setDoc(doc(db, "Users", cred.user.uid), {
             FirstName: firstName,
             LastName: lastName,
+            tasks: [],
             ...(admin && { admin })
         }).then(() => cred)
         .catch((e) => console.error(e))
