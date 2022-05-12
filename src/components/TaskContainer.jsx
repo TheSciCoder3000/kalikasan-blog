@@ -40,7 +40,7 @@ const TaskContainer = ({ lessonId }) => {
     console.log(draftjsToHtml(convertToRaw(editState.getCurrentContent())))
     console.log(draftjsToHtml(markdownToDraft(taskData)))
     return (taskData === '' || taskData === '\n' || !taskData || editMode || taskLoading ?
-        <>
+        <div className='task-editor-cont'>
             <EditorConvertToMarkdown 
                 onEditorChange={setTaskMarkdown}
                 initialState={EditorState.createWithContent(convertFromRaw(markdownToDraft(taskData)))}
@@ -55,7 +55,7 @@ const TaskContainer = ({ lessonId }) => {
                     )}
                 </>
             }
-        </>
+        </div>
         :
         <div className='task-ans-cont'>
             <div dangerouslySetInnerHTML={{ __html: draftjsToHtml(markdownToDraft(taskData)) }}></div>

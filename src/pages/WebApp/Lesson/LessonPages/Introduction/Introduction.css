@@ -3,13 +3,13 @@
   padding: 3rem 5rem;
 }
 
-.intro-cont h1 {
+.intro-cont .text-header {
   font-family: 'Palanquin', sans-serif;
   font-size: 3em;
   margin-bottom: 1.5rem;
 }
 
-.intro-cont p {
+.intro-cont .text-p {
   font-family: 'Roboto', sans-serif;
   margin-bottom: 1.5rem;
   text-indent: 50px;
@@ -21,7 +21,30 @@
   margin-bottom: 5rem;
 }
 
-.intro-cont .text-cont .task-ans-cont p {
-  text-indent: 0;
+.intro-cont hr {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 0.5px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.intro-cont .task-cont button {
+  margin-top: 2rem;
+  padding: 0.25rem 0.8rem;
+  border-radius: 0;
+  border: 1px solid #cfcfcf;
+  background: white;
+}
+
+.intro-cont .task-cont button:hover {
+  cursor: pointer;
+  background-color: #f8f8f8;
+}
+
+.intro-cont .task-cont .task-editor-cont button {
+  margin-right: 2rem;
+}
+
+.intro-cont .task-cont .task-ans-cont {
+  margin: 0 4rem;
 }
 /*# sourceMappingURL=Introduction.css.map */
