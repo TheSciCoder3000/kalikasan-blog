@@ -28,7 +28,7 @@ const LogIn = () => {
                 await logUser(email, pass)
                 history.push('/app')
             } catch (error) {
-                console.log(error)
+                if (error.message.includes('(auth/user-not-found)')) setfieldError({ type: 'user not found', msg: 'User not found' })
             }
         }
         setLogging(false)
