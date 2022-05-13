@@ -1,9 +1,9 @@
 import { NavLink as Link } from 'react-router-dom'
 import './Footer.css'
 
-const Footer = () => {
+const Footer = (props) => {
   return (
-    <div className='footer'>
+    <div {...props} className='footer'>
       {/* Website Information */}
       <div className="site-info">
         <div className="site-logo">

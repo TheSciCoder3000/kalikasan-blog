@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
+import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
 import { Provider } from 'react-redux'
 
 import store from './redux/store';
@@ -29,10 +30,17 @@ function App() {
       <Switch>
         {/* Website Routes */}
         <Route exact path='/'>
-          <div className="home-scroll-container" ref={appRef} data-scroll-container>
-            <Home appRef={appRef} currentUser={currentUser} authPending={pending} />
-            <Footer />
-          </div>
+          <LocomotiveScrollProvider
+            options={{
+              smooth: true
+            }}
+            watch={[]}
+            containerRef={appRef}>
+              <div ref={appRef} className="home-scroll-container" data-scroll-container>
+                <Home currentUser={currentUser} authPending={pending} />
+                <Footer data-scroll-section />
+              </div>
+          </LocomotiveScrollProvider>
         </Route>
         <Route exact path='/about'>
           <About />

@@ -21,11 +21,10 @@ import Community from './community.jpg'
 
 import NavBar from '../../components/NavBar/NavBar'
 import LessonModule from '../../components/LessonModule'
-import { motion, useAnimation } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
+import { motion } from 'framer-motion'
 import { useState, useEffect, useRef } from 'react'
 import { AnimationVariants } from './variants'
-import locomotiveScroll from 'locomotive-scroll'
+import { useLocomotiveScroll } from 'react-locomotive-scroll'
 import { Link, useHistory } from 'react-router-dom'
 import useWindowDim from '../../components/useWindowDim'
 
@@ -48,7 +47,8 @@ const lessons = [
   }, 
 ]
 
-const Home = ({ appRef, currentUser, authPending }) => {
+const Home = ({ currentUser, authPending }) => {
+  const { scroll } = useLocomotiveScroll()
   const history = useHistory()
   const winWidth = useWindowDim()
   
@@ -58,12 +58,7 @@ const Home = ({ appRef, currentUser, authPending }) => {
   const [loading, setLoading] = useState(true)
   useEffect(() => {
     document.title = 'Kalikasan'
-    if (appRef.current) {
-      let scroll = new locomotiveScroll({
-        el: appRef.current,
-        smooth: true,
-        multiplier: 0.75
-      })
+    if (scroll) {
       scroll.stop()
 
       // Load div img function
@@ -97,10 +92,10 @@ const Home = ({ appRef, currentUser, authPending }) => {
         scroll.destroy()
       }
     }
-  }, [appRef])
+  }, [scroll])
 
   return (
-    <div className='home-page'>
+    <div className='home-page' data-scroll-section>
       {(loading || authPending) && (
         <div className="loading-cont">
           <h1>Loading...</h1>
