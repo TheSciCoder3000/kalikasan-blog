@@ -84,7 +84,7 @@ const Sidebar = ({ userData, activityData, currentUser }) => {
                                             variants={lessonVariant}
                                             initial='hidden'>
                                     {activityData.map(activity => (
-                                        <LessonNavLink pathname={pathname} activity={activity} />
+                                        <LessonNavLink activity={activity} />
                                     ))}
                                 </motion.ul>
                             )}
@@ -133,11 +133,7 @@ const Sidebar = ({ userData, activityData, currentUser }) => {
 }
 
 
-const LessonNavLink = ({ activity, pathname }) => {
-    const pathArray = pathname.split('/')
-    const lessonId = pathArray[pathArray.length-1]
-    console.log('activity data', activity)
-
+const LessonNavLink = ({ activity }) => {
     return (
         <Link to={`/app/lessons/${activity.id}`} className={`lesson-item`} activeClassName='active-lesson-link' >{activity.title}</Link>
     )
