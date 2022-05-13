@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { getDb, setDb } from "../firebase";
 
+// Data fetching async action
 export const fetchUser = createAsyncThunk('User/fetchUser', 
     async (userId) => {
         try {
@@ -12,6 +13,7 @@ export const fetchUser = createAsyncThunk('User/fetchUser',
     }
 )
 
+// Data update async action
 const updateTask = createAsyncThunk('User/updateTask',
     async ({ userId, newTask }, { getState }) => {
         try {
@@ -34,6 +36,7 @@ const updateTask = createAsyncThunk('User/updateTask',
     }
 )
 
+
 const initialState = {
     loading: true,
     taskLoading: false,
@@ -41,6 +44,7 @@ const initialState = {
     error: ''
 }
 
+// Create user slice
 const userSlice = createSlice({
     name: 'User',
     initialState,

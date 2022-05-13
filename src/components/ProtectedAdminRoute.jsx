@@ -7,7 +7,7 @@ const ProtectedAdminRoute = ({ isAdmin, children, ...rest }) => {
         {children}
     </Route>
     :
-    <>This route is restricted to Admins only</>
+    <div className='admin-restricted-route'>This route is restricted to Admins only</div>
 }
 
 export default ProtectedAdminRoute

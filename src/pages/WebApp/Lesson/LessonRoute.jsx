@@ -4,6 +4,8 @@ import { useParams, Route, Redirect } from 'react-router-dom'
 import IntroductionPage from './LessonPages/Introduction/IntroductionPage'
 import PlantTrees from './LessonPages/PlantTrees/PlantTrees'
 
+
+// Lesson Route component to differentiate the /lessons and /lessons/{lessonId} routes
 const LessonRoute = () => {
     const { data: activityData } = useSelector(state => state.activities)
     return (
@@ -18,9 +20,10 @@ const LessonRoute = () => {
     )
 }
 
+
+// Lesson component to assign which lesson will be displayed
 const Lesson = () => {
-    const { lessonId } = useParams()
-    console.log('lesson id', lessonId)
+    const { lessonId } = useParams()        // get the lesson id from the path
 
     return (
         <div className="lesson-cont">

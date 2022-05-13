@@ -7,22 +7,24 @@ import { markdownToDraft } from 'markdown-draft-js'
 import { EditorState, convertFromRaw, convertToRaw } from 'draft-js'
 import draftjsToHtml from 'draftjs-to-html'
 
-// Display editor if user has no answer stored in the db
-// or if user has answer but chooses to edit it after clicking the edit btn
+// Enhanced Editor Component based from react-editor-wysiwyg
+// It directly updates the task redux state and sends an update request to the firestore db
+// TODO: Fix the whitespace detection system whether to display the buttons or save in db
 
 const TaskContainer = ({ lessonId }) => {
-    const [editMode, setEditMode] = useState(false)
-    const [taskMarkdown, setTaskMarkdown] = useState(null)
-    const { currentUser } = useAuth()
-    const userData = useSelector(state => state.user.data)
-    const taskLoading = useSelector(state => state.user.taskLoading) 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch()                                      // helper function for dispatching state actions
+
+    const [editMode, setEditMode] = useState(false)                     // display text editor state
+    const [taskMarkdown, setTaskMarkdown] = useState(null)              // markdown state of the editor
+    const { currentUser } = useAuth()                                   // used to get the user id
+    const taskLoading = useSelector(state => state.user.taskLoading)    // used to identify if the udpate request is pending
+    
 
     // useSelect to check if user has answer for the particular lesson
-    const taskData = useSelector(state => state.user.data?.tasks?.find(task => task.lessonId === lessonId)?.value.replace('\\n', '\n'))
+    const taskData = useSelector(state => state.user.data?.tasks?.find(task => task.lessonId === lessonId)?.value)
+
 
     const onSubmitText = () => {
-
         let newTask = {
             lessonId,
             value: taskMarkdown || ''
@@ -32,14 +34,9 @@ const TaskContainer = ({ lessonId }) => {
         if (/^\s*$/.test(taskMarkdown)) setEditMode(false)
     }
 
-    const onEditText = () => {
-        setEditMode(true)
-    }
 
-    const editState = EditorState.createWithContent(convertFromRaw(markdownToDraft(taskData)))
-    console.log(draftjsToHtml(convertToRaw(editState.getCurrentContent())))
-    console.log(draftjsToHtml(markdownToDraft(taskData)))
-    return (taskData === '' || taskData === '\n' || !taskData || editMode || taskLoading ?
+    // if only whitespace, null, in edit mode or update request is pending then display text editor
+    return (/^\s*$/.test(taskMarkdown) || !taskData || editMode || taskLoading ?
         <div className='task-editor-cont'>
             <EditorConvertToMarkdown 
                 onEditorChange={setTaskMarkdown}
@@ -59,7 +56,7 @@ const TaskContainer = ({ lessonId }) => {
         :
         <div className='task-ans-cont'>
             <div dangerouslySetInnerHTML={{ __html: draftjsToHtml(markdownToDraft(taskData)) }}></div>
-            <button onClick={onEditText} className="edit-text">Edit</button>
+            <button disabled={editMode} onClick={setEditMode(true)} className="edit-text">Edit</button>
         </div>
     )
 }

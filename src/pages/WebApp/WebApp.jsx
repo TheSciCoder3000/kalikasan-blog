@@ -12,13 +12,18 @@ import './WebApp.css'
 import Participant from './Admin/Participant/Participant'
 import LessonRoute from './Lesson/LessonRoute'
 
-const WebApp = () => {
-    const { currentUser, pending } = useAuth()
-    const dispatch = useDispatch()
-    const { data: userData, loading: userLoading} = useSelector(state => state.user)
-    const { data: activityData, loading: activityLoading } = useSelector(state => state.activities)
-    const { loading: taskLoading } = useSelector(state => state.task)
 
+// Main web app the users will use to conduct attend activities
+const WebApp = () => {
+    const dispatch = useDispatch()                  // used to dispatch redux state actions
+    const { currentUser, pending } = useAuth()      // used for getting currentUser instance and if fetch request is pending
+
+    // Get user data and if fetch request is loading
+    const { data: userData, loading: userLoading} = useSelector(state => state.user)
+    // Get lesson data and if fetch request is pending
+    const { data: activityData, loading: activityLoading } = useSelector(state => state.activities)
+
+    // Update the document title
     useEffect(() => { document.title = 'Kalikasan - App' }, [])
 
     // Fetch Request
@@ -29,8 +34,8 @@ const WebApp = () => {
         
     }, [pending])
 
-    return ( pending || userLoading || activityLoading || taskLoading ? 
-        <>Authenticating User</>
+    return ( pending || userLoading || activityLoading ? 
+        <div className='data-loading'>Authenticating User</div>
         :
         <div className='web-app'>
             <Sidebar userData={userData} 
@@ -39,6 +44,7 @@ const WebApp = () => {
 
             <div className="app-viewer">
                 <Switch>
+                    {/* Regular Participant Routes */}
                     <Route exact path='/app'>
                         <Dashboard />
                     </Route>
@@ -48,15 +54,17 @@ const WebApp = () => {
                     <Route exact path='/app/settings'>
                         Settings
                     </Route>
+
+                    {/* Protected Routes */}
                     <ProtectedAdminRoute isAdmin={userData.admin} exact path='/app/admin'>
                         <AdminDash />
                     </ProtectedAdminRoute>
-                    <Route exact path='/app/admin/participants'>
+                    <ProtectedAdminRoute isAdmin={userData.admin} exact path='/app/admin/participants'>
                         <Participant />
-                    </Route>
-                    <Route exact path='/app/admin/lessons'>
+                    </ProtectedAdminRoute>
+                    <ProtectedAdminRoute isAdmin={userData.admin} exact path='/app/admin/lessons'>
                         Activities
-                    </Route>
+                    </ProtectedAdminRoute>
                 </Switch>
             </div>
         </div>

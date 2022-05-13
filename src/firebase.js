@@ -15,8 +15,11 @@ import { firebaseConfig } from './firebase-conf'
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
+
+// Initialize Firestore Database
 export const auth = getAuth(app)
 
+// Firestore functions
 export const onSignOut = async () => await signOut(auth)
 export const createUser = async (email, pass, firstName, lastName, admin = false) => {
     return createUserWithEmailAndPassword(auth, email, pass).then((cred) => {

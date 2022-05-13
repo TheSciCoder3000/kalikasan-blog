@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { getDb } from "../firebase";
 
+// Fetch data async action
 export const fetchTasks = createAsyncThunk('Task/fetchTasks',
     async () => {
         try {
@@ -17,6 +18,8 @@ const initialState = {
     data: [],
     error: ''
 }
+
+// Task slice creation
 const taskSlice = createSlice({
     name: 'Tasks',
     initialState,

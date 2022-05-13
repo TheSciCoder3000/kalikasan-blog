@@ -1,5 +1,6 @@
 import { motion, useAnimation } from "framer-motion"
 
+// Display lessons in Home Page
 const LessonModule = ({ lesson, indx, variants }) => {
     const lessonModuleAnimation = useAnimation()
 
