@@ -31,12 +31,16 @@ const TaskContainer = ({ lessonId }) => {
         }
 
         setTask(dispatch, currentUser.uid, newTask)
-        if (/^\s*$/.test(taskMarkdown)) setEditMode(false)
+        if (!(/^\s*$/.test(taskMarkdown))) setEditMode(false)
     }
 
+    console.log('test regex', /^\s*$/.test(taskData))
+    console.log('task data not null: ', !taskData)
+    console.log('edit mode', editMode)
+    console.log('task loading ', taskLoading)
 
     // if only whitespace, null, in edit mode or update request is pending then display text editor
-    return (/^\s*$/.test(taskMarkdown) || !taskData || editMode || taskLoading ?
+    return (/^\s*$/.test(taskData) || !taskData || editMode || taskLoading ?
         <div className='task-editor-cont'>
             <EditorConvertToMarkdown 
                 onEditorChange={setTaskMarkdown}
@@ -56,7 +60,7 @@ const TaskContainer = ({ lessonId }) => {
         :
         <div className='task-ans-cont'>
             <div dangerouslySetInnerHTML={{ __html: draftjsToHtml(markdownToDraft(taskData)) }}></div>
-            <button disabled={editMode} onClick={setEditMode(true)} className="edit-text">Edit</button>
+            <button disabled={editMode} onClick={() => setEditMode(true)} className="edit-text">Edit</button>
         </div>
     )
 }
