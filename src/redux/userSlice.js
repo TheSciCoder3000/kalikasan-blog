@@ -71,7 +71,6 @@ const userSlice = createSlice({
         [updateTask.fulfilled]: (state, { payload }) => {
             state.taskLoading = false
             let i = state.data.tasks.findIndex(task => task.lessonId === payload.lessonId)
-            console.log('payload', payload)
             if (i > -1) state.data.tasks[i] = payload
             else state.data.tasks.push(payload)
         },

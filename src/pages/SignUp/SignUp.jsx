@@ -19,7 +19,7 @@ const SignUp = () => {
     const adminCode = useRef(null)
 
     const onSignUp = async e => {
-        if (signUpProgress) return console.log('currently signing up')
+        if (signUpProgress) return 
         setSignUpProgress(true)
         e.preventDefault()
         let First = firstName.current.value
@@ -40,10 +40,9 @@ const SignUp = () => {
             try {
                 let admin = adminType ? await getDb('settings', 'config').then(snapshot => snapshot.data().adminKey === userAdminCode) : false
                 const user = await createUser(email, pass, First, Last, admin)
-                console.log(user)
                 history.push('/app')
             } catch (error) {
-                console.log(error)
+                setfieldError({ type: error, msg: error.message })
             }
         }
         setSignUpProgress(false)

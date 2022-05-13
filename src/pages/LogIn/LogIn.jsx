@@ -13,7 +13,7 @@ const LogIn = () => {
 
     const onLogIn = async (e) => {
         e.preventDefault()
-        if (logging) return console.log('still logging in')
+        if (logging) return 
         setLogging(true)
         let email = emailField.current.value
         let pass = passField.current.value
@@ -24,7 +24,6 @@ const LogIn = () => {
         else {
             setfieldError({ type: null, msg: null })
             try {
-                console.log('logging')
                 await logUser(email, pass)
                 history.push('/app')
             } catch (error) {

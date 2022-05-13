@@ -7,7 +7,7 @@ import { useAuth } from '../Auth'
 
 const NavBar = ({ animation, className, customVariant, initial }) => {
   const { currentUser } = useAuth()
-  // console.log('navbar', auth)
+  
   return (
     <>
       <motion.div className={`navbar ${className}`}

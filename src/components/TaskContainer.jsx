@@ -33,11 +33,7 @@ const TaskContainer = ({ lessonId }) => {
         setTask(dispatch, currentUser.uid, newTask)
         if (!(/^\s*$/.test(taskMarkdown))) setEditMode(false)
     }
-
-    console.log('test regex', /^\s*$/.test(taskData))
-    console.log('task data not null: ', !taskData)
-    console.log('edit mode', editMode)
-    console.log('task loading ', taskLoading)
+    
 
     // if only whitespace, null, in edit mode or update request is pending then display text editor
     return (/^\s*$/.test(taskData) || !taskData || editMode || taskLoading ?
