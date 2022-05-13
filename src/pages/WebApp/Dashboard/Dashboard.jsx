@@ -1,5 +1,7 @@
 import Todo from '../../../components/Todo'
 import Greeting1 from '../../../components/GreetingBanner/Greeting1'
+import { CircularProgressbar } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
 import Env from '../icons/env.svg'
 import './Dashboard.css'
@@ -29,7 +31,11 @@ const Dashboard = () => {
         <Todo />
       </div>
       <div className="progress-grid-cont banner-cont">
-        Progress
+        <div className="progress-header">Progress</div>
+        <div className="progress-cont">
+          {/* Assign values to prop value and text */}
+          <CircularProgressbar />
+        </div>
       </div>
     </div>
   )
