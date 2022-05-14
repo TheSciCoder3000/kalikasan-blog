@@ -4,6 +4,7 @@ import './AdminDash.css'
 const AdminDash = () => {
   return (
     <div className='admin-dashboard'>
+      development in progress
         <div className="main-admin">
             <div className="activity-cont">
 

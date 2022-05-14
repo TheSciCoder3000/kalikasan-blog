@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { collection, doc, getDoc, getDocs, getFirestore, setDoc } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs, getFirestore, setDoc, onSnapshot, query, where } from "firebase/firestore";
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { firebaseConfig } from './firebase-conf'
 
@@ -27,7 +27,7 @@ export const createUser = async (email, pass, firstName, lastName, admin = false
             FirstName: firstName,
             LastName: lastName,
             tasks: [],
-            ...(admin && { admin })
+            admin: admin
         }).then(() => cred)
         .catch((e) => console.error(e))
     })
@@ -38,6 +38,10 @@ const db = getFirestore(app)
 export const getDb = async (colName, docName=null) => {
     if (docName) return getDoc(doc(db, colName, docName))
     else return getDocs(collection(db, colName))
+}
+
+export const getQueryDb = (colName, { field, eq, value }) => {
+    return getDocs(query(collection(db, colName), where(field, eq, value)))
 }
 
 export const setDb = async (colName, docName, newData) => {
