@@ -1,4 +1,39 @@
 .participant-cont {
   padding: 5rem 4rem;
+  font-family: 'Roboto', sans-serif;
+}
+
+.participant-cont .table-cont {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.participant-cont .table-cont .table-cont-header {
+  background-color: #251908;
+  color: white;
+  padding: 1.25rem 1.75rem;
+}
+
+.participant-cont .table-cont .table-content {
+  padding: 1.75rem;
+  background-color: white;
+  border: 1px solid #d7d7d7;
+  border-bottom-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.participant-cont .table-cont .table-content table {
+  border-collapse: collapse;
+  width: 100%;
+  border-top: 1px solid #a3a3a3;
+}
+
+.participant-cont .table-cont .table-content table thead th {
+  padding: 1.3rem 1rem;
+  text-align: left;
+}
+
+.participant-cont .table-cont .table-content table thead th.header-checkbox-cont {
+  width: 1.5rem;
 }
 /*# sourceMappingURL=Participant.css.map */
