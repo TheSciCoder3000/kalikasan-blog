@@ -1,15 +1,59 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef, useMemo } from 'react'
+import { useTable, useSortBy, useGlobalFilter, usePagination } from 'react-table'
+import { COLUMNS } from './tableColumns'
+import { useSelector } from 'react-redux'
 import { getQueryDb } from '../../../../firebase'
+import { Next, Previous } from './svg'
+import MOCK_DATA from './MOCK_DATA.json'
 import './Participant.css'
+import SortIcon from './SortIcon'
+import NameSearch from './NameSearch'
 
 const Participant = () => {
   const [participantList, setParticipantList] = useState([])
+  const initialReload = useRef(false)
+  const [reload, setReload] = useState(false)
+  const tasks = useSelector(state => state.task.data.map(task => task.lessonId))
+
+  const columns = useMemo(() => COLUMNS, [])
+  const data = useMemo(() => MOCK_DATA, [participantList])
+
+
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    page,
+    prepareRow,
+    state,
+    setGlobalFilter,
+    nextPage,
+    canNextPage,
+    previousPage,
+    canPreviousPage,
+    gotoPage,
+    pageCount,
+    setPageSize
+  } = useTable({ columns, data }, useGlobalFilter, useSortBy, usePagination)
+
+  const { globalFilter, pageSize, pageIndex } = state
 
   useEffect(() => {
-    getQueryDb('Users', { field: 'admin', eq: '==', value: false }).then(snapshot => {
-      setParticipantList(state => [...state, ...snapshot.docs.map(doc => doc.data())])
+    if ((!initialReload.current && tasks) || reload)getQueryDb('Users', { field: 'admin', eq: '==', value: false }).then(snapshot => {
+      setParticipantList(snapshot.docs.map(rawDoc => {
+        const doc = rawDoc.data()
+        return {
+          participant: `${doc.LastName}, ${doc.FirstName}`,
+          task1: doc.tasks.some(task => task.lessonId === tasks[0]) ? 'Completed' : 'Incomplete',
+          task2: doc.tasks.some(task => task.lessonId === tasks[1]) ? 'Completed' : 'Incomplete',
+          task3: doc.tasks.some(task => task.lessonId === tasks[2]) ? 'Completed' : 'Incomplete',
+        }
+      }))
+      initialReload.current = true
     })
-  }, [])
+  }, [tasks, reload])
+
+
   return (
     <div className='participant-cont'>
       <div className="table-cont">
@@ -18,24 +62,63 @@ const Participant = () => {
         </div>
         <div className="table-content">
           <div className="table-actions">
-
+            <div className="page-count-cont">
+              Show: 
+              <select value={pageSize} onChange={e => setPageSize(Number(e.target.value))} className="page-count">
+                {[5, 10, 15].map(select => (
+                  <option value={select}>{select}</option>
+                ))}
+              </select>
+            </div>
+            <NameSearch filter={globalFilter} setFilter={setGlobalFilter} />
           </div>
-          <table>
+          <table {...getTableProps()}>
             <thead>
-              <tr>
-                <th className='header-checkbox-cont'><input type="checkbox" /></th>
-                <th>Participants</th>
-                <th>Task 1</th>
-                <th>Task 2</th>
-                <th>Task 3</th>
-              </tr>
+              {headerGroups.map(headerGroup => (
+                <tr {...headerGroup.getHeaderGroupProps()}>
+                  {headerGroup.headers.map(column => (
+                    <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                      <div className="table-data-cont">
+                        {column.render('Header')}
+                        <span>
+                          <SortIcon 
+                            sort={column.isSorted ? (column.isSortedDesc ? 'desc' : 'asc') : ''} />
+                        </span>
+                      </div>
+                    </th>
+                  ))}
+                </tr>
+              ))}
             </thead>
-            <tbody>
-              <tr>
-
-              </tr>
+            <tbody {...getTableBodyProps()}>
+              {page.map(row => {
+                prepareRow(row)
+                return (
+                  <tr {...row.getRowProps()}>
+                    {row.cells.map(cell => (
+                      <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                    ))}
+                  </tr>
+                )
+              })}
             </tbody>
           </table>
+          <div className="page-pagination-cont">
+            {canPreviousPage && (
+              <a className="toggle-page previous-page" onClick={() => previousPage()}><Previous /></a>
+            )}
+
+            {[...Array(pageCount).keys()].map(pageIndx => (
+              <a className={`page-link ${pageIndex === pageIndx ? 'active-page' : ''}`} 
+                      onClick={() => gotoPage(pageIndx)}>
+                        {pageIndx + 1}
+              </a>
+            ))}
+
+            {canNextPage && (
+              <a className="toggle-page next-page" onClick={() => nextPage()}><Next /></a>
+            )}
+          </div>
         </div>
       </div>
     </div>
