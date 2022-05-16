@@ -17,24 +17,77 @@
             border: 1px solid rgb(215, 215, 215);
             border-bottom-left-radius: 10px;
             border-top-right-radius: 10px;
-
+            
             .table-actions {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 0.75rem;
 
+                .page-count-cont {
+                    select {
+                        margin-left: 0.5rem;
+                    }
+                }
+                .search-cont {
+                    input {
+                        outline: none;
+                        margin-left: 0.75rem;
+                        padding: 0.25rem 0.5rem;
+                    }
+                }
             }
             table {
                 border-collapse: collapse;
                 width: 100%;
                 border-top: 1px solid rgb(163, 163, 163);
+                border-bottom: 1px solid rgb(163, 163, 163);
+
+                th, td {
+                    padding: 1.3rem 1rem;
+                }
 
                 thead {
+                    border-bottom: 1px solid rgb(210, 210, 210);
                     th {
-                        padding: 1.3rem 1rem;
                         text-align: left;
+                        user-select: none;
+                        padding-right: 3rem;
 
                         &.header-checkbox-cont {
                             width: 1.5rem;
                         }
+                        
+                        .table-data-cont {
+                            display: flex;
+                            justify-content: space-between;
+                        }
                     }
+                }
+            }
+            .page-pagination-cont {
+                margin: 1.25rem 0;
+                display: flex;
+                justify-content: center;
+                align-items: stretch;
+                height: auto;
+
+                a {
+                    padding: 0.15rem 0.5rem;
+                    margin: 0 0.25rem;
+                    user-select: none;
+                    
+                    &:hover:not(.active-page) {
+                        cursor: pointer;
+                        background-color: rgb(244, 244, 244);
+                    }
+                }
+                .active-page {
+                    color: rgb(186, 127, 0);
+                }
+                .toggle-page {
+                    display: flex;
+                    align-items: center;
+                    padding: 0.15rem 0.1rem;
                 }
             }
         }
