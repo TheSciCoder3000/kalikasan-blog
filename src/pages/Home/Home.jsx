@@ -218,9 +218,8 @@ const Home = ({ currentUser, authPending }) => {
           <h1 className="content-header">Kalikasan Advocacy</h1>
           <p className="content-desc">
             The Advocacy, Kalikasan, aims to infrom its participants of the current issue 
-            regarding climate change and Global warming. Lorem ipsum dolor sit amet, consectetur 
-            adipiscing elit. Integer pretium vestibulum arcu, quis porttitor augue. 
-            Pellentesque maximus leo ac eros iaculis sagittis sed sit amet nisl.
+            regarding climate change and Global warming. The Following are the activities 
+            our advocacy will conduct once you have signed in as a memebr. {'(Hover on the image below to see the details)'}
           </p>
         </div>
 
