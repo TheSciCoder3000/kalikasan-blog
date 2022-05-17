@@ -1,5 +1,5 @@
 .participant-cont {
-  padding: 5rem 4rem;
+  padding: 3rem 4rem;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -12,6 +12,31 @@
   background-color: #251908;
   color: white;
   padding: 1.25rem 1.75rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.participant-cont .table-cont .table-cont-header h1 {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.participant-cont .table-cont .table-cont-header .refresh-icon {
+  fill: white;
+  font-size: 1.75em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.participant-cont .table-cont .table-cont-header .refresh-icon:hover {
+  cursor: pointer;
+  fill: antiquewhite;
 }
 
 .participant-cont .table-cont .table-content {

@@ -3,7 +3,7 @@ import { useTable, useSortBy, useGlobalFilter, usePagination } from 'react-table
 import { COLUMNS } from './tableColumns'
 import { useSelector } from 'react-redux'
 import { getQueryDb } from '../../../../firebase'
-import { Next, Previous } from './svg'
+import { Next, Previous, Refresh } from './svg'
 import MOCK_DATA from './MOCK_DATA.json'
 import './Participant.css'
 import SortIcon from './SortIcon'
@@ -16,7 +16,7 @@ const Participant = () => {
   const tasks = useSelector(state => state.task.data.map(task => task.lessonId))
 
   const columns = useMemo(() => COLUMNS, [])
-  const data = useMemo(() => MOCK_DATA, [participantList])
+  const data = useMemo(() => participantList, [participantList])
 
 
   const {
@@ -34,12 +34,12 @@ const Participant = () => {
     gotoPage,
     pageCount,
     setPageSize
-  } = useTable({ columns, data }, useGlobalFilter, useSortBy, usePagination)
+  } = useTable({ columns, data, initialState: { pageSize: 5 } }, useGlobalFilter, useSortBy, usePagination)
 
   const { globalFilter, pageSize, pageIndex } = state
 
-  useEffect(() => {
-    if ((!initialReload.current && tasks) || reload)getQueryDb('Users', { field: 'admin', eq: '==', value: false }).then(snapshot => {
+  const fetchParticipantList = () => {
+    getQueryDb('Users', { field: 'admin', eq: '==', value: false }).then(snapshot => {
       setParticipantList(snapshot.docs.map(rawDoc => {
         const doc = rawDoc.data()
         return {
@@ -51,7 +51,9 @@ const Participant = () => {
       }))
       initialReload.current = true
     })
-  }, [tasks, reload])
+  }
+
+  useEffect(() => { if ((!initialReload.current && tasks) || reload) fetchParticipantList() }, [tasks, reload])
 
 
   return (
@@ -59,6 +61,9 @@ const Participant = () => {
       <div className="table-cont">
         <div className="table-cont-header">
           <h1 className="cont-header">Participants</h1>
+          <div className="refresh-cont">
+            <Refresh onClick={() => fetchParticipantList()} className='refresh-icon' />
+          </div>
         </div>
         <div className="table-content">
           <div className="table-actions">
