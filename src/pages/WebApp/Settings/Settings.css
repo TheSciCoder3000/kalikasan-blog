@@ -1,0 +1,130 @@
+.settings-page {
+  padding: 2rem 5rem;
+}
+
+.settings-page .settings-cont {
+  border-radius: 10px;
+  border: 1px solid #e1e1e1;
+  background-color: white;
+  min-height: calc(100vh - 4.5rem);
+  font-family: 'Roboto', sans-serif;
+  padding: 2rem 4rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.settings-page .settings-cont h1 {
+  font-size: 4em;
+  font-weight: 300;
+  margin-bottom: 2rem;
+}
+
+.settings-page .settings-cont .header-hr {
+  border: 1px solid #d2d2d2;
+  margin-bottom: 2rem;
+}
+
+.settings-page .settings-cont .setting-label-cont {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.settings-page .settings-cont .setting-label-cont h3 {
+  font-weight: 400;
+}
+
+.settings-page .settings-cont .user-info {
+  border-bottom: 1px solid #e6e6e6;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0 2rem;
+}
+
+.settings-page .settings-cont .user-info .setting-form {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.settings-page .settings-cont .user-info .setting-form .form-group {
+  margin-bottom: 1.75rem;
+}
+
+.settings-page .settings-cont .user-info .setting-form .form-group label {
+  display: block;
+  margin-bottom: .5rem;
+  font-size: 0.85em;
+  color: #3e3e3e;
+  font-weight: 300;
+}
+
+.settings-page .settings-cont .user-info .setting-form .form-group input {
+  display: block;
+  width: 15rem;
+  padding: 0.5rem 0.5rem;
+  outline: none;
+  color: #969696;
+}
+
+.settings-page .settings-cont .user-info .setting-form .form-group input.field-change {
+  color: black;
+}
+
+.settings-page .settings-cont .user-info .setting-form button {
+  padding: 0.55rem 0.7rem;
+  border: none;
+  border-radius: 4px;
+  margin-bottom: 3rem;
+}
+
+.settings-page .settings-cont .user-info .setting-form .update-profile {
+  background-color: #251308;
+  color: white;
+}
+
+.settings-page .settings-cont .user-info .setting-form .update-profile:hover {
+  cursor: pointer;
+  background-color: #50290f;
+}
+
+.settings-page .settings-cont .user-info .setting-form .cancel-update {
+  margin-left: 2rem;
+  background-color: whitesmoke;
+  color: black;
+}
+
+.settings-page .settings-cont .user-info .setting-form .cancel-update:hover {
+  cursor: pointer;
+  background-color: #ebebeb;
+}
+
+.settings-page .settings-cont .other-settings {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 3rem 2rem;
+}
+
+.settings-page .settings-cont .other-settings .setting-actions {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.settings-page .settings-cont .other-settings .setting-actions button {
+  padding: 0.4rem 1.5rem;
+  border-radius: 7px;
+  background-color: #fcfcfc;
+  border: 1px solid #d2d2d2;
+  color: #b70000;
+}
+
+.settings-page .settings-cont .other-settings .setting-actions button:hover {
+  cursor: pointer;
+  background: #b70000;
+  color: white;
+  border-radius: 7px;
+}
+/*# sourceMappingURL=Settings.css.map */

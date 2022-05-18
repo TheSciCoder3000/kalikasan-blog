@@ -10,6 +10,8 @@ $panel-bkg: #251308;
     color: white;
     font-family: 'Roboto', sans-serif;
     font-size: 0.9em;
+    display: flex;
+    flex-direction: column;
 
     .site-logo {
         font-family: 'vegan_style_personal_useRg';
@@ -36,17 +38,89 @@ $panel-bkg: #251308;
         }
 
     }
-    .app-nav-cont {
-        margin-bottom: 2rem;
+    .nav-cont {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex: 1;
+
+        .main-nav-cont {
+            .app-nav-cont {
+                margin-bottom: 2rem;
+                
+                .nav-header {
+                    color: rgba(255, 255, 255, 0.5);
+                    font-weight: 400;
+                    font-size: 0.8em;
+                    margin-bottom: 0.75rem;
+                }
+                .nav-item {
+                    margin-bottom: 0.5rem;
+                    .nav-content {
+                        padding: 0.7rem 1rem;
+                        display: flex;
+                        gap: 10px;
+                        border-radius: 10px;
+                        text-decoration: none;
+                        
+                        .nav-icon-cont {
+                            fill: rgb(200, 200, 200);
+                            font-size: 1.4em;
+                        }
+                        .nav-text {
+                            text-decoration: none;
+                            color: rgb(200, 200, 200);
+                            font-size: 0.9em;
+                        }
+                        div {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                        }
+                        &:hover {
+                            background: rgba(255, 255, 255, 0.046);
+                        }
+                        &.active-nav {
+                            background: rgba(190, 173, 140, 0.12);
         
-        .nav-header {
-            color: rgba(255, 255, 255, 0.5);
-            font-weight: 400;
-            font-size: 0.8em;
-            margin-bottom: 0.75rem;
+                            .nav-icon-cont {
+                                fill: #FFDE99;
+                            }
+                            .nav-text {
+                                color: #FFDE99;
+                            }
+                        }
+                    }
+                    ul {
+                        margin-left: 1.8rem;
+                        overflow-y: hidden;
+                        padding-left: 1.2rem;
+                        
+                        .lesson-item {
+                            display: list-item;
+                            margin-bottom: 0.7rem;
+                            text-decoration: none;
+                            color: rgb(216, 216, 216);
+                            font-size: 0.9em;
+                            user-select: none;
+        
+                            &.active-lesson-link {
+                                color: #f7c047;
+                                pointer-events: none;
+                            }
+                            &:nth-child(1) {
+                                margin-top: 0.5rem;
+                            }
+                            &:last-child {
+                                margin-bottom: 1rem;
+                            }
+                        }
+                    }
+                }
+            }
         }
-        .nav-item {
-            margin-bottom: 0.5rem;
+
+        .nav-setting-item {
             .nav-content {
                 padding: 0.7rem 1rem;
                 display: flex;
@@ -79,31 +153,6 @@ $panel-bkg: #251308;
                     }
                     .nav-text {
                         color: #FFDE99;
-                    }
-                }
-            }
-            ul {
-                margin-left: 1.8rem;
-                overflow-y: hidden;
-                padding-left: 1.2rem;
-                
-                .lesson-item {
-                    display: list-item;
-                    margin-bottom: 0.7rem;
-                    text-decoration: none;
-                    color: rgb(216, 216, 216);
-                    font-size: 0.9em;
-                    user-select: none;
-
-                    &.active-lesson-link {
-                        color: #f7c047;
-                        pointer-events: none;
-                    }
-                    &:nth-child(1) {
-                        margin-top: 0.5rem;
-                    }
-                    &:last-child {
-                        margin-bottom: 1rem;
                     }
                 }
             }

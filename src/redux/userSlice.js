@@ -8,6 +8,7 @@ export const fetchUser = createAsyncThunk('User/fetchUser',
             let snapshot = await getDb('Users', userId)
             return snapshot.data()
         } catch (e) {
+            console.error(e)
             throw e
         }
     }
@@ -36,10 +37,26 @@ const updateTask = createAsyncThunk('User/updateTask',
     }
 )
 
+// Update User Profile
+export const updateUser = createAsyncThunk('User/UpdateProfile',
+    async ({ userId, FirstName, LastName }, { getState }) => {
+        try {
+            let currUserData = getState().user.data
+            await setDb('Users', userId, { ...currUserData,  FirstName, LastName})
+            console.log('first name async', FirstName)
+            return { FirstName, LastName }
+        } catch (e) {
+            console.error(e)
+            throw e
+        }
+    }
+)
+
 
 const initialState = {
     loading: true,
     taskLoading: false,
+    profileLoading: false,
     data: null,
     error: ''
 }
@@ -77,6 +94,19 @@ const userSlice = createSlice({
         [updateTask.rejected]: (state, { error }) => {
             state.taskLoading = false
             state.error = error
+        },
+
+        [updateUser.pending]: (state) => {
+            state.profileLoading = true
+        },
+        [updateUser.fulfilled]: (state, { payload: { FirstName, LastName } }) => {
+            state.profileLoading = false
+            state.data.FirstName = FirstName
+            state.data.LastName = LastName
+        },
+        [updateUser.rejected]: (state, { error }) => {
+            state.profileLoading = false
+            console.log(error.message)
         }
     }
 });
