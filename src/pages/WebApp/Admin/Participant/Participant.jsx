@@ -50,6 +50,7 @@ const Participant = () => {
         }
       }))
       initialReload.current = true
+      setReload(false)
     })
   }
 
@@ -62,7 +63,7 @@ const Participant = () => {
         <div className="table-cont-header">
           <h1 className="cont-header">Participants</h1>
           <div className="refresh-cont">
-            <Refresh onClick={() => fetchParticipantList()} className='refresh-icon' />
+            <Refresh onClick={() => setReload(true)} className='refresh-icon' />
           </div>
         </div>
         <div className="table-content">
@@ -81,12 +82,12 @@ const Participant = () => {
             <thead>
               {headerGroups.map(headerGroup => (
                 <tr {...headerGroup.getHeaderGroupProps()}>
-                  {headerGroup.headers.map(column => (
+                  {headerGroup.headers.map((column, indx) => (
                     <th {...column.getHeaderProps(column.getSortByToggleProps())}>
                       <div className="table-data-cont">
                         {column.render('Header')}
                         <span>
-                          <SortIcon 
+                          <SortIcon key={indx}
                             sort={column.isSorted ? (column.isSortedDesc ? 'desc' : 'asc') : ''} />
                         </span>
                       </div>
