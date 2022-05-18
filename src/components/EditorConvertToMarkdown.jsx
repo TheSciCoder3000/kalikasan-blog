@@ -11,6 +11,10 @@ const EditorConvertToMarkdown = ({ onEditorChange, initialState, readOnly }) => 
         draftToMarkdown(convertToRaw(editorState.getCurrentContent()))
     )
 
+    const uploadCallback = (file) => {
+        console.log('file', file)
+    }
+
     return (
         <div>
             <Editor
@@ -19,6 +23,9 @@ const EditorConvertToMarkdown = ({ onEditorChange, initialState, readOnly }) => 
                 editorClassName="demo-editor"
                 onEditorStateChange={onEditorStateChange}
                 readOnly={readOnly}
+                toolbar={{
+                    image: { uploadCallback }
+                }}
                 />
         </div>
     )
