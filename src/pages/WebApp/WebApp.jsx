@@ -11,6 +11,7 @@ import AdminDash from './Admin/Dashboard/AdminDash'
 import './WebApp.css'
 import Participant from './Admin/Participant/Participant'
 import LessonRoute from './Lesson/LessonRoute'
+import Settings from './Settings/Settings'
 
 
 // Main web app the users will use to conduct attend activities
@@ -19,7 +20,7 @@ const WebApp = () => {
     const { currentUser, pending } = useAuth()      // used for getting currentUser instance and if fetch request is pending
 
     // Get user data and if fetch request is loading
-    const { data: userData, loading: userLoading} = useSelector(state => state.user)
+    const { data: userData, loading: userLoading, profileLoading} = useSelector(state => state.user)
     // Get lesson data and if fetch request is pending
     const { data: activityData, loading: activityLoading } = useSelector(state => state.activities)
 
@@ -36,6 +37,8 @@ const WebApp = () => {
 
     return ( pending || userLoading || activityLoading ? 
         <div className='data-loading'>Authenticating User</div>
+        : !userData ?
+        <div className="no-connection">No Connection</div>
         :
         <div className='web-app'>
             <Sidebar userData={userData} 
@@ -52,7 +55,7 @@ const WebApp = () => {
                         <LessonRoute />
                     </Route>
                     <Route exact path='/app/settings'>
-                        Settings
+                        <Settings userId={currentUser?.uid} userData={userData} profileLoading={profileLoading} />
                     </Route>
 
                     {/* Protected Routes */}
