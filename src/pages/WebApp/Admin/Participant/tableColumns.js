@@ -1,7 +1,10 @@
+import ParticipantCellLink from "./ParticipantCellLink";
+
 export const COLUMNS = [
     {
         Header: 'Participants',
-        accessor: 'participant'
+        accessor: 'participant',
+        Cell: ({ value }) => <ParticipantCellLink participantId={value.id} participantName={value.name} />
     },
     {
         Header: 'Task 1',

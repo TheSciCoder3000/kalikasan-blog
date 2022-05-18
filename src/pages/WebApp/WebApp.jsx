@@ -8,10 +8,10 @@ import ProtectedAdminRoute from '../../components/ProtectedAdminRoute'
 import Dashboard from './Dashboard/Dashboard'
 import Sidebar from './Sidebar/Sidebar'
 import AdminDash from './Admin/Dashboard/AdminDash'
-import './WebApp.css'
-import Participant from './Admin/Participant/Participant'
 import LessonRoute from './Lesson/LessonRoute'
 import Settings from './Settings/Settings'
+import ParticipantRoute from './Admin/Participant/ParticipantRoute'
+import './WebApp.css'
 
 
 // Main web app the users will use to conduct attend activities
@@ -62,8 +62,8 @@ const WebApp = () => {
                     <ProtectedAdminRoute isAdmin={userData.admin} exact path='/app/admin'>
                         <AdminDash />
                     </ProtectedAdminRoute>
-                    <ProtectedAdminRoute isAdmin={userData.admin} exact path='/app/admin/participants'>
-                        <Participant />
+                    <ProtectedAdminRoute isAdmin={userData.admin} path='/app/admin/participants'>
+                        <ParticipantRoute />
                     </ProtectedAdminRoute>
                     <ProtectedAdminRoute isAdmin={userData.admin} exact path='/app/admin/lessons'>
                         Activities

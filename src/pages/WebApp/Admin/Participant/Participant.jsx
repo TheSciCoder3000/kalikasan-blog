@@ -43,7 +43,10 @@ const Participant = () => {
       setParticipantList(snapshot.docs.map(rawDoc => {
         const doc = rawDoc.data()
         return {
-          participant: `${doc.LastName}, ${doc.FirstName}`,
+          participant: {
+            name: `${doc.LastName}, ${doc.FirstName}`,
+            id: rawDoc.id
+          },
           task1: doc.tasks.some(task => task.lessonId === tasks[0]) ? 'Completed' : 'Incomplete',
           task2: doc.tasks.some(task => task.lessonId === tasks[1]) ? 'Completed' : 'Incomplete',
           task3: doc.tasks.some(task => task.lessonId === tasks[2]) ? 'Completed' : 'Incomplete',
