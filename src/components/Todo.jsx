@@ -13,8 +13,8 @@ const Todo = () => {
         let taskInstance = userTaskData.find(taskData => taskData.lessonId === task.lessonId)
 
         if (taskInstance) {
-            if (/^\s*$/.test(taskInstance.value)) return true
-            else return false
+            if (/^\s*$/.test(taskInstance.value)) return true               // if whitespace then include
+            else return false                                               // otherwise exclude
         } else return true
     })
 

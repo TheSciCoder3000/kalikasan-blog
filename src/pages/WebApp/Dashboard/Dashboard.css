@@ -150,6 +150,7 @@
 .dashboard .task-grid-cont .tasks-cont .task-list {
   display: list-item;
   margin-left: 2rem;
+  margin-bottom: 0.5rem;
   text-decoration: none;
   color: #be6500;
 }
