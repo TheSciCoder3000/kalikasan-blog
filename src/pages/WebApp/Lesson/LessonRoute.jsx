@@ -29,7 +29,7 @@ const Lesson = () => {
         <div className="lesson-cont">
             {
                 lessonId === 'Introduction' ? <IntroductionPage lessonId={lessonId} /> :
-                lessonId === 'PlantTrees' ? <PlantTrees />
+                lessonId === 'Planting' ? <PlantTrees lessonId={lessonId} />
                 : <></>
             }
         </div>
