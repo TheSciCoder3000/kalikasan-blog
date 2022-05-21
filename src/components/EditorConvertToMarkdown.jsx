@@ -2,6 +2,7 @@ import { convertToRaw } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
 import draftToMarkdown from 'draftjs-to-markdown';
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import { uploadToStorage } from '../firebase';
 
 
 // component that converts outputs markdown
@@ -10,10 +11,6 @@ const EditorConvertToMarkdown = ({ onEditorChange, initialState, readOnly }) => 
     const onEditorStateChange = (editorState) => onEditorChange(
         draftToMarkdown(convertToRaw(editorState.getCurrentContent()))
     )
-
-    const uploadCallback = (file) => {
-        console.log('file', file)
-    }
 
     return (
         <div>
@@ -24,7 +21,8 @@ const EditorConvertToMarkdown = ({ onEditorChange, initialState, readOnly }) => 
                 onEditorStateChange={onEditorStateChange}
                 readOnly={readOnly}
                 toolbar={{
-                    image: { uploadCallback }
+                    options: ['inline', 'blockType', 'fontSize', 'fontFamily', 'list', 'textAlign', 'colorPicker', 'embedded', 'emoji', 'remove', 'history'],
+                    image: { urlEnabled: false, uploadEnabled: false }
                 }}
                 />
         </div>
