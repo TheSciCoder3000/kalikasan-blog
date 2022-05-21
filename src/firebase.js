@@ -1,8 +1,9 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { collection, doc, getDoc, getDocs, getFirestore, setDoc, onSnapshot, query, where } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs, getFirestore, setDoc, query, where } from "firebase/firestore";
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage'
 import { firebaseConfig } from './firebase-conf'
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -19,7 +20,12 @@ const analytics = getAnalytics(app);
 // Initialize Firestore Database
 export const auth = getAuth(app)
 
-// Firestore functions
+
+// Firebase Storage
+const storage = getStorage(app)
+
+
+// ========================================== Firestore functions ==========================================
 export const onSignOut = async () => await signOut(auth)
 export const createUser = async (email, pass, firstName, lastName, admin = false) => {
     return createUserWithEmailAndPassword(auth, email, pass).then((cred) => {
@@ -46,4 +52,19 @@ export const getQueryDb = (colName, { field, eq, value }) => {
 
 export const setDb = async (colName, docName, newData) => {
     return setDoc(doc(db, colName, docName), newData)
+}
+
+
+// ========================================== Storage functions ==========================================
+export const uploadToStorage = async (userId, file) => {
+    const storagePath = `${userId}/${file.name}`
+    const storageRef = ref(storage, storagePath)
+
+    try {
+        await uploadBytes(storageRef, file)
+        const dlUrl = await getDownloadURL(storageRef)
+        return dlUrl
+    } catch (e) {
+        throw e
+    }
 }
