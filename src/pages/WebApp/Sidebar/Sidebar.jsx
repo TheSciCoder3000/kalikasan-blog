@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { NavLink as Link, useLocation } from 'react-router-dom'
+import { NavLink as Link, useLocation, useHistory } from 'react-router-dom'
 import { motion, useAnimation, AnimatePresence } from 'framer-motion'
 import { Exit } from '../iconComp'
 
@@ -14,9 +14,15 @@ import {
 import './Sidebar.css'
 
 const Sidebar = ({ userData, activityData, currentUser, toggleMenubar, width }) => {
+    const history = useHistory()
     const lessonListAnimation = useAnimation()
     const lessonListAdminAnimation = useAnimation()
     const { pathname } = useLocation()
+
+    useEffect(() => {
+        const unlisten = history.listen(() => toggleMenubar(false))
+        return () => unlisten()
+    }, [])
 
     const lessonVariant = {
         hidden: {
