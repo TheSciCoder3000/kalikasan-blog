@@ -74,9 +74,23 @@
   height: 100%;
 }
 
+@media screen and (max-width: 650px) {
+  .dashboard .greeting-cont .banner-1 {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .dashboard .greeting-cont .banner-1 {
+    padding: 3.5rem 1rem;
+  }
+}
+
 .dashboard .greeting-cont .banner-1 .banner-text {
   font-size: 4em;
   margin-bottom: 2rem;
+  position: relative;
+  z-index: 10;
 }
 
 .dashboard .greeting-cont .banner-1 .banner-text .logo-text {
@@ -89,6 +103,8 @@
   border: 2px solid black;
   background: transparent;
   border-radius: 25px;
+  position: relative;
+  z-index: 20;
 }
 
 .dashboard .greeting-cont .banner-1 .start-journey:hover {
@@ -100,6 +116,12 @@
   right: 0;
   bottom: 2rem;
   height: 65%;
+}
+
+@media screen and (max-width: 400px) {
+  .dashboard .greeting-cont .banner-1 img {
+    display: none;
+  }
 }
 
 .dashboard .calendar-grid-cont {
@@ -116,6 +138,12 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+@media screen and (max-width: 900px) {
+  .dashboard .calendar-grid-cont {
+    display: none;
+  }
 }
 
 .dashboard .calendar-grid-cont .calendar-cont {
@@ -138,6 +166,28 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+@media screen and (max-width: 900px) {
+  .dashboard .task-grid-cont {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-column: 1/2;
+    -ms-grid-row: 2;
+    -ms-grid-row-span: 2;
+    grid-row: 2/4;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .dashboard .task-grid-cont {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 3;
+    grid-column: 1/4;
+    -ms-grid-row: 2;
+    -ms-grid-row-span: 1;
+    grid-row: 2/3;
+  }
 }
 
 .dashboard .task-grid-cont .tasks-cont {
@@ -167,6 +217,28 @@
   -ms-grid-row-span: 1;
   grid-row: 3/4;
   padding: 1.75rem;
+}
+
+@media screen and (max-width: 900px) {
+  .dashboard .progress-grid-cont {
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 2;
+    grid-column: 2/4;
+    -ms-grid-row: 2;
+    -ms-grid-row-span: 2;
+    grid-row: 2/4;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .dashboard .progress-grid-cont {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 3;
+    grid-column: 1/4;
+    -ms-grid-row: 3;
+    -ms-grid-row-span: 2;
+    grid-row: 3/5;
+  }
 }
 
 .dashboard .progress-grid-cont .progress-header {
