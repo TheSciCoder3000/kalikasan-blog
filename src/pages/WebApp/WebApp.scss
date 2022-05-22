@@ -1,7 +1,13 @@
+@import './AppBreakpoints.scss';
+
 .web-app {
     display: flex;
     height: 100vh;
     overflow: hidden;
+
+    @include custom-breakpoint (650px) {
+        flex-direction: column;
+    }
 
     .app-viewer {
         flex: 1;

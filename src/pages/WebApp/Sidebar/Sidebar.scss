@@ -1,3 +1,5 @@
+@import '../AppBreakpoints.scss';
+
 $panel-bkg: #251308;
 
 .side-panel {
@@ -13,11 +15,46 @@ $panel-bkg: #251308;
     display: flex;
     flex-direction: column;
 
+    @include custom-breakpoint(1200px) {
+        width: 70px;
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+    @include custom-breakpoint (650px) {
+        // display: none;
+        box-sizing: border-box;
+        width: 100vw;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 99999;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        padding-top: 3rem;
+    }
+
+    .exit-menubar-cont {
+        fill: white;
+        font-size: 2em;
+        margin-bottom: 2rem;
+
+        &:hover {
+            fill: #FFDE99;
+            cursor: pointer;
+        }
+    }
+
     .site-logo {
         font-family: 'vegan_style_personal_useRg';
         font-weight: 100;
         font-size: 0.8em;
         margin-bottom: 2.25rem;
+
+        @include custom-breakpoint(1200px) {
+            display: none;
+        }
     }
     .user-info {
         display: flex;
@@ -36,7 +73,9 @@ $panel-bkg: #251308;
                 color: rgb(200, 200, 200);
             }
         }
-
+        @include custom-breakpoint(1200px) {
+            display: none;
+        }
     }
     .nav-cont {
         display: flex;
@@ -47,12 +86,20 @@ $panel-bkg: #251308;
         .main-nav-cont {
             .app-nav-cont {
                 margin-bottom: 2rem;
+
+                @include custom-breakpoint (1200px) {
+                    margin-bottom: 5rem;
+                }
                 
                 .nav-header {
                     color: rgba(255, 255, 255, 0.5);
                     font-weight: 400;
                     font-size: 0.8em;
                     margin-bottom: 0.75rem;
+
+                    @include custom-breakpoint (1200px) {
+                        text-align: center;
+                    }
                 }
                 .nav-item {
                     margin-bottom: 0.5rem;
@@ -62,15 +109,32 @@ $panel-bkg: #251308;
                         gap: 10px;
                         border-radius: 10px;
                         text-decoration: none;
+
+                        @include custom-breakpoint (1200px) {
+                            flex-direction: column;
+                            align-items: center;
+                        }
+                        @include custom-breakpoint (650px) {
+                            flex-direction: row;
+                        }
                         
                         .nav-icon-cont {
                             fill: rgb(200, 200, 200);
                             font-size: 1.4em;
+
+                            @include custom-breakpoint (1200px) {
+                                font-size: 2em;
+                            }
                         }
                         .nav-text {
                             text-decoration: none;
                             color: rgb(200, 200, 200);
                             font-size: 0.9em;
+
+                            @include custom-breakpoint(1200px) {
+                                font-size: 0.8em;
+                                text-align: center;
+                            }
                         }
                         div {
                             display: flex;
@@ -127,10 +191,19 @@ $panel-bkg: #251308;
                 gap: 10px;
                 border-radius: 10px;
                 text-decoration: none;
+
+                @include custom-breakpoint (1200px) {
+                    flex-direction: column;
+                    align-items: center;
+                }
                 
                 .nav-icon-cont {
                     fill: rgb(200, 200, 200);
                     font-size: 1.4em;
+
+                    @include custom-breakpoint (1200px) {
+                        font-size: 2em;
+                    }
                 }
                 .nav-text {
                     text-decoration: none;

@@ -4,7 +4,7 @@ import './Dropzone.css'
 
 const Dropzone = ({ onUpload, cancelEditor, editorMode }) => {
     const [imagePreview, setimagePreview] = useState(null)
-    const { acceptedFiles, getRootProps, getInputProps, clearFiles } = useDropzone({
+    const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
         accept: { 'image/*': [] },
         maxFiles: 1,
         maxSize: 10000000

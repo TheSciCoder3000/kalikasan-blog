@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { NavLink as Link, useLocation } from 'react-router-dom'
 import { motion, useAnimation, AnimatePresence } from 'framer-motion'
+import { Exit } from '../iconComp'
 
 import {
     Dashboard as DashboardSvg,
@@ -12,7 +13,7 @@ import {
 
 import './Sidebar.css'
 
-const Sidebar = ({ userData, activityData, currentUser }) => {
+const Sidebar = ({ userData, activityData, currentUser, toggleMenubar, width }) => {
     const lessonListAnimation = useAnimation()
     const lessonListAdminAnimation = useAnimation()
     const { pathname } = useLocation()
@@ -50,6 +51,9 @@ const Sidebar = ({ userData, activityData, currentUser }) => {
 
     return (
         <div className="side-panel">
+            {width <= 650 && (
+                <div className="exit-menubar-cont" onClick={() => toggleMenubar(false)}><Exit /></div>
+            )}
             <div className="site-logo">
                 <h2>Kalikasan</h2>
             </div>

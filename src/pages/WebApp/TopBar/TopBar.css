@@ -1,0 +1,44 @@
+.top-bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0.75rem 2rem;
+  background-color: #251308;
+  color: white;
+  height: 65px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.top-bar .menu-bar-cont {
+  fill: white;
+  font-size: 1.95em;
+}
+
+.top-bar .menu-bar-cont:hover {
+  fill: #FFDE99;
+  cursor: pointer;
+}
+
+.top-bar .site-logo {
+  font-family: 'vegan_style_personal_useRg';
+  font-size: 1.25em;
+}
+
+.top-bar .profile-cont .profile-img-cont {
+  background-color: antiquewhite;
+  aspect-ratio: 1;
+  border-radius: 25px;
+  height: 35px;
+}
+
+.top-bar .profile-cont .profile-details {
+  display: none;
+}
+/*# sourceMappingURL=TopBar.css.map */

@@ -1,8 +1,9 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import { useAuth } from '../../components/Auth'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchUser, fetchActivities, fetchTasks } from '../../redux'
+import useWindowDim from '../../components/useWindowDim'
 
 import ProtectedAdminRoute from '../../components/ProtectedAdminRoute'
 import Dashboard from './Dashboard/Dashboard'
@@ -11,11 +12,14 @@ import AdminDash from './Admin/Dashboard/AdminDash'
 import LessonRoute from './Lesson/LessonRoute'
 import Settings from './Settings/Settings'
 import ParticipantRoute from './Admin/Participant/ParticipantRoute'
+import TopBar from './TopBar/TopBar'
 import './WebApp.css'
 
 
 // Main web app the users will use to conduct attend activities
 const WebApp = () => {
+    const width = useWindowDim()
+    const [menubar, setMenubar] = useState(false)
     const dispatch = useDispatch()                  // used to dispatch redux state actions
     const { currentUser, pending } = useAuth()      // used for getting currentUser instance and if fetch request is pending
 
@@ -41,9 +45,19 @@ const WebApp = () => {
         <div className="no-connection">No Connection</div>
         :
         <div className='web-app'>
-            <Sidebar userData={userData} 
-                     activityData={activityData}
-                     currentUser={currentUser} />
+            {(width > 650 || menubar) && (
+                <Sidebar userData={userData} 
+                        activityData={activityData}
+                        currentUser={currentUser}
+                        toggleMenubar={setMenubar}
+                        width={width} />
+            )}
+            {width <= 650 && (
+                <TopBar 
+                    name={`${userData.FirstName} ${userData.LastName}`} 
+                    email={currentUser.email} 
+                    toggleMenuBar={setMenubar} />
+            )}
 
             <div className="app-viewer">
                 <Switch>
