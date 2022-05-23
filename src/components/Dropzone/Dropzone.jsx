@@ -3,6 +3,7 @@ import { useDropzone } from 'react-dropzone'
 import './Dropzone.css'
 
 const Dropzone = ({ onUpload, cancelEditor, editorMode }) => {
+    const [uploading, setUploading] = useState(false)
     const [imagePreview, setimagePreview] = useState(null)
     const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
         accept: { 'image/*': [] },
@@ -25,9 +26,15 @@ const Dropzone = ({ onUpload, cancelEditor, editorMode }) => {
 
     const uploadHandler = async (e) => {
         e.preventDefault()
+        setUploading(true)
 
         if (acceptedFiles.length < 1) return console.error('accpeted files is null')
         onUpload(acceptedFiles[0])
+            .then(() => setUploading(false))
+            .catch(e => {
+                setUploading(false)
+                console.error(e)
+            })
     }
 
     const cancelHandler = () => {
