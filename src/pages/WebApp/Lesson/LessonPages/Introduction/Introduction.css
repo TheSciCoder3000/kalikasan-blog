@@ -3,10 +3,28 @@
   padding: 3rem 5rem;
 }
 
+@media screen and (max-width: 950px) {
+  .intro-cont {
+    padding: 2rem 3rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .intro-cont {
+    padding: 1.5rem 1rem;
+  }
+}
+
 .intro-cont .text-header {
   font-family: 'Palanquin', sans-serif;
   font-size: 3em;
   margin-bottom: 1.5rem;
+}
+
+@media screen and (max-width: 700px) {
+  .intro-cont .text-header {
+    font-size: 2.25em;
+  }
 }
 
 .intro-cont .text-p {
