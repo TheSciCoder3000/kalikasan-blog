@@ -7,12 +7,14 @@ import { setTask } from '../../../../../redux/userSlice'
 import './PlantTrees.css'
 
 const PlantTrees = ({ lessonId }) => {
-  const dispatch = useDispatch()
-  const [editorMode, setEditorMode] = useState(false)
-  const { currentUser } = useAuth()
-  const taskData = useSelector(state => state.user.data.tasks.find(task => task.lessonId === lessonId))
-  console.log(taskData)
+  const dispatch = useDispatch()                            // for dispatching redux actions
+  const [editorMode, setEditorMode] = useState(false)       // for toggling the editor mode when making edits
+  const { currentUser } = useAuth()                         // retrieving user auth data
 
+  // get user's lesson task data instance
+  const taskData = useSelector(state => state.user.data.tasks.find(task => task.lessonId === lessonId))
+
+  // Upload event handler
   const uploadHandler = async (file) => {
     try {
       const imageUrl = await uploadToStorage(currentUser?.uid, file)
@@ -27,7 +29,7 @@ const PlantTrees = ({ lessonId }) => {
     }
   }
 
-  console.log('preview mode', (taskData?.value && taskData?.value !== '') && !editorMode)
+
   return (
     <div className='plant-trees-cont'>
       <div className="task-container">

@@ -3,14 +3,17 @@ import { useDropzone } from 'react-dropzone'
 import './Dropzone.css'
 
 const Dropzone = ({ onUpload, cancelEditor, editorMode }) => {
-    const [uploading, setUploading] = useState(false)
-    const [imagePreview, setimagePreview] = useState(null)
+    const [uploading, setUploading] = useState(false)                       // upload state
+    const [imagePreview, setimagePreview] = useState(null)                  // image preview state
+
+    // dropzone states and functions
     const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
         accept: { 'image/*': [] },
         maxFiles: 1,
         maxSize: 10000000
     })
 
+    // when user drags in an img, set it as image preview
     useEffect(() => {
         if (acceptedFiles.length > 0) {
             const currImg = acceptedFiles[0]
@@ -24,6 +27,7 @@ const Dropzone = ({ onUpload, cancelEditor, editorMode }) => {
     }, [acceptedFiles])
 
 
+    // Upload event handler
     const uploadHandler = async (e) => {
         e.preventDefault()
         setUploading(true)
@@ -37,6 +41,7 @@ const Dropzone = ({ onUpload, cancelEditor, editorMode }) => {
             })
     }
 
+    // Cancel event handler
     const cancelHandler = () => {
         setimagePreview(null)
         cancelEditor()
@@ -44,6 +49,7 @@ const Dropzone = ({ onUpload, cancelEditor, editorMode }) => {
         acceptedFiles.splice(0, acceptedFiles.length)
     }
 
+    
     return (
         <>
             {(editorMode && acceptedFiles.length < 1) && (
@@ -61,8 +67,8 @@ const Dropzone = ({ onUpload, cancelEditor, editorMode }) => {
                     :
                     <>
                         <div className="dropzone-actions">
-                            <button className='upload-btn' type='submit'>Upload</button>
-                            <button className='cancel-btn' onClick={cancelHandler}>Cancel</button>
+                            <button disabled={uploading} className='upload-btn' type='submit'>Upload</button>
+                            <button disabled={uploading} className='cancel-btn' onClick={cancelHandler}>Cancel</button>
                         </div>
                         <div className="dropzone-preview">
                             <img src={imagePreview} alt="" />
