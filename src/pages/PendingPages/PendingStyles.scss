@@ -1,0 +1,24 @@
+.pending-page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+
+    h1 {
+        font-size: 3.5em;
+        margin-bottom: 1rem;
+    }
+
+    &.no-connection {
+        p {
+            color: rgb(90, 90, 90);
+        }
+    }
+
+    &.loading-assets {
+        height: 100vh;
+        width: 100vw;
+    }
+}

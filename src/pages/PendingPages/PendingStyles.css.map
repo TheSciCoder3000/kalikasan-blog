@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,aAAa,CAAC;EACV,MAAM,EAAE,KAAK;EACb,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;EACtB,WAAW,EAAE,MAAM;EACnB,eAAe,EAAE,MAAM;EACvB,WAAW,EAAE,oBAAoB;CAiBpC;;AAvBD,AAQI,aARS,CAQT,EAAE,CAAC;EACC,SAAS,EAAE,KAAK;EAChB,aAAa,EAAE,IAAI;CACtB;;AAXL,AAcQ,aAdK,AAaR,cAAc,CACX,CAAC,CAAC;EACE,KAAK,EAAE,OAAe;CACzB;;AAhBT,AAmBI,aAnBS,AAmBR,eAAe,CAAC;EACb,MAAM,EAAE,KAAK;EACb,KAAK,EAAE,KAAK;CACf",
+    "sources": [
+        "PendingStyles.scss"
+    ],
+    "names": [],
+    "file": "PendingStyles.css"
+}

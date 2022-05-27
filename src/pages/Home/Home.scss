@@ -5,7 +5,7 @@ $Roboto-font: 'Roboto', sans-serif;
 @import '../../assets/scss/breakpoints';
 
 .home-page {
-    width: 100vw;
+    width: 100%;
     overflow-x: hidden;
     .loading-cont {
         position: absolute;

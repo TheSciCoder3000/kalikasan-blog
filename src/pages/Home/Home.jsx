@@ -27,6 +27,7 @@ import { AnimationVariants } from './variants'
 import { useLocomotiveScroll } from 'react-locomotive-scroll'
 import { Link, useHistory } from 'react-router-dom'
 import useWindowDim from '../../components/useWindowDim'
+import Loading from '../PendingPages/Loading'
 
 
 const lessons = [
@@ -97,9 +98,7 @@ const Home = ({ currentUser, authPending }) => {
   return (
     <div className='home-page' data-scroll-section>
       {(loading || authPending) && (
-        <div className="loading-cont">
-          <h1>Loading...</h1>
-        </div>
+        <Loading />
       )}
       {/* Sticky Navbar */}
       {(winWidth > 780) ? 

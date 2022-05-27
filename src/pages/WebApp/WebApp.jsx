@@ -14,6 +14,8 @@ import Settings from './Settings/Settings'
 import ParticipantRoute from './Admin/Participant/ParticipantRoute'
 import TopBar from './TopBar/TopBar'
 import './WebApp.css'
+import AppLoading from '../PendingPages/AppLoading'
+import NoConnection from '../PendingPages/NoConnection'
 
 
 // Main web app the users will use to conduct attend activities
@@ -40,9 +42,9 @@ const WebApp = () => {
     }, [pending])
 
     return ( pending || userLoading || activityLoading ? 
-        <div className='data-loading'>Authenticating User</div>
+        <AppLoading />
         : !userData ?
-        <div className="no-connection">No Connection</div>
+        <NoConnection />
         :
         <div className='web-app'>
             {(width > 650 || menubar) && (
