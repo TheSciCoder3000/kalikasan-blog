@@ -6,7 +6,7 @@ export const fetchTasks = createAsyncThunk('Task/fetchTasks',
     async () => {
         try {
             let snapshot = await getDb('Tasks')
-            return snapshot.docs.map(doc => { return { id: doc.id, ...doc.data() } })
+            return snapshot.docs.map(doc => { return { id: doc.id, ...doc.data() } }).sort((a, b) => a.lessonIndx - b.lessonIndx)
         } catch (e) {
             throw e
         }
