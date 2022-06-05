@@ -20,7 +20,7 @@ import './App.css';
 
 // Main App Component
 function App() {
-  const appRef = useRef(null)
+  const appRef = useRef(null)                   // for locomotive scroll
   
   const { currentUser, pending } = useAuth()
   
