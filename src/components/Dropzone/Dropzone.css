@@ -15,7 +15,20 @@
 
 .dropzone-form-cont {
   height: 10rem;
-  padding: 5rem;
+  padding: 2rem 5rem;
+  font-weight: 300;
+}
+
+@media screen and (max-width: 950px) {
+  .dropzone-form-cont {
+    padding: 2rem 2rem;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .dropzone-form-cont {
+    padding: 2rem 0;
+  }
 }
 
 .dropzone-form-cont .dropzone-cont {
@@ -46,6 +59,11 @@
   outline: none;
   -webkit-transition: border .24s ease-in-out;
   transition: border .24s ease-in-out;
+  text-align: center;
+}
+
+.dropzone-form-cont .dropzone-cont em {
+  color: #d6d6d6;
 }
 
 .dropzone-form-cont .dropzone-cont:hover {

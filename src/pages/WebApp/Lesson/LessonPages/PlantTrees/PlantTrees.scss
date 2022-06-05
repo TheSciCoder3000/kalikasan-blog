@@ -1,6 +1,28 @@
+@mixin custom-breakpoint($max-width) {
+    @media screen and (max-width: $max-width) {
+        @content;
+    }
+}
+
 .plant-trees-cont {
     height: 100vh;
     padding: 4rem;
+    font-family: 'Roboto', sans-serif;
+
+    @include custom-breakpoint(600px) {
+        padding: 4rem 1rem;
+    }
+
+    .lesson-cont {
+        p {
+            color: rgb(68, 68, 68);
+            font-weight: 400;
+            margin-top: 1rem;
+        }
+        h2 {
+            margin-top: 2rem;
+        }
+    }
 
     .task-container {
         .task-actions {

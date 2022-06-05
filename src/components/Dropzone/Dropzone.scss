@@ -1,3 +1,9 @@
+@mixin custom-breakpoint($max-width) {
+    @media screen and (max-width: $max-width) {
+        @content;
+    }
+}
+
 .cancel-editor {
     padding: 0.55rem 0.7rem;
     border: none;
@@ -15,7 +21,15 @@
 }
 .dropzone-form-cont {
     height: 10rem;
-    padding: 5rem;
+    padding: 2rem 5rem;
+    font-weight: 300;
+
+    @include custom-breakpoint(950px) {
+        padding: 2rem 2rem;
+    }
+    @include custom-breakpoint(700px) {
+        padding: 2rem 0;
+    }
 
     .dropzone-cont {
         flex: 1;
@@ -33,7 +47,11 @@
         color: #bdbdbd;
         outline: none;
         transition: border .24s ease-in-out;
+        text-align: center;
 
+        em {
+            color: #d6d6d6;
+        }
 
         &:hover {
             cursor: pointer;

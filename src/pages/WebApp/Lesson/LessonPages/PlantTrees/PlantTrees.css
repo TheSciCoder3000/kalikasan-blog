@@ -1,6 +1,23 @@
 .plant-trees-cont {
   height: 100vh;
   padding: 4rem;
+  font-family: 'Roboto', sans-serif;
+}
+
+@media screen and (max-width: 600px) {
+  .plant-trees-cont {
+    padding: 4rem 1rem;
+  }
+}
+
+.plant-trees-cont .lesson-cont p {
+  color: #444444;
+  font-weight: 400;
+  margin-top: 1rem;
+}
+
+.plant-trees-cont .lesson-cont h2 {
+  margin-top: 2rem;
 }
 
 .plant-trees-cont .task-container .task-actions button {
