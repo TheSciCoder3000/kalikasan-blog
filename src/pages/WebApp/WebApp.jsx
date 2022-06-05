@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import { useAuth } from '../../components/Auth'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchUser, fetchActivities, fetchTasks } from '../../redux'
+import { fetchUser, fetchActivities, fetchTasks, fetchParticipants } from '../../redux'
 import useWindowDim from '../../components/useWindowDim'
 
 import ProtectedAdminRoute from '../../components/ProtectedAdminRoute'
@@ -38,8 +38,16 @@ const WebApp = () => {
         if (!pending) dispatch(fetchUser(currentUser.uid))
         dispatch(fetchActivities())
         dispatch(fetchTasks())
-        
     }, [pending])
+
+    // fetch participant data
+    const participantFetched = useRef(false)
+    useEffect(() => {
+        if (userData && !participantFetched.current) {
+            participantFetched.current = true
+            dispatch(fetchParticipants())
+        }
+    }, [userData])
 
     return ( pending || userLoading || activityLoading ? 
         <AppLoading />
