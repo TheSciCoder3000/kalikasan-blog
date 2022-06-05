@@ -3,8 +3,8 @@ import ParticipantCellLink from "./ParticipantCellLink";
 export const COLUMNS = [
     {
         Header: 'Participants',
-        accessor: 'participant',
-        Cell: ({ value }) => <ParticipantCellLink participantId={value.id} participantName={value.name} />
+        accessor: (row) => row.participant.name,
+        Cell: ({ row }) => <ParticipantCellLink participantId={row.original.participant.id} participantName={row.original.participant.name} />
     },
     {
         Header: 'Task 1',
