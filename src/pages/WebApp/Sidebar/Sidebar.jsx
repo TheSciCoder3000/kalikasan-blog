@@ -135,7 +135,7 @@ const Sidebar = ({ userData, activityData, currentUser, toggleMenubar, width }) 
                                                     variants={lessonVariant}
                                                     initial='hidden'>
                                             {activityData.map((activity, indx) => (
-                                                <li key={indx} className="lesson-item">{activity.title}</li>
+                                                <ActivityNavLink key={indx} activity={activity} />
                                             ))}
                                         </motion.ul>
                                     )}
@@ -159,6 +159,12 @@ const Sidebar = ({ userData, activityData, currentUser, toggleMenubar, width }) 
 const LessonNavLink = ({ activity }) => {
     return (
         <Link to={`/app/lessons/${activity.id}`} className={`lesson-item`} activeClassName='active-lesson-link' >{activity.title}</Link>
+    )
+}
+
+const ActivityNavLink = ({ activity }) => {
+    return (
+        <Link to={`/app/admin/lessons/${activity.id}`} className='lesson-item' activeClassName='active-lesson-link'>{activity.title}</Link>
     )
 }
 
