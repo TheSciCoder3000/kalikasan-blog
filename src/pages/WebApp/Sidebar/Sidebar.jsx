@@ -46,7 +46,7 @@ const Sidebar = ({ userData, activityData, currentUser, toggleMenubar, width }) 
     }, [pathname])
 
     useEffect(() => {
-        if (pathname === '/app/admin/lessons') {
+        if (pathname.includes('/app/admin/lessons')) {
             lessonListAdminAnimation.start('visible')
         }
         else {
@@ -54,6 +54,7 @@ const Sidebar = ({ userData, activityData, currentUser, toggleMenubar, width }) 
         }
     }, [pathname])
 
+    console.log('path match', pathname.includes('/app/admin/lessons'))
 
     return (
         <div className="side-panel">

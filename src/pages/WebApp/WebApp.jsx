@@ -16,6 +16,7 @@ import TopBar from './TopBar/TopBar'
 import './WebApp.css'
 import AppLoading from '../PendingPages/AppLoading'
 import NoConnection from '../PendingPages/NoConnection'
+import ActivitiesRoute from './Admin/Activities/ActivitiesRoute'
 
 
 // Main web app the users will use to conduct attend activities
@@ -89,8 +90,8 @@ const WebApp = () => {
                     <ProtectedAdminRoute isAdmin={userData.admin} path='/app/admin/participants'>
                         <ParticipantRoute />
                     </ProtectedAdminRoute>
-                    <ProtectedAdminRoute isAdmin={userData.admin} exact path='/app/admin/lessons'>
-                        Activities
+                    <ProtectedAdminRoute isAdmin={userData.admin} path='/app/admin/lessons'>
+                        <ActivitiesRoute />
                     </ProtectedAdminRoute>
                 </Switch>
             </div>
