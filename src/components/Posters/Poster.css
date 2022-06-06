@@ -1,0 +1,9 @@
+.poster-cont {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.poster-cont img {
+  width: 100%;
+}
+/*# sourceMappingURL=Poster.css.map */

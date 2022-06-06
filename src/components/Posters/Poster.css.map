@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,YAAY,CAAC;EACT,aAAa,EAAE,IAAI;EACnB,QAAQ,EAAE,MAAM;CAKnB;;AAPD,AAII,YAJQ,CAIR,GAAG,CAAC;EACA,KAAK,EAAE,IAAI;CACd",
+    "sources": [
+        "Poster.scss"
+    ],
+    "names": [],
+    "file": "Poster.css"
+}

@@ -1,5 +1,6 @@
 import Todo from '../../../components/Todo'
 import Greeting1 from '../../../components/GreetingBanner/Greeting1'
+import Posters from '../../../components/Posters';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import { useSelector } from 'react-redux';
 import 'react-circular-progressbar/dist/styles.css';
@@ -36,9 +37,9 @@ const Dashboard = () => {
         </div>
       </div>
       <div className="calendar-grid-cont">
-        <h2 className="calendar-header banner-header">Calendar</h2>
+        <h2 className="calendar-header banner-header">Posters</h2>
         <div className="calendar-cont banner-cont">
-
+          <Posters />
         </div>
       </div>
       <div className="task-grid-cont">
