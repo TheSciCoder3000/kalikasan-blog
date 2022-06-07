@@ -1,21 +1,34 @@
-import { useEffect, useState, useRef, useMemo } from 'react'
+import { useMemo } from 'react'
 import { useTable, useSortBy, useGlobalFilter, usePagination } from 'react-table'
 import { COLUMNS } from './tableColumns'
-import { useSelector } from 'react-redux'
-import { getQueryDb } from '../../../../firebase'
+import { useSelector, useDispatch } from 'react-redux'
 import { Next, Previous, Refresh } from './svg'
 import './Participant.css'
 import SortIcon from './SortIcon'
 import NameSearch from './NameSearch'
+import { fetchParticipants } from '../../../../redux'
+import LastUpdated from '../../../../components/LastUpdated'
 
 const Participant = () => {
-  const [participantList, setParticipantList] = useState([])
-  const initialReload = useRef(false)
-  const [reload, setReload] = useState(false)
+  const dispatch = useDispatch()
+  const refreshPraticipant = () => dispatch(fetchParticipants())
+
+  const { data: participantList, pending, lastUpdated } = useSelector(state => state.participants)
   const tasks = useSelector(state => state.task.data.map(task => task.lessonId))
 
   const columns = useMemo(() => COLUMNS, [])
-  const data = useMemo(() => participantList, [participantList])
+  const data = useMemo(() => participantList.map(doc => {
+    console.log('memoizing data')
+    return {
+      participant: {
+        name: `${doc.LastName}, ${doc.FirstName}`,
+        id: doc.id
+      },
+      task1: doc.tasks.some(task => task.lessonId === tasks[0]) ? 'Completed' : 'Incomplete',
+      task2: doc.tasks.some(task => task.lessonId === tasks[1]) ? 'Completed' : 'Incomplete',
+      task3: doc.tasks.some(task => task.lessonId === tasks[2]) ? 'Completed' : 'Incomplete',
+    }
+  }), [participantList])
 
 
   const {
@@ -37,26 +50,6 @@ const Participant = () => {
 
   const { globalFilter, pageSize, pageIndex } = state
 
-  const fetchParticipantList = () => {
-    getQueryDb('Users', { field: 'admin', eq: '==', value: false }).then(snapshot => {
-      setParticipantList(snapshot.docs.map(rawDoc => {
-        const doc = rawDoc.data()
-        return {
-          participant: {
-            name: `${doc.LastName}, ${doc.FirstName}`,
-            id: rawDoc.id
-          },
-          task1: doc.tasks.some(task => task.lessonId === tasks[0]) ? 'Completed' : 'Incomplete',
-          task2: doc.tasks.some(task => task.lessonId === tasks[1]) ? 'Completed' : 'Incomplete',
-          task3: doc.tasks.some(task => task.lessonId === tasks[2]) ? 'Completed' : 'Incomplete',
-        }
-      }))
-      initialReload.current = true
-      setReload(false)
-    })
-  }
-
-  useEffect(() => { if ((!initialReload.current && tasks) || reload) fetchParticipantList() }, [tasks, reload])
 
 
   return (
@@ -64,8 +57,9 @@ const Participant = () => {
       <div className="table-cont">
         <div className="table-cont-header">
           <h1 className="cont-header">Participants</h1>
+          <LastUpdated lastUpdatedString={lastUpdated} />
           <div className="refresh-cont">
-            <Refresh onClick={() => setReload(true)} className='refresh-icon' />
+            <Refresh onClick={refreshPraticipant} className={`refresh-icon ${pending ? 'refresh-pending': ''}`} />
           </div>
         </div>
         <div className="table-content">

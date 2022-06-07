@@ -22,7 +22,8 @@ export const fetchParticipants = createAsyncThunk('Participants/fetchParticipant
 const initialState = {
     pending: false,
     data: [],
-    error: ''
+    error: '',
+    lastUpdated: null
 }
 const participantSlice = createSlice({
     name: 'Participants',
@@ -31,16 +32,19 @@ const participantSlice = createSlice({
         [fetchParticipants.pending]: (state) => {
             state.pending = true
             state.error = ''
+            state.lastUpdated = null
         },
         [fetchParticipants.fulfilled]: (state, { payload }) => {
             state.pending = false
             state.error = ''
             state.data = payload
+            state.lastUpdated = new Date().toString()
         },
         [fetchParticipants.rejected]: (state, { error }) => {
             state.pending = false
             state.error = error
             state.data = []
+            state.lastUpdated = new Date().toString()
         }
     }
 })
