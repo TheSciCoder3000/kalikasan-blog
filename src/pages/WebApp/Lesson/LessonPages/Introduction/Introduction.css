@@ -62,6 +62,12 @@
   margin-right: 2rem;
 }
 
+.intro-cont .task-cont .task-editor-cont .demo-editor {
+  background-color: white;
+  padding: 0 1rem;
+  border: 1px solid #e1e1e1;
+}
+
 .intro-cont .task-cont .task-ans-cont {
   margin: 0 4rem;
 }

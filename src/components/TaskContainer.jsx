@@ -31,6 +31,7 @@ const TaskContainer = ({ lessonId }) => {
         }
 
         setTask(dispatch, currentUser.uid, newTask)
+        // TODO: use updated regex /^((#*\s*)*\n*)$/
         if (!(/^\s*$/.test(taskMarkdown))) setEditMode(false)
     }
     
