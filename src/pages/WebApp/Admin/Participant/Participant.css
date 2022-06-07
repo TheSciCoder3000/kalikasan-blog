@@ -104,6 +104,28 @@
           justify-content: space-between;
 }
 
+.participant-cont .table-cont .table-content table tbody .task-status {
+  display: list-item;
+  font-size: 0.9em;
+  margin-left: 0.4rem;
+}
+
+.participant-cont .table-cont .table-content table tbody .task-status.task-complete {
+  color: green;
+}
+
+.participant-cont .table-cont .table-content table tbody .task-status.task-complete::marker {
+  color: #00ad00;
+}
+
+.participant-cont .table-cont .table-content table tbody .task-status.task-incomplete {
+  color: red;
+}
+
+.participant-cont .table-cont .table-content table tbody .task-status.task-incomplete::marker {
+  color: #ff2b2b;
+}
+
 .participant-cont .table-cont .table-content .page-pagination-cont {
   margin: 1.25rem 0;
   display: -webkit-box;

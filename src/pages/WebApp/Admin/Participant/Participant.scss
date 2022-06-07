@@ -80,6 +80,28 @@
                         }
                     }
                 }
+                tbody {
+                    .task-status {
+                        display: list-item;
+                        font-size: 0.9em;
+                        margin-left: 0.4rem;
+
+                        &.task-complete {
+                            color: green;
+
+                            &::marker {
+                                color: rgb(0, 173, 0);
+                            }
+                        }
+                        &.task-incomplete {
+                            color: red;
+
+                            &::marker {
+                                color: rgb(255, 43, 43);
+                            }
+                        }
+                    }
+                }
             }
             .page-pagination-cont {
                 margin: 1.25rem 0;
