@@ -10,6 +10,10 @@
   }
 }
 
+.plant-trees-cont .lesson-cont {
+  margin-bottom: 2rem;
+}
+
 .plant-trees-cont .lesson-cont p {
   color: #444444;
   font-weight: 400;
@@ -18,6 +22,10 @@
 
 .plant-trees-cont .lesson-cont h2 {
   margin-top: 2rem;
+}
+
+.plant-trees-cont .task-container {
+  margin-bottom: 4rem;
 }
 
 .plant-trees-cont .task-container .task-actions button {
