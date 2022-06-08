@@ -3,7 +3,7 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { collection, doc, getDoc, getDocs, getFirestore, setDoc, query, where } from "firebase/firestore";
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut } from 'firebase/auth';
-import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage'
+import { getStorage, ref, uploadBytes, uploadBytesResumable, getDownloadURL } from 'firebase/storage'
 import { firebaseConfig } from './firebase-conf'
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -67,4 +67,16 @@ export const uploadToStorage = async (userId, file) => {
     } catch (e) {
         throw e
     }
+}
+
+export const uploadToStorageResumeable = (userId, file, upload) => {
+    const storagePath = `${userId}/${file.name}`
+    const storageRef = ref(storage, storagePath)
+
+    const uploadTask = uploadBytesResumable(storageRef, file)
+    uploadTask.on('state_changed', 
+        upload.handler,
+        upload.error,
+        () => getDownloadURL(uploadTask.snapshot.ref).then(upload.complete)
+    )
 }

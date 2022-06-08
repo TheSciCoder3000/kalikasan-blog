@@ -58,32 +58,50 @@
         }
     }
 
-    .dropzone-actions {
-        button {
-            padding: 0.55rem 0.7rem;
-            border: none;
-            border-radius: 4px;
-            margin-bottom: 3rem;
+    .dropzone-topbar {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 3rem;
 
-        }
-        .upload-btn {
-            background-color: #251308;
-            color: white;
-
-            &:hover {
-                cursor: pointer;
-                background-color: #50290f;
+        .dropzone-actions {
+            button {
+                padding: 0.55rem 0.7rem;
+                border: none;
+                border-radius: 4px;
+    
+                &:disabled {
+                    background-color: grey;
+                    color: rgb(198, 198, 198);
+    
+                    &:hover {
+                        cursor:not-allowed
+                    }
+                }
+            }
+            .upload-btn {
+                background-color: #251308;
+                color: white;
+    
+                &:hover:not(:disabled) {
+                    cursor: pointer;
+                    background-color: #50290f;
+                }
+            }
+            .cancel-btn {
+                margin-left: 2rem;
+                background-color: rgb(245, 245, 245);
+                color: black;
+    
+                &:hover:not(:disabled) {
+                    cursor: pointer;
+                    background-color: rgb(235, 235, 235);
+                }
             }
         }
-        .cancel-btn {
-            margin-left: 2rem;
-            background-color: rgb(245, 245, 245);
-            color: black;
-
-            &:hover {
-                cursor: pointer;
-                background-color: rgb(235, 235, 235);
-            }
+        .progress-status {
+            display: flex;
+            align-items: center;
+            text-align: center;
         }
     }
 

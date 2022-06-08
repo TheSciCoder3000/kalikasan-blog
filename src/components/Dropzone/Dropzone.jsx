@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
 import './Dropzone.css'
 
-const Dropzone = ({ onUpload, cancelEditor, editorMode }) => {
+const Dropzone = ({ uploadProgress, onUpload, cancelEditor, editorMode }) => {
     const [uploading, setUploading] = useState(false)                       // upload state
     const [imagePreview, setimagePreview] = useState(null)                  // image preview state
 
@@ -29,17 +29,20 @@ const Dropzone = ({ onUpload, cancelEditor, editorMode }) => {
 
     // Upload event handler
     const uploadHandler = async (e) => {
+        console.log('uploading')
         e.preventDefault()
         setUploading(true)
 
         if (acceptedFiles.length < 1) return console.error('accpeted files is null')
-        onUpload(acceptedFiles[0])
-            .then(() => setUploading(false))
-            .catch(e => {
+        onUpload(acceptedFiles[0], 
+            () => {
                 setUploading(false)
-                console.error(e)
-            })
-    }
+                cancelEditor()
+            },
+            e => {
+            setUploading(false)
+            console.error(e)
+        })}
 
     // Cancel event handler
     const cancelHandler = () => {
@@ -66,9 +69,12 @@ const Dropzone = ({ onUpload, cancelEditor, editorMode }) => {
                     <>Loading image</>
                     :
                     <>
-                        <div className="dropzone-actions">
-                            <button disabled={uploading} className='upload-btn' type='submit'>Upload</button>
-                            <button disabled={uploading} className='cancel-btn' onClick={cancelHandler}>Cancel</button>
+                        <div className="dropzone-topbar">
+                            <div className="dropzone-actions">
+                                <button disabled={uploading} className='upload-btn' type='submit'>Upload</button>
+                                <button disabled={uploading} className='cancel-btn' onClick={cancelHandler}>Cancel</button>
+                            </div>
+                            {uploadProgress && <div className="progress-status">{`${uploadProgress.toFixed(2)}%`}</div>}
                         </div>
                         <div className="dropzone-preview">
                             <img src={imagePreview} alt="" />
