@@ -1,0 +1,50 @@
+.admin-planting {
+    font-family: 'Roboto', sans-serif;
+    padding: 3rem 2rem;
+    overflow-x: hidden;
+    height: 100%;
+
+    .planting-header {
+        margin-bottom: 3rem;
+        
+        h1 {
+            font-size: 3em;
+            font-weight: 400;
+        }
+    }
+
+    .submissions-cont {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 1rem;
+
+        .entry-cont {
+            height: 20rem;
+            overflow: hidden;
+            position: relative;
+            border-radius: 10px;
+            background: rgb(218, 218, 218);
+
+            &:hover {
+                .entry-details {
+                    color: #f7c047;
+                }
+            }
+
+            img {
+                width: 100%;
+            }
+            .entry-details {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                height: 30%;
+                background: rgba(0, 0, 0, 0.491);
+                color: white;
+                padding: 1.75rem 1.5rem;
+                box-sizing: border-box;
+            }
+        }
+    }
+}

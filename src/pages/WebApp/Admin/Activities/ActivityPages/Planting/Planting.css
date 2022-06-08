@@ -1,0 +1,53 @@
+.admin-planting {
+  font-family: 'Roboto', sans-serif;
+  padding: 3rem 2rem;
+  overflow-x: hidden;
+  height: 100%;
+}
+
+.admin-planting .planting-header {
+  margin-bottom: 3rem;
+}
+
+.admin-planting .planting-header h1 {
+  font-size: 3em;
+  font-weight: 400;
+}
+
+.admin-planting .submissions-cont {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1rem;
+}
+
+.admin-planting .submissions-cont .entry-cont {
+  height: 20rem;
+  overflow: hidden;
+  position: relative;
+  border-radius: 10px;
+  background: #dadada;
+}
+
+.admin-planting .submissions-cont .entry-cont:hover .entry-details {
+  color: #f7c047;
+}
+
+.admin-planting .submissions-cont .entry-cont img {
+  width: 100%;
+}
+
+.admin-planting .submissions-cont .entry-cont .entry-details {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30%;
+  background: rgba(0, 0, 0, 0.491);
+  color: white;
+  padding: 1.75rem 1.5rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+/*# sourceMappingURL=Planting.css.map */
