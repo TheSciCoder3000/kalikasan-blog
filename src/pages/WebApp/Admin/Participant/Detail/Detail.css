@@ -1,0 +1,84 @@
+.participant-detail-page {
+  font-family: 'Roboto', sans-serif;
+  padding: 3rem;
+  padding-top: 1rem;
+}
+
+.participant-detail-page .page-controls {
+  margin-bottom: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.participant-detail-page .page-controls .back-participant-list {
+  font-size: 2.5em;
+  margin-left: -1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.participant-detail-page .page-controls .back-participant-list:hover {
+  cursor: pointer;
+  fill: #e5a927;
+}
+
+.participant-detail-page .page-controls .refresh-page {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 2em;
+  border: none;
+  background: transparent;
+}
+
+.participant-detail-page .page-controls .refresh-page:hover {
+  cursor: pointer;
+  fill: #e5a927;
+}
+
+.participant-detail-page .page-header {
+  font-size: 2.5em;
+  font-weight: 300;
+  margin-bottom: 1.25rem;
+}
+
+.participant-detail-page .main-info p {
+  margin-bottom: 0.75rem;
+}
+
+.participant-detail-page .activity-group-cont {
+  padding: 2rem 0;
+}
+
+.participant-detail-page .activity-group-cont .activity-item-cont {
+  margin-bottom: 3rem;
+}
+
+.participant-detail-page .activity-group-cont .activity-item-cont .activity-title {
+  font-weight: 500;
+  font-size: 1.5em;
+  margin-bottom: 1.2rem;
+}
+
+.participant-detail-page .activity-group-cont .activity-item-cont .intro-content {
+  font-weight: 300;
+}
+
+.participant-detail-page .activity-group-cont .activity-item-cont .planting-content img {
+  max-width: 100%;
+  height: 30rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+/*# sourceMappingURL=Detail.css.map */
