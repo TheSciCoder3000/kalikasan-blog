@@ -1,8 +1,27 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
+import { markdownToDraft } from 'markdown-draft-js'
+import draftjsToHtml from 'draftjs-to-html'
+import './Introduction.css'
+import { Link } from 'react-router-dom'
 
-const Introduction = () => {
+const Introduction = ({ activityId }) => {
+  const participantData = useSelector(state => state.participants.data.filter(participant => participant.tasks.some(task => task.lessonId === activityId)))
   return (
-    <div>Introduction</div>
+    <div className='admin-introduction'>
+      <h1>Introductions</h1>
+      <p></p>
+      <div className="introductions-cont">
+        {participantData.map(participant => 
+          <div className="intro-item">
+            <Link to={`/app/admin/participants/${participant.id}`} className='participant-name'>{participant.FirstName} {participant.LastName}</Link>
+            <hr />
+            <div className="intro-content" 
+              dangerouslySetInnerHTML={{ __html: draftjsToHtml(markdownToDraft(participant.tasks.find(task => task.lessonId === "Introduction").value)) }}/>
+          </div>  
+        )}
+      </div>
+    </div>
   )
 }
 
