@@ -33,7 +33,8 @@ export const createUser = async (email, pass, firstName, lastName, admin = false
             FirstName: firstName,
             LastName: lastName,
             tasks: [],
-            admin: admin
+            admin: admin,
+            email: email
         }).then(() => cred)
         .catch((e) => console.error(e))
     })
