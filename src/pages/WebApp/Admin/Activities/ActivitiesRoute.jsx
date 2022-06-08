@@ -30,8 +30,8 @@ const Activity = () => {
     return (
         <div className="activities-cont">
             {
-                activityId === 'Introduction' ? <Introduction /> :
-                activityId === 'Planting' ? <Planting />
+                activityId === 'Introduction' ? <Introduction activityId={activityId} /> :
+                activityId === 'Planting' ? <Planting activityId={activityId} />
                 : <></>
             }
         </div>
