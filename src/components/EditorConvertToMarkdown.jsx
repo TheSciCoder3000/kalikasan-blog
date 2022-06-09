@@ -1,8 +1,7 @@
 import { convertToRaw } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
-import draftToMarkdown from 'draftjs-to-markdown';
+import { draftToMarkdown } from 'markdown-draft-js'
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import { uploadToStorage } from '../firebase';
 
 
 // component that converts outputs markdown
