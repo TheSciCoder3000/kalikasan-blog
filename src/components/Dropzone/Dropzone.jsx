@@ -74,7 +74,7 @@ const Dropzone = ({ uploadProgress, onUpload, cancelEditor, editorMode }) => {
                                 <button disabled={uploading} className='upload-btn' type='submit'>Upload</button>
                                 <button disabled={uploading} className='cancel-btn' onClick={cancelHandler}>Cancel</button>
                             </div>
-                            {uploadProgress && <div className="progress-status">{`${uploadProgress.toFixed(2)}%`}</div>}
+                            {uploadProgress && <div className="progress-status">{uploadProgress}</div>}
                         </div>
                         <div className="dropzone-preview">
                             <img src={imagePreview} alt="" />

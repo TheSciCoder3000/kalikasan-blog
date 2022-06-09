@@ -4,6 +4,7 @@ import { useAuth } from '../../../../../components/Auth'
 import Dropzone from '../../../../../components/Dropzone/Dropzone'
 import { uploadToStorage, uploadToStorageResumeable } from '../../../../../firebase'
 import { setTask } from '../../../../../redux/userSlice'
+import imageCompression from 'browser-image-compression'
 import './PlantTrees.css'
 
 const PlantTrees = ({ lessonId }) => {
@@ -22,7 +23,7 @@ const PlantTrees = ({ lessonId }) => {
 
   // Upload event handler
   const uploadHandler = async (file, onSuccess, onError) => {
-    const handler = (snapshot) => setUploadProgress((snapshot.bytesTransferred / snapshot.totalBytes) * 100)
+    const handler = (snapshot) => setUploadProgress(`Uploading - ${((snapshot.bytesTransferred / snapshot.totalBytes) * 100).toFixed(2)}%`)
     const error = (e) => {
       console.log('something went wrong')
       console.error(e)
@@ -37,11 +38,22 @@ const PlantTrees = ({ lessonId }) => {
       setUploadProgress(null)
     } 
 
-    uploadToStorageResumeable(currentUser?.uid, file, {
-      handler,
-      error,
-      complete
-    })
+    const options = {
+      maxSizeMB: 1,
+      maxWidthOrHeight: 1280,
+      useWebWorker: true,
+      onProgress: (percentage) => setUploadProgress(`Compressing - ${percentage}%`)
+    }
+    try {
+      const compressedFile = await imageCompression(file, options)
+      uploadToStorageResumeable(currentUser?.uid, compressedFile, {
+        handler,
+        error,
+        complete
+      })
+    } catch (e) {
+      throw e
+    }
   }
 
 
