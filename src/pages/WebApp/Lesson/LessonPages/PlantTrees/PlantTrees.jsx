@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useAuth } from '../../../../../components/Auth'
 import Dropzone from '../../../../../components/Dropzone/Dropzone'
-import { uploadToStorage, uploadToStorageResumeable } from '../../../../../firebase'
+import { uploadToStorageResumeable } from '../../../../../firebase'
 import { setTask } from '../../../../../redux/userSlice'
 import imageCompression from 'browser-image-compression'
 import './PlantTrees.css'
@@ -23,27 +23,37 @@ const PlantTrees = ({ lessonId }) => {
 
   // Upload event handler
   const uploadHandler = async (file, onSuccess, onError) => {
+    // update upload progress state handler
     const handler = (snapshot) => setUploadProgress(`Uploading - ${((snapshot.bytesTransferred / snapshot.totalBytes) * 100).toFixed(2)}%`)
+
+    // error handler
     const error = (e) => {
-      console.log('something went wrong')
+      console.log('Error on upload to storage Resumeable')
       console.error(e)
-      onError(e)
+      setUploadProgress(null)           // Remove the progress text
+      onError(e)                        // Set dropzone uploading state to false and log error
     }
+
+    // on upload complete handler
     const complete = (imageUrl) => {
-      onSuccess()
+      // Update firestore participant's task data with image url
       setTask(dispatch, currentUser?.uid, {
         lessonId,
         value: imageUrl
       })
-      setUploadProgress(null)
+      onSuccess()                       // set dropzone uploading state to false
+      setUploadProgress(null)           // Remove the progress text
     } 
 
+    // initialize image compression options
     const options = {
       maxSizeMB: 1,
       maxWidthOrHeight: 1280,
       useWebWorker: true,
       onProgress: (percentage) => setUploadProgress(`Compressing - ${percentage}%`)
     }
+
+    // Try compressing and uploading image
     try {
       const compressedFile = await imageCompression(file, options)
       uploadToStorageResumeable(currentUser?.uid, compressedFile, {
@@ -52,7 +62,9 @@ const PlantTrees = ({ lessonId }) => {
         complete
       })
     } catch (e) {
-      throw e
+      console.error(e)
+      onError(e)
+      setUploadProgress(null)
     }
   }
 

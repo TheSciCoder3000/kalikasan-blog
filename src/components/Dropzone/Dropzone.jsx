@@ -40,9 +40,10 @@ const Dropzone = ({ uploadProgress, onUpload, cancelEditor, editorMode }) => {
                 cancelEditor()
             },
             e => {
-            setUploading(false)
-            console.error(e)
-        })}
+                setUploading(false)
+                console.error(e)
+            }
+        )}
 
     // Cancel event handler
     const cancelHandler = () => {

@@ -42,34 +42,25 @@ export const createUser = async (email, pass, firstName, lastName, admin = false
 export const logUser = async (email, pass) => await signInWithEmailAndPassword(auth, email, pass)
 
 const db = getFirestore(app)
+// get a document from the firestore
 export const getDb = async (colName, docName=null) => {
     if (docName) return getDoc(doc(db, colName, docName))
     else return getDocs(collection(db, colName))
 }
 
+// get a collection of documents from the firestore
 export const getQueryDb = (colName, { field, eq, value }) => {
     return getDocs(query(collection(db, colName), where(field, eq, value)))
 }
 
+// update a document from the firestore
 export const setDb = async (colName, docName, newData) => {
     return setDoc(doc(db, colName, docName), newData)
 }
 
 
 // ========================================== Storage functions ==========================================
-export const uploadToStorage = async (userId, file) => {
-    const storagePath = `${userId}/${file.name}`
-    const storageRef = ref(storage, storagePath)
-
-    try {
-        await uploadBytes(storageRef, file)
-        const dlUrl = await getDownloadURL(storageRef)
-        return dlUrl
-    } catch (e) {
-        throw e
-    }
-}
-
+// upload file to the firebase storage
 export const uploadToStorageResumeable = (userId, file, upload) => {
     const storagePath = `${userId}/${file.name}`
     const storageRef = ref(storage, storagePath)
