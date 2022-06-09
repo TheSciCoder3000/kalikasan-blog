@@ -18,7 +18,6 @@ const Participant = () => {
 
   const columns = useMemo(() => COLUMNS, [])
   const data = useMemo(() => participantList.map(doc => {
-    console.log('memoizing data')
     return {
       participant: {
         name: `${doc.LastName}, ${doc.FirstName}`,

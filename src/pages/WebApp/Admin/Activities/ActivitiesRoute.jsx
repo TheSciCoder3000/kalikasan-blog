@@ -8,7 +8,6 @@ import Planting from './ActivityPages/Planting'
 // Lesson Route component to differentiate the /lessons and /lessons/{lessonId} routes
 const ActivitiesRoute = () => {
     const { data: activityData } = useSelector(state => state.activities)
-    console.log('activity route')
     return (
         <>
             <Route exact path="/app/admin/lessons" >
@@ -25,7 +24,6 @@ const ActivitiesRoute = () => {
 // Lesson component to assign which lesson will be displayed
 const Activity = () => {
     const { activityId } = useParams()        // get the lesson id from the path
-    console.log('activity id', activityId)
 
     return (
         <div className="activities-cont">

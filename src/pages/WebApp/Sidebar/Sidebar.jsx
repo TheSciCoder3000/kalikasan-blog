@@ -54,7 +54,6 @@ const Sidebar = ({ userData, activityData, currentUser, toggleMenubar, width }) 
         }
     }, [pathname])
 
-    console.log('path match', pathname.includes('/app/admin/lessons'))
 
     return (
         <div className="side-panel">
