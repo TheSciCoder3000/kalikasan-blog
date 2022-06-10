@@ -97,16 +97,11 @@ const Home = ({ currentUser, authPending }) => {
 
   return (
     <div className='home-page' data-scroll-section>
-      {(loading || authPending) && (
-        <Loading />
-      )}
-      {/* Sticky Navbar */}
-      {(winWidth > 780) ? 
-        <NavBar className='home-nav' />
-        :
-        <>
-          
-        </>
+      {(loading || authPending) ?
+          <Loading /> :
+        (winWidth > 780) ?
+          <NavBar className='home-nav' /> :
+          <></>
       }
       
       {/* Hero Section */}
