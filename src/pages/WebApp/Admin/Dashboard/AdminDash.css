@@ -83,6 +83,10 @@
   font-size: 1em;
 }
 
+.admin-dashboard .dashboard-cont .info-cont.task-progress .total-progress .CircularProgressbar {
+  height: 8.5rem;
+}
+
 .admin-dashboard .dashboard-cont .info-cont.task-progress .progress-details {
   -webkit-box-flex: 1;
       -ms-flex: 1;

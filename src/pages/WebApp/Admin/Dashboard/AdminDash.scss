@@ -29,7 +29,6 @@
                 justify-content: center;
                 user-select: none;
                 grid-row: 1/2;
-                // aspect-ratio: 1;
 
                 .count-up {
                     margin-bottom: 0.5rem;
@@ -51,6 +50,10 @@
                         margin-bottom: 1.5rem;
                         font-weight: 400;
                         font-size: 1em;
+                    }
+                    .CircularProgressbar {
+                        // display: none;
+                        height: 8.5rem;
                     }
                 }
                 .progress-details {
