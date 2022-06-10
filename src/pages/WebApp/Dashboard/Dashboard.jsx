@@ -1,17 +1,19 @@
 import Todo from '../../../components/Todo'
 import Greeting1 from '../../../components/GreetingBanner/Greeting1'
 import Posters from '../../../components/Posters';
-import { CircularProgressbar } from 'react-circular-progressbar';
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import { useSelector } from 'react-redux';
 import 'react-circular-progressbar/dist/styles.css';
 
 import Env from '../icons/env.svg'
 import './Dashboard.css'
+import { useEffect, useState } from 'react';
 
 
 const Dashboard = () => {
   const tasks = useSelector(state => state.task.data)                     // get global task data
   const userTaskData = useSelector(state => state.user.data.tasks)        // get user task data to filter active tasks
+  const [progressStatus, setProgressStatus] = useState(0)
 
   // Filter active tasks based on whitespace only and unstarted task
   const activeTask = tasks.filter(task => {
@@ -22,6 +24,10 @@ const Dashboard = () => {
           else return false                                               // otherwise exclude
       } else return true
   })
+
+  useEffect(() => {
+    setProgressStatus(100-((activeTask.length/tasks.length)*100))
+  }, [activeTask, tasks])
 
 
   return (
@@ -50,7 +56,10 @@ const Dashboard = () => {
         <div className="progress-header">Progress</div>
         <div className="progress-cont">
           {/* Assign values to prop value and text */}
-          <CircularProgressbar value={100-((activeTask.length/tasks.length)*100)} text={`${100-((activeTask.length/tasks.length)*100)}%`} />
+          <CircularProgressbar 
+            value={progressStatus} 
+            text={`${progressStatus}%`}
+            styles={buildStyles({ pathTransitionDuration: 1.25 })} />
         </div>
       </div>
     </div>
