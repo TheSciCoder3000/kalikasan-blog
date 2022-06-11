@@ -40,16 +40,14 @@ const AdminDash = () => {
       return sum + (task.counter)
     }, 0)
   }
-
-  console.log('total finished tasks', getTotalProgress())
-  console.log('total tasks', (numberPaticipants*globalTasks.length))
+  
 
   return (
     <div className='admin-dashboard'>
       <h1 className="page-header">Admin Dashboard</h1>
       <div className="dashboard-cont">
         <div className="info-cont number-of-participants">
-          <CountUp from={0} to={30} />
+          <CountUp from={0} to={numberPaticipants} />
           <p>Total Participants</p>
         </div>
         <div className="info-cont task-progress">
@@ -57,7 +55,7 @@ const AdminDash = () => {
             <h3>Total Activity Progress</h3>
             <CircularProgressbar 
               value={((getTotalProgress() / (numberPaticipants*globalTasks.length)) || 0)*100}
-              text={`${((getTotalProgress() / (numberPaticipants*globalTasks.length)) || 0)*100}%`} />
+              text={`${(((getTotalProgress() / (numberPaticipants*globalTasks.length)) || 0)*100).toFixed(2)}%`} />
           </div>
           <div className="progress-details">
             
