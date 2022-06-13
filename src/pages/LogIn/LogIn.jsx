@@ -28,6 +28,8 @@ const LogIn = () => {
                 history.push('/app')
             } catch (error) {
                 if (error.message.includes('(auth/user-not-found)')) setfieldError({ type: 'user not found', msg: 'User not found' })
+                else if(error.message.includes('(auth/wrong-password')) setfieldError({ type: 'wrong password', msg: 'Wrong Password' })
+                else setfieldError({ type: 'other-errors', msg: error.message })
             }
         }
         setLogging(false)
