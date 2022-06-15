@@ -3,6 +3,39 @@
   overflow: hidden;
 }
 
+.poster-cont .post-indicators-cont {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.poster-cont .post-indicators-cont .post-indicator {
+  background: #d2d2d2;
+  aspect-ratio: 1;
+  border-radius: 25px;
+  height: 12px;
+}
+
+.poster-cont .post-indicators-cont .post-indicator:first-child {
+  margin-right: 0.5rem;
+}
+
+.poster-cont .post-indicators-cont .post-indicator:nth-child(2) {
+  margin-left: 0.5rem;
+}
+
+.poster-cont .post-indicators-cont .post-indicator.active-post {
+  background-color: grey;
+}
+
+.poster-cont .post-indicators-cont .post-indicator:hover {
+  cursor: pointer;
+}
+
 .poster-cont img {
   width: 100%;
 }
