@@ -5,12 +5,18 @@
     height: 100%;
 
     .planting-header {
-        margin-bottom: 3rem;
+        margin-bottom: 1rem;
         
         h1 {
             font-size: 3em;
             font-weight: 400;
+            margin-bottom: 2rem;
         }
+    }
+
+    hr {
+        margin: 2.25rem 0;
+        border: 1px solid rgb(172, 172, 172);
     }
 
     .submissions-cont {

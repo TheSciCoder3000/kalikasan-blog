@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import './Planting.css'
 
 const Planting = ({ activityId }) => {
+  const allParticipants = useSelector(state => state.participants.data)
   const participantSubmissions = useSelector(state => state.participants.data
     .map(participant => { return {
       name: `${participant.FirstName} ${participant.LastName}`,
@@ -17,8 +18,9 @@ const Planting = ({ activityId }) => {
     <div className='admin-planting'>
       <div className="planting-header">
         <h1>Activity #2: Planting Trees</h1>
-        <p></p>
+        <p>{participantSubmissions.length} out of {allParticipants.length} have uploaded their pictures</p>
       </div>
+      <hr />
       <div className="submissions-cont">
         {participantSubmissions.map(submissionEntry => (
           <Link key={submissionEntry.id} className="entry-cont" to={`/app/admin/participants/${submissionEntry.id}`}>
