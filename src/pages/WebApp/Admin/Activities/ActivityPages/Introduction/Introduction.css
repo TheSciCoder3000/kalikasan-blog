@@ -9,6 +9,11 @@
   margin-bottom: 2rem;
 }
 
+.admin-introduction hr {
+  margin: 2rem 0;
+  border: 1px solid #b5b5b5;
+}
+
 .admin-introduction .introductions-cont .intro-item {
   background: #fafafa;
   border: 1px solid gainsboro;
