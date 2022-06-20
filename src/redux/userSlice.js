@@ -18,18 +18,28 @@ export const fetchUser = createAsyncThunk('User/fetchUser',
 const updateTask = createAsyncThunk('User/updateTask',
     async ({ userId, newTask }, { getState }) => {
         try {
+            // get the user's task state from the store
             let userTasks = getState().user.data.tasks.map(task => task)
-            let i = userTasks.findIndex(task => task.lessonId === newTask.lessonId)
-            if (i > -1) userTasks[i] = newTask
-            else userTasks.push(newTask)
 
+            // find the index of the task that is going to be updated
+            let i = userTasks.findIndex(task => task.lessonId === newTask.lessonId)
+
+            // if index exist
+            if (i > -1) userTasks[i] = newTask                      // then change the task value with the new task value
+            else userTasks.push(newTask)                            // else, append the task object to the list
+
+            // fetch the user's data from the firestore database
             await getDb('Users', userId).then(snapshot => {
                 let userDoc = snapshot.data()
+
+                // then we update the user's data with the new task list instance
                 return setDb('Users', userId, {
                     ...userDoc,
                     tasks: userTasks
                 })
             })
+
+            // after updating the firestore database we update the redux store
             return newTask
         } catch (e) {
             throw e
