@@ -30,7 +30,11 @@ export const COLUMNS = [
         Header: 'Task 3',
         accessor: 'task3',
         Cell: (data) => {
-            return <TaskStatus status={data.value} />
+            const status = data.value
+
+            return <div className={`task-status ${status === 'Attending' ? 'task-going' : 'task-no-response'}`}>
+                {status}
+            </div>
         }
     },
 ]
