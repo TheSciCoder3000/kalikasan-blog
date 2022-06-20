@@ -143,12 +143,20 @@
   color: #00ad00;
 }
 
-.participant-cont .table-cont .table-content table tbody .task-status.task-incomplete {
+.participant-cont .table-cont .table-content table tbody .task-status.task-incomplete, .participant-cont .table-cont .table-content table tbody .task-status.task-no-response {
   color: red;
 }
 
-.participant-cont .table-cont .table-content table tbody .task-status.task-incomplete::marker {
+.participant-cont .table-cont .table-content table tbody .task-status.task-incomplete::marker, .participant-cont .table-cont .table-content table tbody .task-status.task-no-response::marker {
   color: #ff2b2b;
+}
+
+.participant-cont .table-cont .table-content table tbody .task-status.task-going {
+  color: #c07000;
+}
+
+.participant-cont .table-cont .table-content table tbody .task-status.task-going::marker {
+  color: #f3b200;
 }
 
 .participant-cont .table-cont .table-content .page-pagination-cont {

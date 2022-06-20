@@ -109,11 +109,20 @@
                                 color: rgb(0, 173, 0);
                             }
                         }
-                        &.task-incomplete {
+                        &.task-incomplete,
+                        &.task-no-response {
                             color: red;
 
                             &::marker {
                                 color: rgb(255, 43, 43);
+                            }
+                        }
+
+                        &.task-going {
+                            color: rgb(192, 112, 0);
+
+                            &::marker {
+                                color: rgb(243, 178, 0);
                             }
                         }
                     }
