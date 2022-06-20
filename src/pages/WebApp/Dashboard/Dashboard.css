@@ -29,7 +29,14 @@
   -ms-grid-column: 1;
   -ms-grid-column-span: 3;
   grid-column: 1/4;
+  height: 22.5rem;
   position: relative;
+}
+
+@media screen and (max-width: 570px) {
+  .dashboard .greeting-cont {
+    height: 30rem;
+  }
 }
 
 .dashboard .greeting-cont .greeting-toggler-cont {
@@ -57,7 +64,7 @@
   cursor: default;
 }
 
-.dashboard .greeting-cont .greeting-toggler-cont .toggler:hover {
+.dashboard .greeting-cont .greeting-toggler-cont .toggler:not(.active):hover {
   cursor: pointer;
 }
 
@@ -120,6 +127,88 @@
 
 @media screen and (max-width: 400px) {
   .dashboard .greeting-cont .banner-1 img {
+    display: none;
+  }
+}
+
+.dashboard .greeting-cont .banner-2 .banner-text {
+  z-index: 10;
+  height: 100%;
+  padding: 2rem 4rem;
+  position: relative;
+}
+
+@media screen and (max-width: 550px) {
+  .dashboard .greeting-cont .banner-2 .banner-text {
+    padding: 3rem 2rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .dashboard .greeting-cont .banner-2 .banner-text {
+    padding: 3rem 1rem;
+  }
+}
+
+.dashboard .greeting-cont .banner-2 .banner-text h1 {
+  font-family: 'vegan_style_personal_useRg';
+  font-size: 4em;
+  margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 850px) {
+  .dashboard .greeting-cont .banner-2 .banner-text h1 {
+    font-size: 2.65em;
+    text-align: center;
+  }
+}
+
+.dashboard .greeting-cont .banner-2 .banner-text p {
+  font-weight: 300;
+  font-size: 0.9em;
+  margin: 0.5rem 2rem;
+}
+
+.dashboard .greeting-cont .banner-2 .banner-text button {
+  margin-left: 2rem;
+  margin-top: 1rem;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+.dashboard .greeting-cont .banner-2 .banner-text button:hover {
+  cursor: pointer;
+}
+
+.dashboard .greeting-cont .banner-2 .banner-text button.seminar-joining {
+  background-color: green;
+  color: white;
+}
+
+.dashboard .greeting-cont .banner-2 .banner-text button.seminar-not-joining {
+  background-color: red;
+  color: white;
+}
+
+.dashboard .greeting-cont .banner-2 .banner-text button:disabled {
+  cursor: not-allowed;
+  background-color: #b8b8b8;
+  color: black;
+}
+
+.dashboard .greeting-cont .banner-2 .meeting-svg {
+  position: absolute;
+  right: 5rem;
+  bottom: 0;
+  width: 20rem;
+  height: 100%;
+  z-index: 2;
+}
+
+@media screen and (max-width: 900px) {
+  .dashboard .greeting-cont .banner-2 .meeting-svg {
     display: none;
   }
 }

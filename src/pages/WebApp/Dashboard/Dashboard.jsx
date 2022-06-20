@@ -1,5 +1,6 @@
 import Todo from '../../../components/Todo'
 import Greeting1 from '../../../components/GreetingBanner/Greeting1'
+import Greeting2 from '../../../components/GreetingBanner/Greeting2'
 import Posters from '../../../components/Posters';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import { useSelector } from 'react-redux';
@@ -14,6 +15,7 @@ const Dashboard = () => {
   const tasks = useSelector(state => state.task.data)                     // get global task data
   const userTaskData = useSelector(state => state.user.data.tasks)        // get user task data to filter active tasks
   const [progressStatus, setProgressStatus] = useState(0)
+  const [greetingState, setGreetingState] = useState('seminar')
 
   // Filter active tasks based on whitespace only and unstarted task
   const activeTask = tasks.filter(task => {
@@ -33,13 +35,15 @@ const Dashboard = () => {
   return (
     <div className='dashboard'>
       <div className="greeting-cont banner-cont">
-        <Greeting1 Env={Env} />
+        {greetingState === 'seminar' ? 
+          <Greeting2 /> : <Greeting1 Env={Env} />
+        }
 
         {/* slider toggler */}
         <div className="greeting-toggler-cont">
-          <div className="toggler greeting-toggle-1 active"></div>
-          {/* <div className="toggler greeting-toggle-2"></div>
-          <div className="toggler greeting-toggle-3"></div> */}
+          <div className={`toggler greeting-toggle-1 ${greetingState === 'seminar' ? 'active' : ''}`} onClick={() => setGreetingState('seminar')}></div>
+          <div className={`toggler greeting-toggle-2 ${greetingState === 'welcome' ? 'active' : ''}`} onClick={() => setGreetingState('welcome')}></div>
+          {/* <div className="toggler greeting-toggle-3"></div> */}
         </div>
       </div>
       <div className="calendar-grid-cont">

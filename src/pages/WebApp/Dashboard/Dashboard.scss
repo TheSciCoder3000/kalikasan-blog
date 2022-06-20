@@ -26,7 +26,12 @@
     // Specific styles
     .greeting-cont {
         grid-column: 1/4;
+        height: 22.5rem;
         position: relative;
+
+        @include custom-breakpoint(570px) {
+            height: 30rem;
+        }
 
         .greeting-toggler-cont {
             position: absolute;
@@ -48,9 +53,10 @@
                     cursor: default;
                 }
 
-                &:hover {
+                &:not(.active):hover {
                     cursor: pointer;
                 }
+
             }
         }
 
@@ -102,6 +108,77 @@
                 height: 65%;
 
                 @include custom-breakpoint (400px) {
+                    display: none;
+                }
+            }
+        }
+
+        .banner-2 {
+            .banner-text {
+                z-index: 10;
+                height: 100%;
+                padding: 2rem 4rem;
+                position: relative;
+
+                @include custom-breakpoint(550px) {
+                    padding: 3rem 2rem;
+                }
+                @include custom-breakpoint(400px) {
+                    padding: 3rem 1rem;
+                }
+
+                h1 {
+                    font-family: 'vegan_style_personal_useRg';
+                    font-size: 4em;
+                    margin-bottom: 1rem;
+
+                    @include custom-breakpoint (850px) {
+                        font-size: 2.65em;
+                        text-align: center;
+                    }
+                }
+                p {
+                    font-weight: 300;
+                    font-size: 0.9em;
+                    margin: 0.5rem 2rem;
+                }
+                button {
+                    margin-left: 2rem;
+                    margin-top: 1rem;
+                    padding: 0.75rem 2rem;
+                    border: none;
+                    border-radius: 5px;
+                    font-size: 1em;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+
+                    
+                    &.seminar-joining {
+                        background-color: green;
+                        color: white;
+                    }
+                    &.seminar-not-joining {
+                        background-color: red;
+                        color: white;
+                    }
+                    &:disabled {
+                        cursor: not-allowed;
+                        background-color: #b8b8b8;
+                        color: black;
+                    }
+                }
+            }
+            .meeting-svg {
+                position: absolute;
+                right: 5rem;
+                bottom: 0;
+                width: 20rem;
+                height: 100%;
+                z-index: 2;
+
+                @include custom-breakpoint (900px) {
                     display: none;
                 }
             }
