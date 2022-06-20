@@ -29,7 +29,7 @@ const taskSlice = createSlice({
         },
         [fetchTasks.fulfilled]: (state, { payload }) => {
             state.loading = false
-            state.data = payload
+            state.data = payload.filter(task => task.lessonId !== 'Seminar')
             state.error = ''
         },
         [fetchTasks.rejected]: (state, { error }) => {

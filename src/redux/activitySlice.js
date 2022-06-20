@@ -29,7 +29,7 @@ const activitySlice = createSlice({
         },
         [fetchActivities.fulfilled]: (state, { payload }) => {
             state.loading = false
-            state.data = payload
+            state.data = payload.filter(act => act.id !== 'Seminar')
             state.error = ''
         },
         [fetchActivities.rejected]: (state, { error }) => {
