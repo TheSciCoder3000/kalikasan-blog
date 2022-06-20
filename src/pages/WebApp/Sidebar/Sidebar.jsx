@@ -100,6 +100,7 @@ const Sidebar = ({ userData, activityData, currentUser, toggleMenubar, width }) 
                                         {activityData.map((activity, indx) => (
                                             <LessonNavLink key={indx} activity={activity} />
                                         ))}
+                                        <LessonNavLink activity={{ id: 'Evaluation', title: 'Evaluation' }} />
                                     </motion.ul>
                                 )}
                             </AnimatePresence>

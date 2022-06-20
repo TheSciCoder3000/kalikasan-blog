@@ -1,0 +1,26 @@
+.evaluation-cont {
+  font-family: 'Roboto', sans-serif;
+  padding: 3rem 5rem;
+}
+
+.evaluation-cont h1 {
+  font-size: 3.5em;
+  font-weight: 400;
+  margin-bottom: 4rem;
+}
+
+.evaluation-cont .eval-cont {
+  margin-bottom: 5rem;
+}
+
+.evaluation-cont .eval-cont h2 {
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+.evaluation-cont .eval-cont p {
+  font-weight: 300;
+  line-height: 1.4rem;
+  margin-bottom: 1rem;
+}
+/*# sourceMappingURL=Evaluation.css.map */

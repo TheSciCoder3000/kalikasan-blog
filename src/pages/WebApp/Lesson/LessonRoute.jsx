@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { useParams, Route, Redirect } from 'react-router-dom'
+import Evaluation from './LessonPages/Evaluation'
 import IntroductionPage from './LessonPages/Introduction/IntroductionPage'
 import PlantTrees from './LessonPages/PlantTrees/PlantTrees'
 
@@ -29,7 +30,8 @@ const Lesson = () => {
         <div className="lesson-cont">
             {
                 lessonId === 'Introduction' ? <IntroductionPage lessonId={lessonId} /> :
-                lessonId === 'Planting' ? <PlantTrees lessonId={lessonId} />
+                lessonId === 'Planting' ? <PlantTrees lessonId={lessonId} /> :
+                lessonId === 'Evaluation' ? <Evaluation />
                 : <></>
             }
         </div>
