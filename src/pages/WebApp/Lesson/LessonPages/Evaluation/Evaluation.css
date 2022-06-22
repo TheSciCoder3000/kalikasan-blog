@@ -9,6 +9,10 @@
   margin-bottom: 4rem;
 }
 
+.evaluation-cont .strike {
+  text-decoration: line-through;
+}
+
 .evaluation-cont .eval-cont {
   margin-bottom: 5rem;
 }
