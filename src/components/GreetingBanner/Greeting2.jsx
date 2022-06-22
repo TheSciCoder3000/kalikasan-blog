@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setTask } from '../../redux/userSlice'
 import { MeetingSvg } from './svg'
 import { useAuth } from '../Auth'
+import { Link } from 'react-router-dom'
 
 const Greeting2 = () => {
     const dispatch = useDispatch()
@@ -24,6 +25,7 @@ const Greeting2 = () => {
             <div className="banner-text">
                 <h1>Let's Save The Earth</h1>
                 <p>Meet with us and let's talk about our planet's future</p>
+                <p><Link target='_blank' rel="noopener noreferrer" to={{ pathname: 'https://us02web.zoom.us/j/83810191278?pwd=FrmvoKtE1qsK1QEYftc0JRJ3-prL3R.1' }}>https://us02web.zoom.us/j/83810191278?pwd=FrmvoKtE1qsK1QEYftc0JRJ3-prL3R.1</Link></p>
                 <p>June 23, 2022 - Thursday</p>
                 <p>2:00 PM - 3:00PM</p>
                 <button 
