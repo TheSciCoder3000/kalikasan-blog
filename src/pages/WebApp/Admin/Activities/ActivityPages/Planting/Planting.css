@@ -42,6 +42,9 @@
 
 .admin-planting .submissions-cont .entry-cont img {
   width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .admin-planting .submissions-cont .entry-cont .entry-details {
