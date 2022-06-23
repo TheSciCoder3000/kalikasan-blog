@@ -16,6 +16,7 @@ const AdminDash = () => {
       setTasksFinished(participants.reduce((tasks, participant) => {
         // iterate through the participant list
         participant.tasks.forEach((task) => {
+          if (task.lessonId === 'Seminar') return
           // fint the indx of the task obj that contains the lesson id
           let taskIndx = tasks.findIndex(taskInstance => taskInstance.lessonId === task.lessonId)
 

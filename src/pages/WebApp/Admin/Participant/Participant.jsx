@@ -26,7 +26,7 @@ const Participant = () => {
       task1: doc.tasks.some(task => task.lessonId === tasks[0]) ? 'Completed' : 'Incomplete',
       task2: doc.tasks.some(task => task.lessonId === tasks[1]) ? 'Completed' : 'Incomplete',
       task3: doc.tasks.some(task => task.lessonId === 'Seminar') ? 
-        (doc.tasks.find(task => task.lessonId === tasks[2]).value === 'Going' ? 'Attending' : 'No response')
+        (doc.tasks.find(task => task.lessonId === 'Seminar').value ? 'Attending' : 'No response')
         : 'No response',
     }
   }), [participantList])
