@@ -14,4 +14,4 @@ The Web App is the main program of our website where the participants will be sp
 
 ## Visit The Website
 
-You can visit the Website at [Kalikasan.tk](https://kalikasan.tk/)
+You can visit the Website at [kalikasan-blog](https://kalikasan-blog.firebaseapp.com)
